@@ -4,9 +4,9 @@
 
 ### 1.1. Wymiarowe przestrzenie
 Niech:
-- $W \in \{0,1\}$ – CHCĘ (osobista akceptacja i motywacja do realizacji celu)
+- $W \in \{0,1\}$ – CHCĘ (osobista akceptacja wartości celu / zgoda na realizację celu)
 - $C \in \{0,1\}$ – MOGĘ (subiektywnie oceniana wykonalność działania)
-- $N \in \{0,1\}$ – POWINIENEM (poczucie zobowiązania normatywnego)
+- $N \in \{0,1\}$ – POWINIENEM (poczucie zobowiązania normatywnego wobec realizacji celu; źródło: zewnętrzne lub internalizowane)
 
 Przestrzeń stanów: $\mathcal{S} = \{0,1\}^3$
 
@@ -21,14 +21,14 @@ Liczba stanów: $|\mathcal{S}| = 2^3 = 8$
 ### 1.3. Wartościowanie (interpretacja) bitów
 | Bit | Wartość 0 | Wartość 1 |
 |-----|-----------|-----------|
-| W | Brak osobistej motywacji/akceptacji | Obecność osobistej motywacji/akceptacji |
+| W | Brak osobistej akceptacji wartości celu | Obecność osobistej akceptacji wartości celu |
 | C | Postrzegana niewykonalność | Postrzegana wykonalność |
-| N | Brak poczucia zobowiązania | Poczucie zobowiązania normatywnego |
+| N | Brak poczucia zobowiązania normatywnego | Poczucie zobowiązania normatywnego (źródło: zewnętrzne lub internalizowane) |
 
 **Uwaga:** Wartość 0 **nie** oznacza:
-- Dla W: silną niechęć (to oddzielny konstrukt)
-- Dla C: obiektywną niemożność (to subiektywna ocena)
-- Dla N: zakaz (to brak obowiązku, nie zabronienie)
+- Dla W: silną niechęć, awersję ani brak intencji (to oddzielne konstrukty)
+- Dla C: obiektywną niemożność (to subiektywna ocena; C=0 nie wyklucza wykonania, C=1 nie gwarantuje go)
+- Dla N: zakaz ani brak internalizacji (to brak poczucia zobowiązania; internalizacja normy to osobna zmienna `N_source`, nie bit w kodzie stanu)
 
 ---
 
@@ -68,12 +68,33 @@ Dla 24 przejść kierunkowych, macierz $24 \times 8$ lub lista krawędzi skierow
 
 ## 3. Hipoteza Przejść Elementarnych (HPE)
 
-### 3.1. Sformułowanie
-**HPE:** Elementarny proces psychologiczny zmiany stanu motywacyjnego zmienia dokładnie jeden z trzech wymiarów (W, C lub N).
+### 3.1. Sformułowanie – HPE-model (ograniczenie modelowe)
 
-Formalnie: dopuszczalne przejścia elementarne to tylko te, dla których $d_H(s_{start}, s_{end}) = 1$.
+**HPE-model:** W generatorze $Q$ łańcucha Markowskiego w czasie ciągłym (CTMC) intensywności przejść między stanami o odległości Hamminga $d_H \geq 2$ są równe zero:
 
-### 3.2. Lista 24 przejść dopuszczalnych
+$$q_{ij} = 0 \quad \text{dla} \quad d_H(s_i, s_j) \geq 2$$
+
+To oznacza, że **elementarne skoki** w czasie ciągłym zmieniają dokładnie jeden wymiar. HPE-model to **ograniczenie na strukturę generatora $Q$**, a nie twierdzenie o psychologicznej atomowości procesów.
+
+### 3.2. HPE-empiryczna (hipoteza testowalna)
+
+**HPE-empiryczna:** W danych EMA z gęstym próbkowaniem, odsetek obserwowanych zmian $d_H \geq 2$ między kolejnymi pomiarami jest istotnie mniejszy niż przewidywane przez model alternatywny dopuszczający bezpośrednie skoki wielobitowe (np. model z niezależnymi zmianami bitów lub model z błędami klasyfikacji).
+
+To hipoteza empiryczna, która może zostać zafałszowana. HPE-empiryczna **nie** jest równoznaczna z HPE-model – nawet gdy generator $Q$ spełnia HPE-model ($q_{ij}=0$ dla $d_H \geq 2$), macierz przejścia $P(\Delta t) = \exp(Q\Delta t)$ dla $\Delta t > 0$ może mieć $p_{ij} > 0$ dla $d_H \geq 2$ (przejścia wieloetapowe w jednym interwale pomiarowym).
+
+### 3.3. Modele alternatywne do testowania HPE
+
+Do weryfikacji HPE-empirycznej porównujemy:
+
+- **M1 (HPE-model):** $q_{ij}=0$ dla $d_H \geq 2$ (24 wolne parametry $q_{ij}$)
+- **M2 (niezależne bity):** 6 niezależnych intensywności (po 2 na bit: 0→1, 1→0), $q_{ij}$ zależne tylko od zmieniającego się bitu
+- **M3 (pełny generator):** 56 wolnych parametrów $q_{ij}$ (wszystkie pary $i \neq j$)
+- **M4 (ciągły proces progowany):** zmienne ciągłe $W,C,N \in [0,1]$ z progowaniem na 8 stanów
+- **M5 (błąd klasyfikacji):** HPE-model + model błędu pomiarowego/klasyfikacji stanów
+
+Test HPE polega na porównaniu dopasowania M1 vs M2–M5 (LRT, AIC, BIC, walidacja krzyżowa).
+
+### 3.4. Lista 24 przejść dopuszczalnych w HPE-model
 
 | # | Start | Koniec | Zmieniony wymiar | Kierunek |
 |---|-------|--------|------------------|----------|
@@ -102,12 +123,13 @@ Formalnie: dopuszczalne przejścia elementarne to tylko te, dla których $d_H(s_
 | 23 | 110 | 111 | N | 0→1 |
 | 24 | 111 | 110 | N | 1→0 |
 
-### 3.3. Przejścia niedopuszczalne (wielobitowe)
+### 3.5. Przejścia niedopuszczalne w HPE-model (wielobitowe)
+
 Wszystkie pary stanów o $d_H \geq 2$:
 - $d_H = 2$: 12 par (np. 000→011, 000→101, 000→110, ...)
 - $d_H = 3$: 4 pary (000↔111, 001↔110, 010↔101, 011↔100)
 
-**Interpretacja HPE:** Przejścia $d_H \geq 2$ są złożone (składają się z 2 lub 3 przejść elementarnych) lub wynikają z ograniczonej rozdzielczości pomiarowej.
+**Interpretacja:** W HPE-model te przejścia mają $q_{ij}=0$. W danych obserwowanych mogą wystąpić jako: (a) sekwencje nieobserwowanych przejść jednobitowych w interwale $\Delta t$, (b) błędy pomiarowe/klasyfikacji, (c) dowody na fałszowanie HPE-model (jeśli $q_{ij} > 0$ dla $d_H \geq 2$ w estymowanym $Q$).
 
 ---
 
@@ -219,6 +241,46 @@ Przykłady w DMTRD:
 
 ---
 
+## 5. Status Epistemiczny i Zakres Modelu
+
+### 5.1. Osiem stanów jako klasyfikacja logiczna, nie taksonomia psychologiczna
+
+Osiem stanów $\mathcal{S} = \{0,1\}^3$ to **wyczerpujące zestawienie logicznych kombinacji** trzech ocen binarnych. Nie postulujemy, że odpowiadają one ośmiu jakościowo odrębnym, naturalnym stanom psychicznym. Nazwy stanów (np. „Gotowość autonomiczna”, „Obowiązek wykonalny bez autonomii”) to **etykiety interpretacyjne** ułatwiające komunikację, a nie nazwy odkrytych taksonów psychologicznych.
+
+Różne osoby w tym samym kodzie (np. 111) mogą mieć odmienną intensywność W, różne źródła N (`N_source`), różną historię dojścia – co może implikować różną dynamikę przyszłą. Agregacja do 8 stanów to **kompresja informacji** ułatwiająca modelowanie, a nie odkrycie naturalnych kategorii.
+
+### 5.2. Zakres modelu: regulacja refleksyjna (System 2)
+
+Model DMTRD w wersji bazowej opisuje **regulację refleksywną (System 2)** – procesy świadome, celowe, wymagające uwagi. Nie modeluje:
+
+- **Automatyzm/nawyki (System 1):** działanie bez aktualnej refleksji o chęci (Wood & Neal, 2007). Stan 010/011 (W=0, C=1) przy nawyku to normalne działanie, a nie „brak motywacji”.
+- **Ambiwalencję:** współistnienie chęci i niechęci (W nie rozróżnia neutralności od awersji).
+- **Patologie kliniczne:** depresję, anhedonię, uzależnienia – wymagają rozszerzeń.
+
+Dla zjawisk System 1 wymagane jest rozszerzenie modelu (parametr H – siła nawyku, wersja ciągła W ∈ [-1,1]).
+
+### 5.3. Stan motywacyjny ≠ zachowanie
+
+Stan $(W,C,N)$ to **konfiguracja ocen motywacyjnych**, nie działanie ani intencja.
+
+- Stan 110 („Gotowość autonomiczna”) ≠ wykonane działanie.
+- Stan 101 (W=1, N=1, C=0) – silna motywacja zablokowana barierami; może prowadzić do *działań przygotowawczych* (szukanie zasobów, lobbyowanie), ale nie do wykonania celu głównego.
+- Zachowanie (wykonanie celu) to osobna zmienna wynikowa $A \in \{0,1\}$, modelowana jako funkcja stanu, kontekstu, volicji (Kuhl), nawyków i okazji.
+
+### 5.4. Zmienna pomocnicza: Źródło obowiązku ($N_{source}$)
+
+Bit $N$ informuje tylko o **obecności/braku poczucia zobowiązania**. Źródło i jakość regulacji to osobna zmienna kategoryczna:
+
+$$N_{source} \in \{\text{external}, \text{introjected}, \text{identified}, \text{integrated}, \text{moral}, \text{role}, \text{legal}\}$$
+
+Internalizacja normy to proces zmiany $N_{source}$ (np. external → identified), a **nie** koniecznie zmiana $N$ z 1 na 0. Stan 110 (W=1, C=1, N=0) może oznaczać: brak poczucia „powinienem” LUB zinternalizowany obowiązek (N=1) który nie jest doświadczany jako „powinienem” (bo zinternalizowany). Rozdzielenie $N$ i $N_{source}$ rozwiązuje sprzeczność między rozdz. 8.4 a 8.5 w dokumentacji pierwotnej.
+
+### 5.5. Path Dependence jako rozszerzenie, nie cecha modelu bazowego
+
+Model bazowy (CTMC/DTMC) jest **bezpamięciowy (Markowski)**: przyszłość zależy tylko od aktualnego stanu $(W,C,N)$. Zależność od historii (path dependence – np. różna stabilność 111 w zależności od drogi dojścia) to **rozszerzenie modelu** (model rzędu wyższego, zmienne latentne historii, CTMC z kowariancjami zależnymi od czasu), nie cecha modelu bazowego. W modelu bazowym: $P(X_{t+1} | X_t, X_{t-1}, ...) = P(X_{t+1} | X_t)$.
+
+---
+
 ## 6. Rozszerzenia Modelu (do rozważenia)
 
 ### 6.1. Zmienne ciągłe zamiast binarnych
@@ -251,26 +313,90 @@ Model: $Q(X_t)$ lub $P(X_t)$ – łańcuch Markowa z kowariancjami.
 
 ---
 
-## 7. Identyfikowalność i Estymacja
+## 8. Model Pomiarowy i Identyfikowalność (Specyfikacja G3)
 
-### 7.1. Dane panelowe / EMA
-$N$ osób, $T$ pomiarów, zmienne $W_{it}, C_{it}, N_{it}$ (binarne/ciągłe).
+### 8.1. Wybór modelu bazowego
 
-### 7.2. Modele do estymacji
-1. **LTA (Latent Transition Analysis)** – stany latentne = 8 klas, wskaźniki = W,C,N
-   - Problem: 3 wskaźniki binarne → saturated
-   - Rozwiązanie: wskaźniki ciągłe, lub więcej wskaźników, lub ograniczenia
-2. **Markov Model z obserwowanymi stanami** – jeśli W,C,N pomiarowe bez błędu
-   - Proste: liczenie przejść, estymacja $P$ (MLE)
-   - Wymaga: wysokiej częstotliwości pomiarów (HPE na poziomie obserwacji)
-3. **CTMC z EMA** – estymacja $Q$ z danych panelowych (np. pakiet `msm` w R, `ctmcm` w Python)
-4. **DSEM (Dynamic SEM)** – modele wielopoziomowe z opóźnieniami
+**Model bazowy do estymacji:** **CTMC z obserwowanymi stanami ciągłymi** ($W,C,N \in [1,7]$ Likert).
 
-### 7.3. Moc statystyczna
-Symulacje potrzebne do ustalenia:
-- Minimalne $N$ i $T$ do wykrycia asymetrii przejść (np. $p_{011\to111} \neq p_{111\to011}$)
-- Wpływ błędu pomiarowego na odrzucenie HPE
-- Moc testu $d_H \geq 2$ przejść (czy obserwujemy skoki wielobitowe?)
+- Stany obserwowane bezpośrednio (brak klas latentnych) → unika problemu identyfikowalności LTA/HMM z 3 wskaźnikami binarnymi.
+- Wersja ciągła zachowuje informację o natężeniu; dyskretyzacja na 8 stanów (oktaanty, próg 4) tylko do interpretacji i wizualizacji.
+- Estymacja generatora $Q$ z danych panelowych EMA (pakiety `msm`/`ctmcm` w R, `ctmcm` w Python).
+
+### 8.2. Wersja binarna (uproszczenie)
+
+Wersja binarna ($W,C,N \in \{0,1\}$) to **uproszczenie do interpretacji i wizualizacji** (graf Q3, 8 stanów). Nie jest modelem bazowym do estymacji, ponieważ:
+- 3 wskaźniki binarne → 8 wzorców odpowiedzi = model nasycony (0 df) w pojedynczym pomiarze LTA.
+- Traci informację o natężeniu i gradacji (self-efficacy, typy regulacji, kategorie norm).
+- Progowanie (próg 4) jest arbitralne i generuje błędy klasyfikacji u osób blisko granicy.
+
+### 8.3. Specyfikacja modelu pomiarowego (wersja ciągła)
+
+**Zmienne obserwowane (wskaźniki stanu):**
+- $W_{it} \in [1,7]$ – skala Likert: „W jakim stopniu osobiście akceptujesz wartość tego celu / zgadzasz się z jego realizacją?”
+- $C_{it} \in [1,7]$ – skala Likert: „W jakim stopniu uważasz, że jesteś w stanie to zrealizować (posiadasz kompetencje, czas, zasoby)?”
+- $N_{it} \in [1,7]$ – skala Likert: „W jakim stopniu czujesz, że powinieneś to zrobić (poczucie zobowiązania)?”
+
+**Zmienne eksogenne (predyktory przejść / moderatory):**
+- $AutonomySupport_{it}$ – wsparcie autonomii (mPAS)
+- $Resources_{it}$ – dostępne zasoby, czas, wsparcie
+- $RoleAmbiguity_{it}$, $RoleConflict_{it}$ – ambiguitet/konflikt ról
+- $HabitStrength_{it}$ – siła nawyku (SRHI, opcjonalnie)
+- $N_{source,it}$ – źródło obowiązku (kategoryczna)
+
+**Zmienne wynikowe (outcomes):**
+- $Behavior_{it} \in \{0,1\}$ – wykonanie celu w oknie $[t, t+\Delta]$
+- $Affect_{it}$ – PANAS (pozytywny/negatywny afekt)
+- $Burnout_{it}$ – MBI (wypalenie, skala czasu: tygodnie)
+- $MoralDistress_{it}$ – MDS (moral distress, kontekst moralny)
+
+**Rola zmiennych w modelu:**
+| Zmienna | Rola | Uwagi |
+|---------|------|-------|
+| $W,C,N$ | Stan (obserwowany) | Definiują stan w CTMC; nie zawierają zachowania |
+| $X_{exog}$ | Predyktory $Q$ / moderatory | Wpływają na intensywności $q_{ij}$ |
+| $Y_{outcome}$ | Wyniki (outcomes) | Przewidywane ze stanu; **nie** wskaźniki emisji |
+
+**Kluczowa zasada:** Zachowanie, afekt, wypalenie, moral distress to **zmienne wynikowe (outcomes)** przewidywane ze stanu $(W,C,N)$, a **nie** wskaźniki emisji definiujące stan. To unika zanieczyszczenia kryterium (criterion contamination).
+
+### 8.4. Model dynamiczny: CTMC z kowariancjami
+
+Generator $Q$ zależny od kowariancji:
+
+$$q_{ij}(X_t) = q_{ij}^0 \cdot \exp(\beta_{ij}^T X_t) \quad \text{dla} \quad d_H(i,j)=1$$
+
+Gdzie $X_t$ to wektor kowariancji (AutonomySupport, Resources, itd.). Dla $d_H \geq 2$: $q_{ij}=0$ (HPE-model).
+
+Estymacja: pakiet `msm` (R) lub `ctmcm` (Python) z danymi panelowymi EMA.
+
+### 8.5. Wersje alternatywne (do porównania w walidacji)
+
+| Model | Opis | Użycie |
+|-------|------|--------|
+| **M_full** | CTMC z 56 wolnymi $q_{ij}$ (bez HPE) | Test HPE (LRT vs M_HPE) |
+| **M_indep** | 6 niezależnych intensywności (po 2 na bit) | Test zależności $q$ od konfiguracji |
+| **M_cont** | Procesy ciągłe $W,C,N \in [0,1]$ z progowaniem | Test wersji ciągłej vs dyskretnej |
+| **M_meas** | HPE-model + błąd klasyfikacji stanów | Test wrażliwości na błędy pomiarowe |
+
+---
+
+## 9. Identyfikowalność i Estymacja
+
+### 9.1. Dane panelowe / EMA
+$N$ osób, $T$ pomiarów, zmienne $W_{it}, C_{it}, N_{it}$ (ciągłe Likert 1–7).
+
+### 9.2. Modele do estymacji
+1. **CTMC z obserwowanymi stanami ciągłymi** – estymacja $Q$ z danych panelowych EMA (pakiety `msm`/`ctmcm` w R, `ctmcm` w Python). Model bazowy.
+2. **CTMC z HPE-model** – $q_{ij}=0$ dla $d_H \geq 2$ (24 wolne parametry). Test HPE: LRT vs model pełny.
+3. **Model niezależnych bitów** – 6 intensywności bazowych (po 2 na bit). Test zależności $q$ od konfiguracji.
+4. **DSEM (Dynamic SEM)** – modele wielopoziomowe z opóźnieniami (alternatywa dla CTMC).
+
+### 9.3. Moc statystyczna
+Symulacje Monte Carlo (1000 replikacji) do ustalenia:
+- Minimalne $N$ i $T$ do wykrycia asymetrii przejść (np. $q_{011\to111} \neq q_{111\to011}$) przy mocy > 0.80.
+- Wpływ błędu pomiarowego/klasyfikacji na odrzucenie HPE-model.
+- Moc testu LRT: HPE-model (24 parametry) vs model pełny (56 parametrów) vs model niezależnych bitów (6 parametrów).
+- Precyzja estymacji rzadkich przejść (np. 000→001, 111→110).
 
 ---
 

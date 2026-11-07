@@ -256,8 +256,8 @@ def build_12_edges_graphml(states, transitions, output_path):
         edge = ET.SubElement(graph, "edge", id=eid, source=src, target=tgt)
         
         # Dane krawędzi
-        proc_names = [p['nazwa_procesu'] for p in pair]
-        psych_interps = [p['interpretacja_psychologiczna'] for p in pair] if 'interpretacja_psychologiczna' in pair[0] else []
+        proc_names = [p['etykieta_neutralna'] for p in pair]
+        psych_interps = [p['hipotezy_mechanistyczne'] for p in pair] if 'hipotezy_mechanistyczne' in pair[0] else []
         
         data_map = {
             "e0": f"{src}↔{tgt} ({dim})",
@@ -344,8 +344,8 @@ def build_24_transitions_graphml(states, transitions, output_path):
             "e3": tgt,
             "e4": dim,
             "e5": t['kierunek'],
-            "e6": t['nazwa_procesu'],
-            "e7": t.get('interpretacja_psychologiczna', ''),
+            "e6": t['etykieta_neutralna'],
+            "e7": t.get('hipotezy_mechanistyczne', ''),
             "e8": t.get('mechanizmy_spoleczne', ''),
             "e9": t.get('status_empiryczny', ''),
         }

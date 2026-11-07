@@ -56,7 +56,7 @@ def main():
     
     meta = doc.add_paragraph()
     meta.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    run = meta.add_run(f"Data: {datetime.now().strftime('%d.%m.%Y')}\nProjekt: DMTRD – Etap 1\nDokument główny: DMTRD_koncepcja.docx")
+    run = meta.add_run(f"Data: {datetime.now().strftime('%d.%m.%Y')}\nProjekt: DMTRD – Etap 1\nDokument główny: DMTRD_koncepcja_rev2.docx")
     run.font.size = Pt(11)
     run.italic = True
     
@@ -71,9 +71,9 @@ def main():
         "wymiarów binarnych:")
     
     dims = [
-        ("W – CHCĘ", "Osobista akceptacja i motywacja do realizacji celu (motywacja autonomiczna)."),
+        ("W – CHCĘ", "Osobista akceptacja wartości celu / zgoda na realizację celu."),
         ("C – MOGĘ", "Subiektywnie oceniana wykonalność działania (self-efficacy / perceived behavioral control)."),
-        ("N – POWINIENEM", "Poczucie zobowiązania normatywnego (normy moralne, rolowe, społeczne, zinternalizowane).")
+        ("N – POWINIENEM", "Poczucie zobowiązania normatywnego (normy moralne, rolowe, społeczne). Źródło i jakość regulacji (N_source, N_quality) to osobne zmienne.")
     ]
     
     for name, desc in dims:
@@ -112,8 +112,8 @@ def main():
         ("010", "Możliwość niewykorzystana", "C=1, W=0, N=0 – potencjał bez napędu"),
         ("011", "Obowiązek wykonalny bez autonomii", "C=1, N=1, W=0 – compliance, motywacja kontrolowana"),
         ("100", "Pragnienie bez możliwości", "W=1, C=0, N=0 – motywacja zablokowana barierami"),
-        ("101", "Motywacja i obowiązek bez możliwości", "W=1, N=1, C=0 – moral distress, cel niemożliwy"),
-        ("110", "Działanie autonomiczne", "W=1, C=1, N=0 – motywacja autonomiczna, sprawczość"),
+        ("101", "Motywacja i obowiązek bez możliwości", "W=1, N=1, C=0 – napięcie krytyczne, cel niemożliwy"),
+        ("110", "Gotowość autonomiczna", "W=1, C=1, N=0 – motywacja autonomiczna, sprawczość"),
         ("111", "Zbieżność trzech wymiarów", "W=1, C=1, N=1 – pełna gotowość (nie zawsze optymalna)")
     ]
     
@@ -121,19 +121,25 @@ def main():
         add_paragraph_styled(doc, f"{code} – {name}: {desc}", style='List Bullet')
     
     add_paragraph_styled(doc, 
-        "Stan 101 (W=1, C=0, N=1) jest kluczowy – formalizuje zjawisko moral distress (Jameton, Corley) "
-        "oraz niemożliwe cele z identyfikacją (Goal-Setting). Stan 011 to compliance bez autonomii "
-        "(motywacja kontrolowana w SDT). Stan 110 to motywacja autonomiczna (SDT, SCT). "
+        "Stan 101 (W=1, C=0, N=1) jest kluczowy – konfiguracja napięcia motywacyjnego (motywacja + obowiązek bez możliwości). "
+        "W kontekście moralnym hipoteza H_MD przewiduje, że 101 predysponuje do moral distress (Jameton, Corley). "
+        "Również: niemożliwe cele z identyfikacją (Goal-Setting). Stan 011 to compliance bez autonomii "
+        "(motywacja kontrolowana w SDT). Stan 110 to gotowość autonomiczna (SDT, SCT). "
         "Stan 111 przy internalizowanym N to najwyższa jakość motywacji; przy N eksternalnym – ryzyko wypalenia.")
     
     # 4. Najważniejsze założenie: HPE
     add_heading_styled(doc, "4. Najważniejsze założenie: Hipoteza Przejść Elementarnych (HPE)", 1)
     
     add_paragraph_styled(doc, 
-        "HPE: Elementarny proces psychologiczny zmiany stanu motywacyjnego modyfikuje dokładnie jeden "
-        "wymiar (odległość Hamminga = 1). Z 8 stanów powstaje 24 dopuszczalne przejścia kierunkowe "
-        "(3 sąsiedzi × 8 stanów × 2 kierunki). Przejścia wielobitowe (d_H ≥ 2) są złożone lub artefaktem "
-        "pomiarowym (ograniczona częstotliwość EMA).")
+        "HPE-model: W generatorze Q (CTMC) intensywności przejść między stanami o odległości Hamminga d_H ≥ 2 są równe zero: "
+        "qᵢⱼ = 0 dla d_H ≥ 2. To ograniczenie na strukturę generatora, a nie twierdzenie o psychologicznej atomowości. "
+        "Z 8 stanów powstaje 24 dopuszczalne przejścia kierunkowe (d_H = 1).")
+    
+    add_paragraph_styled(doc, 
+        "HPE-empiryczna (hipoteza testowalna): W danych EMA z gęstym próbkowaniem, odsetek obserwowanych zmian "
+        "d_H ≥ 2 jest istotnie mniejszy niż przewidywane przez model alternatywny (np. niezależne zmiany bitów z błędami). "
+        "Ważne: Nawet gdy Q spełnia HPE-model, macierz P(Δt) = exp(QΔt) dla Δt > 0 może mieć pᵢⱼ > 0 dla d_H ≥ 2 "
+        "(przejścia wieloetapowe w jednym interwale pomiarowym). Rozwiązuje problem EMA.")
     
     add_paragraph_styled(doc, 
         "Graf stanów to Q3 (hipersześcian): 8 węzłów, 12 krawędzi nieskierowanych, 24 przejścia kierunkowe. "
@@ -142,7 +148,7 @@ def main():
     add_paragraph_styled(doc, 
         "Kluczowa cecha: Asymetria przejść odwrotnych. Np. 011→111 (internalizacja, dodanie W) to inny proces "
         "niż 111→011 (utrata autonomii, wypalenie). 101→111 (rozwiązanie konfliktu) to inny proces niż "
-        "111→101 (kryzys zasobów, moral distress ostry). To generuje specyficzne, testowalne przewidywania.")
+        "111→101 (kryzys zasobów, napięcie krytyczne ostre). To generuje specyficzne, testowalne przewidywania.")
     
     # 5. Potencjalne powiązania z teoriami
     add_heading_styled(doc, "5. Potencjalne powiązania z istniejącymi teoriami", 1)
@@ -167,9 +173,9 @@ def main():
     add_heading_styled(doc, "6. Możliwe zastosowania", 1)
     
     apps = [
-        "Psychologia zdrowia/medycyna: stan 101 = moral distress personelu; przewidywanie wypalenia, interwencje 101→111 (systemowe zmiany), 111→110 (delegacja/sukcesja).",
+        "Psychologia zdrowia/medycyna: stan 101 (napięcie krytyczne) – ryzyko moral distress personelu; przewidywanie wypalenia, interwencje 101→111 (systemowe zmiany), 111→110 (delegacja/sukcesja).",
         "Zarządzanie/HR: diagnoza stanów zespołów (011 compliance vs 110 autonomia vs 111 zaangażowanie); job crafting (010→110, 100→110); sukcesja (111→110).",
-        "Edukacja: internalizacja 011→111 (wsparcie autonomii); rezygnacja 101→001 (moral distress studentów).",
+        "Edukacja: internalizacja 011→111 (wsparcie autonomii); rezygnacja 101→001 (napięcie krytyczne studentów).",
         "Psychologia społeczna/polityczna: aktywizm (100→110→111), radikalizacja (001→101), demobilizacja (111→011).",
         "Badania nad nawykami: rozszerzenie o parametr H (siła nawyku) – modelowanie 010↔110.",
         "Modelowanie symulacyjne/AI: agent-based modeling na Q3."
@@ -201,7 +207,7 @@ def main():
     
     questions = [
         "1. Zasadność wyodrębnienia trzech wymiarów (W, C, N): Czy te trzy konstrukty są psychometrycznie odseparowywalne? Czy binarna operacjonalizacja nie traci istotnej informacji (typy motywacji, gradacja self-efficacy, kategorie norm)? Czy wersja ciągła (oktaanty w [0,1]³) nie byłaby bardziej adekwatna?",
-        "2. Poprawność interpretacji stanów: Czy interpretacje stanów 001, 011, 101, 110, 111 są teoretycznie uzasadnione i empirycznie rozróżnialne? Czy stan 101 faktycznie operacjonalizuje moral distress? Czy stan 111 przy N eksternalnym nie powinien być klasyfikowany inaczej?",
+        "2. Poprawność interpretacji stanów: Czy interpretacje stanów 001, 011, 101, 110, 111 są teoretycznie uzasadnione i empirycznie rozróżnialne? Czy stan 101 (konfiguracja napięcia motywacyjnego) w kontekście moralnym predysponuje do moral distress (hipoteza H_MD)? Czy stan 111 przy N eksternalnym nie powinien być klasyfikowany inaczej?",
         "3. Wiarygodność reguły jednego bitu (HPE): Czy elementarny proces psychologiczny zmiany motywacji realnie modyfikuje jeden wymiar? Czy równoczesne zmiany (d_H ≥ 2) są możliwe psychologicznie (ambiwalencja, bifurkacje) lub tylko artefaktem pomiarowym? Jak to zweryfikować w EMA?",
         "4. Wartość poznawcza dynamiki przejść: Czy asymetria przejść odwrotnych (np. 011→111 vs 111→011) generuje przewidywania różniące się od modeli płaskich (TPB, SDT, COM-B)? Czy topologia Q3 ma wartość heurystyczną ponad estetykę?",
         "5. Potencjalne problemy operacjonalizacji: Jak zmierzyć W, C, N w EMA (binarne vs Likert)? Jak rozdzielić N na podkategorie (moralne, rolowe, społeczne)? Jak uwzględnić nawyk/automatyzm (System 1)? Czy model jest identyfikowalny przy dostępnych danych?",
@@ -214,7 +220,7 @@ def main():
         add_paragraph_styled(doc, q, style='List Number')
     
     # Save
-    output_path = BASE / "DMTRD_streszczenie_dla_recenzenta.docx"
+    output_path = BASE / "DMTRD_streszczenie_dla_recenzenta_rev2.docx"
     doc.save(str(output_path))
     print(f"Saved: {output_path}")
 

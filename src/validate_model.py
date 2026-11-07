@@ -245,12 +245,28 @@ def validate_networkx_q3(states, transitions):
         warnings.append("NX: nie można obliczyć średnicy")
     
     # 7. Liczba cykli 4 (kwadratów w Q3) = 6
-    # Q3 ma 6 ścian (cykli 4)
-    cycles_4 = 0
-    for cycle in nx.simple_cycles(G.to_directed()):
-        if len(cycle) == 4:
-            cycles_4 += 1
-    cycles_4 = cycles_4 // 8  # każdy cykl policzony 8 razy (4 rotacje * 2 kierunki)
+    # Q3 ma 6 ścian (cykli 4) - policz unikalne proste cykle długości 4 w grafie nieskierowanym
+    try:
+        # Dla grafu nieskierowanego: policz wszystkie 4-cykle
+        # Metoda: dla każdego węzła u, dla każdej pary sąsiadów v,w, 
+        # sprawdź czy mają wspólnego sąsiada x (x != u) który zamyka cykl u-v-x-w-u
+        cycles_4_set = set()
+        for u in G.nodes():
+            neighbors_u = list(G.neighbors(u))
+            for i, v in enumerate(neighbors_u):
+                for w in neighbors_u[i+1:]:
+                    # Sprawdź czy v i w mają wspólnego sąsiada x != u
+                    common = set(G.neighbors(v)) & set(G.neighbors(w))
+                    common.discard(u)
+                    for x in common:
+                        # Znaleziono 4-cykl: u - v - x - w - u
+                        cycle_nodes = tuple(sorted([u, v, w, x]))
+                        cycles_4_set.add(cycle_nodes)
+        cycles_4 = len(cycles_4_set)
+    except Exception as e:
+        warnings.append(f"NX: nie mozna policzyc cykli 4: {e}")
+        cycles_4 = -1
+    
     if cycles_4 != 6:
         warnings.append(f"NX: cykle 4-elementowe = {cycles_4} (oczekiwano 6)")
     
