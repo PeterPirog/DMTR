@@ -11,14 +11,37 @@
 
 Te 3 hipotezy stanowią **zamknięty zestaw testów potwierdzających (confirmatory)**. Ich wynik decyduje o trafności wersji core DMTRD. Pozostałe hipotezy są eksploracyjne.
 
+**Ważne rozróżnienia metodologiczne:**
+
+- **HPE-model vs HPE-empiryczna**: HPE-model to ograniczenie na generatorze Q (qᵢⱼ = 0 dla d_H ≥ 2). HPE-empiryczna to hipoteza o danych obserwowanych (odsetek d_H ≥ 2 mniejszy niż w modelach alternatywnych). Nawet prawdziwy HPE-model generuje d_H ≥ 2 w P(Δt) = exp(QΔt).
+- **M_indep jako szczególny przypadek HPE-model**: Model niezależnych bitów (6 intensywności) to HPE-model z dodatkowym ograniczeniem qᵢⱼ zależnych tylko od bitu, nie konfiguracji. Test HPE-model vs M_indep weryfikuje, czy intensywności zależą od kontekstu (W,C,N).
+- **Liczba parametrów**: M_HPE = 24 qᵢⱼ; M_full = 56 qᵢⱼ; M_indep = 6 intensywności; M_cont = parametry procesu ciągłego.
+- **Warunki porównania modeli**: Ten sam wynik (zachowanie/stan), te same dane, ten sam horyzont predykcji. Porównanie AIC/BIC między modelami o różnych zmiennych wynikowych jest nieuczciwe.
+- **Nieistotność ≠ dowód równoważności**: LRT n.s. (p > 0.05) to brak dowodu PRZECIW HPE-model, nie dowód JEGO POPRAWNOŚCI. Równoważność wymaga testów ekwiwalencji (TOST) lub Bayes factor.
+- **Test Diebold-Mariano**: Wymaga sprawdzenia założeń (stacjonarność, niezależność reszt) – dla zależnych czasowo danych EMA może być nieadekwatny. Alternatywa: walidacja krzyżowa blokowa / rolling window z log-loss.
+
 | Id | Nazwa | Formalna treść | Alternatywa | Zmienne | Metoda | Kryterium sukcesu | Kryterium odrzucenia |
 |----|-------|----------------|-------------|---------|--------|-------------------|----------------------|
 | **HPE** | **Test HPE-model** | Generator CTMC spełnia HPE-model: $q_{ij} = 0$ dla $d_H \geq 2$. | M_full (56 wolnych $q_{ij}$), M_indep (6 intensywności), M_cont (procesy ciągłe) | $Q$ (generator CTMC) oszacowany z danych EMA | Estymacja CTMC (MLE/Bayesian); LRT: M_HPE vs M_full (bootstrap parametryczny); AIC/BIC; walidacja krzyżowa log-loss | LRT n.s. ($p > 0.05$) – brak istotnej poprawy dopasowania przez M_full; ΔAIC > 10 na korzyść M_HPE; log-loss out-of-sample niższy lub równy dla M_HPE | LRT istotne ($p < 0.05$) – M_full dopasowuje istotnie lepiej; ΔAIC < 2 na korzyść M_full |
 | **HPD** | **Path Dependence (zależność od historii)** | Stabilność/przyszłość stanu zależy od drogi dojścia (path dependence). Formalnie: model rzędu 2 / z zmiennymi latentnymi historii lepiej dopasowuje dane niż model Markowski rzędu 1. | Model Markowski rzędu 1 (bezpamięciowy) | Trajektorie stanów; zmienne latentne historii (np. liczba cykli, czas od ostatniej zmiany W/C/N) | Porównanie: CTMC rzędu 1 vs CTMC rzędu 2 / HMM z historią / CTMC z kowariancjami zależnymi od czasu; LRT, AIC, BIC | LRT: $p < 0.05$ na korzyść modelu z historią; ΔAIC > 6 na korzyść modelu z historią | LRT n.s. ($p > 0.10$) LUB ΔAIC < 2 na korzyść modelu Markowskiego |
-| **HPP** | **Wartość predykcyjna topologii Q3 (HPE-model)** | Model CTMC z HPE-model (24 parametry $q_{ij}$ zależnych od konfiguracji) lepiej przewiduje przyszłe zachowanie i stany niż: (a) model ciągły W,C,N z interakcjami, (b) model 8 konfiguracji bez HPE (24 wolne $q_{ij}$ bez kowariancji), (c) prosty model autoregresyjny zachowania. | (a) Regresja ciągła W,C,N z interakcjami; (b) Model 8 stanów bez HPE (24 $q_{ij}$ bez kowariancji); (c) AR(1) zachowania | Przewidywanie $Behavior_{t+\Delta t}$ i $State_{t+\Delta t}$ | Walidacja out-of-sample (leave-one-person-out / rolling window); log-loss, Brier score, kalibracja | Log-loss out-of-sample istotnie niższy dla DMTRD-core vs wszystkie modele referencyjne (test Diebold-Mariano $p < 0.05$); kalibracja (Brier score) lepsza | Brak przewagi predykcyjnej vs model ciągły / bez HPE / AR(1) (Δlog-loss n.s., test DM n.s.) |
+| **HPP** | **Wartość predykcyjna topologii Q3 (HPE-model)** | Model CTMC z HPE-model (24 parametry $q_{ij}$ zależnych od konfiguracji) lepiej przewiduje przyszłe zachowanie i stany niż: (a) model ciągły W,C,N z interakcjami, (b) model 8 konfiguracji bez HPE (24 wolne $q_{ij}$ bez kowariancji), (c) prosty model autoregresyjny zachowania. | (a) Regresja ciągła W,C,N z interakcjami; (b) Model 8 stanów bez HPE (24 $q_{ij}$ bez kowariancji); (c) AR(1) zachowania | Przewidywanie $Behavior_{t+\Delta t}$ i $State_{t+\Delta t}$ | Walidacja out-of-sample (leave-one-person-out / rolling window); log-loss, Brier score, kalibracja | Log-loss out-of-sample istotnie niższy dla DMTRD-core vs wszystkie modele referencyjne (test DM / walidacja krzyżowa $p < 0.05$); kalibracja (Brier score) lepsza | Brak przewagi predykcyjnej vs model ciągły / bez HPE / AR(1) (Δlog-loss n.s., test DM n.s.) |
 
 ### Kryteria odrzucenia wersji DMTRD-core
 Wersję core odrzucamy, jeśli **którakolwiek** z 3 hipotez głównych zostanie odrzucona. Nie dopuszczamy "ratowania" wersji core poprzez dodawanie wymiarów, progów, moderatorów, pamięci po zobaczeniu danych.
+
+---
+
+## 1.1. Status hipotez do prerejestracji
+
+| Hipoteza | Status | Uzasadnienie |
+|----------|--------|--------------|
+| **HPE** | Gotowa do prerejestracji | Pełna specyfikacja: model, parametry, alternatywy, metoda estymacji (CTMC z bootstrap), kryteria sukcesu/odrzucenia |
+| **HPD** | Gotowa do prerejestracji | Pełna specyfikacja: model rzędu 1 vs rzędu 2/HMM, zmienne latentne historii, LRT/AIC |
+| **HPP** | Gotowa do prerejestracji (z zastrzeżeniem DM) | Pełna specyfikacja, ale test Diebold-Mariano wymaga weryfikacji założeń na danych EMA; zalecana walidacja krzyżowa blokowa jako metoda podstawowa |
+| **H_MD** | Koncepcyjna | Wymaga operacjonalizacji kontekstu moralnego i skali MDS |
+| **H_Nsource** | Koncepcyjna | Wymaga finalizacji kategoryzacji N_source |
+| **H_Habit, H_Affect_Valence, H_Cost, H_Scope** | Koncepcyjne | Wymagają definicji operacyjnych nowych konstruktów (H, koszt) |
+| **E1–E24** | Eksploracyjne | Nie są testami potwierdzającymi; generują hipotezy do przyszłych badań |
 
 ---
 
@@ -84,7 +107,7 @@ Te hipotezy są **eksploracyjne** – generują hipotezy do przyszłych badań, 
 
 ### 4.1. Pomiar W, C, N (EMA)
 - **Wersja bazowa:** Skale Likert 1–7 dla każdego wymiaru (3 itemy główne).
-- **Wersja binarna (do wizualizacji/Q3):** Próg 4 na skali 1–7.
+- **Wersja binarna (do wizualizacji/Q3):** Próg >4 na skali 1–7 (wartość 4 = neutralność → 0 lub wykluczona).
 - **Czas wypełnienia:** < 30 sekund (3 itemy główne).
 - **Losowa kolejność itemów.**
 

@@ -186,15 +186,23 @@ def lrt_test(Q_hpe: np.ndarray, Q_full: np.ndarray, dt: float,
     
     Uwaga: Standardowy chi-kwadrat może nie być poprawny dla parametrów na brzegu.
     W praktyce: bootstrap parametryczny.
-    """
-    # Oblicz log-likelihood dla obu modeli
-    # Uproszczenie: używamy P = exp(Q*dt) i log-likelihood dla DTMC
-    P_hpe = expm(Q_hpe)
-    P_full = expm(Q_full)
     
-    # Symuluj dane pod H0 i H1 do obliczenia log-likelihood
-    # To jest uproszczenie - w praktyce używamy danych rzeczywistych
-    return 0.0, 1.0  # placeholder
+    NOT IMPLEMENTED: This is a placeholder. Full implementation requires:
+    - Estimation of Q_hpe and Q_full from data using msm/ctmcm
+    - Parametric bootstrap for correct null distribution (parameters on boundary)
+    - Proper log-likelihood computation for CTMC
+    
+    Returns:
+        (test_statistic, p_value) - currently returns placeholder
+    
+    Raises:
+        NotImplementedError: This function is not yet implemented.
+    """
+    raise NotImplementedError(
+        "lrt_test() is not implemented. "
+        "Requires msm/ctmcm for Q estimation and parametric bootstrap for valid p-values. "
+        "See model/HPE_formalizacja_rev1.md for details."
+    )
 
 
 def analytical_dH_ge_2(lambda_rate: float = 1.0, dt: float = 0.5) -> float:

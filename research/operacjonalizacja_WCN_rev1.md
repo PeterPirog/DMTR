@@ -51,9 +51,9 @@
 3. "Zgadzam się z tym, że ten cel powinien zostać zrealizowany." (Agreement)
 
 ### 2.3. Kodowanie binarne (uproszczenie)
-- **W = 1** jeśli średnia z itemów ≥ 4 (próg 4 na skali 1–7)
-- **W = 0** jeśli średnia < 4
-- *Uwaga:* Próg 4 jest arbitralny; wersja ciągła jest bazowa.
+- **W = 1** jeśli średnia z itemów > 4 (próg 4 na skali 1–7; wartość 4 = neutralność, kodowana jako 0 lub wykluczona)
+- **W = 0** jeśli średnia ≤ 4
+- *Uwaga:* Próg 4 jest arbitralny; wersja ciągła jest bazowa. Neutralny punkt (4 = "nie mam zdania") nie jest akceptacją wartości celu. Zalecane: wersja ciągła jako bazowa; wersja binarna z wykluczeniem wartości 4 lub z progu >4.
 
 ### 2.4. Przypadki brzegowe i kodowanie
 
@@ -63,7 +63,7 @@
 | "Silnie chcę nagrodę, ale cel mi nie pasuje (presja)" | 2–3 | 0 | W=0 (brak osobistej akceptacji celu) |
 | "Pragnę rezultatu, ale nie zamierzam działać (brak intencji)" | 5–6 | 1 | W=1 (akceptacja ≠ intencja) |
 | "Czuję awersję do celu (chcę, by się NIE wydarzył)" | 1–2 | 0 | W=0 (awersja = negatywna akceptacja) |
-| Neutralność ("nie mam zdania") | 4 | 0 (próg) | Granica decyzyjna |
+| Neutralność ("nie mam zdania") | 4 | 0 (próg >4) | Neutralność ≠ akceptacja; kodowana jako 0 lub wykluczona z klasyfikacji |
 
 ### 2.5. Wskaźniki referencyjne (do walidacji kryterialnej)
 | Konstrukt referencyjny | Skala | Oczekiwana korelacja z W |
@@ -104,8 +104,9 @@
 3. "Nie ma przeszkód, których nie mogę przełamać." (Perceived barriers – odwrotnie)
 
 ### 3.4. Kodowanie binarne
-- **C = 1** jeśli średnia ≥ 4
-- **C = 0** jeśli średnia < 4
+- **C = 1** jeśli średnia > 4
+- **C = 0** jeśli średnia ≤ 4
+- *Uwaga:* Neutralny punkt (4 = "częściowo/nie mam pewności") nie jest przekonaniem o wykonalności. Wersja ciągła jest bazowa.
 
 ### 3.5. Przypadki brzegowe
 
@@ -187,8 +188,9 @@ $$N_{quality} \in \{
 > 4. To część moich wartości i tożsamości (integrated)
 
 ### 4.4. Kodowanie binarne
-- **N = 1** jeśli średnia itemu głównego ≥ 4
-- **N = 0** jeśli średnia < 4
+- **N = 1** jeśli średnia itemu głównego > 4
+- **N = 0** jeśli średnia ≤ 4
+- *Uwaga:* Neutralny punkt (4 = "częściowo/nie mam zdania") nie jest poczuciem zobowiązania. Wersja ciągła jest bazowa.
 
 ### 4.5. Przypadki brzegowe i kodowanie
 
@@ -227,9 +229,9 @@ $$N_{quality} \in \{
 
 | Wymiar | Konstrukt (teoria) | Item główny (1–7) | Próg binarny | Wersja bazowa | Co NIE jest |
 |--------|-------------------|-------------------|--------------|---------------|-------------|
-| **W** | Osobista akceptacja wartości celu | "Akceptujesz wartość celu / zgadzasz się z realizacją?" | ≥4 → 1 | Ciągła 1–7 | Chęć, pragnienie, intencja, autonomia, motywacja intryntyczna |
-| **C** | Subiektywnie oceniana wykonalność | "Jesteś w stanie to zrealizować / widzisz sposób?" | ≥4 → 1 | Ciągła 1–7 | Obiektywna możliwość, self-efficacy (tylko część), capability/opportunity (tylko części) |
-| **N** | Poczucie zobowiązania normatywnego | "Czujesz, że powinieneś to zrobić / to Twoje zobowiązanie?" | ≥4 → 1 | Ciągła 1–7 | Zakaz, norma społeczna (tylko część), internalizacja (to $N_{source}$) |
+| **W** | Osobista akceptacja wartości celu | "Akceptujesz wartość celu / zgadzasz się z realizacją?" | >4 → 1 (4 = neutralność → 0) | Ciągła 1–7 | Chęć, pragnienie, intencja, autonomia, motywacja intryntyczna |
+| **C** | Subiektywnie oceniana wykonalność | "Jesteś w stanie to zrealizować / widzisz sposób?" | >4 → 1 (4 = neutralność → 0) | Ciągła 1–7 | Obiektywna możliwość, self-efficacy (tylko część), capability/opportunity (tylko części) |
+| **N** | Poczucie zobowiązania normatywnego | "Czujesz, że powinieneś to zrobić / to Twoje zobowiązanie?" | >4 → 1 (4 = neutralność → 0) | Ciągła 1–7 | Zakaz, norma społeczna (tylko część), internalizacja (to $N_{source}$) |
 
 **Zmienna pomocnicza:** $N_{source}$ (kategoryczna, 7 kategorii) – źródło/jakość obowiązku, niezależna od bitu $N$.
 

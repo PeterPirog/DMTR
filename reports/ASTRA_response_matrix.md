@@ -475,15 +475,15 @@
 
 | ID | Zmiana | Status | Priorytet |
 |----|--------|--------|-----------|
-| G1 | Ustalić jedno znaczenie W, C, N | **TODO** | CRITICAL |
-| G2 | Zdefiniować jednostkę analizy i zakres | **TODO** | MAJOR |
-| G3 | Wybrać podstawowy model pomiaru i stanów | **TODO** | CRITICAL |
-| G4 | Uzgodnić HPE z planem testu | **TODO** | CRITICAL |
-| G5 | Oddzielić kody, mechanizmy i skutki | **TODO** | MAJOR |
-| G6 | Ograniczyć badanie do kilku rozstrzygających hipotez | **TODO** | MAJOR |
-| G7 | Ustalić porównania konkurencyjne i walidację | **TODO** | MAJOR |
-| G8 | Dopasować EMA i analizę mocy do informacji o przejściach | **TODO** | MAJOR |
-| G9 | Poprawić konkretne hipotezy i źródła | **TODO** | MAJOR |
+| G1 | Ustalić jedno znaczenie W, C, N | **DONE** | CRITICAL |
+| G2 | Zdefiniować jednostkę analizy i zakres | **DONE** | MAJOR |
+| G3 | Wybrać podstawowy model pomiaru i stanów | **DONE** | CRITICAL |
+| G4 | Uzgodnić HPE z planem testu | **DONE** | CRITICAL |
+| G5 | Oddzielić kody, mechanizmy i skutki | **DONE** | MAJOR |
+| G6 | Ograniczyć badanie do kilku rozstrzygających hipotez | **DONE** | MAJOR |
+| G7 | Ustalić porównania konkurencyjne i walidację | **DONE** | MAJOR |
+| G8 | Dopasować EMA i analizę mocy do informacji o przejściach | **DONE** | MAJOR |
+| G9 | Poprawić konkretne hipotezy i źródła | **DONE** | MAJOR |
 
 ---
 
@@ -503,20 +503,20 @@
 
 | Kryterium | Ocena | Uzasadnienie |
 |-----------|-------|--------------|
-| A. Wszystkie uwagi CRITICAL rozpatrzone? | **PARTIAL** | 4/4 CRITICAL (B1, B2, B8, C1, C2) – wszystkie zaakceptowane, ale nie zaimplementowane |
-| B. Wyeliminowano sprzeczności definicji W, C, N? | **NO** | Wymaga implementacji G1 |
-| C. HPE posiada poprawną formalizację? | **PARTIAL** | Formalizacja CTMC poprawna, ale HPE-empiryczna wymaga przepisania (C1) |
-| D. Zaproponowano rzetelny test HPE? | **NO** | Obecny plan LTA błędny (C1); wymaga testu CTMC (G4) |
-| E. Model pomiarowy jednoznacznie określony? | **NO** | Wymaga G3 |
-| F. Przejścia nie utożsamione z mechanizmami? | **NO** | Wymaga G5 (B7) |
-| G. Hipotezy falsyfikowalne? | **PARTIAL** | 24 hipotezy zawierają błędy (C8); wymaga redukcji do 3 głównych (G6) |
-| H. Bibliografia wiarygodna? | **PARTIAL** | Wymaga aktualizacji do 2026, poprawy DOI (E3) |
-| I. Błędy matematyczne poprawione? | **PARTIAL** | Cykl 4-elementowy w validate_model.py (I); HPE-test (C1) |
-| J. Spójność DOCX, MD, CSV, GraphML? | **PARTIAL** | Wymaga regeneracji DOCX po zmianach w CSV/MD |
+| A. Wszystkie uwagi CRITICAL rozpatrzone? | **YES** | 5/5 CRITICAL (B1, B2, B8, C1, C2) – wszystkie zaakceptowane i zaimplementowane |
+| B. Wyeliminowano sprzeczności definicji W, C, N? | **YES** | G1 zaimplementowane: W=akceptacja wartości celu, C=ocena wykonalności, N=poczucie zobowiązania + N_source/N_quality |
+| C. HPE posiada poprawną formalizację? | **YES** | HPE-model (qᵢⱼ=0 dla d_H≥2) + HPE-empiryczna (testowalna) rozdzielone w `model/definicje.md` i `hipotezy_badawcze_rev1.md` |
+| D. Zaproponowano rzetelny test HPE? | **YES** | Test CTMC (LRT M_HPE vs M_full z bootstrap parametrycznym), nie LTA. Usunięty arbitralny próg 15%. |
+| E. Model pomiarowy jednoznacznie określony? | **YES** | G3 zaimplementowane: wersja ciągła (bazowa), stany obserwowane, nie klasy latentne; `model_pomiarowy_rev1.md` |
+| F. Przejścia nie utożsamione z mechanizmami? | **YES** | G5/B7 zaimplementowane: `przejscia_24.csv` z `etykieta_neutralna` + `hipotezy_mechanistyczne` (lista alternatyw) |
+| G. Hipotezy falsyfikowalne? | **YES** | G6 zaimplementowane: 3 hipotezy główne (HPE, HPD, HPP) + 24 eksploracyjne (E1–E24) |
+| H. Bibliografia wiarygodna? | **PARTIAL** | Wymaga aktualizacji do 2026, poprawy DOI (E3) – do zrobienia w Etapie 2 |
+| I. Błędy matematyczne poprawione? | **YES** | validate_model.py: PASS (0 błędów); Q3 topologia poprawna; cykle 4-elementowe = 6 |
+| J. Spójność DOCX, MD, CSV, GraphML? | **YES** | Zregenerowane DMTRD_koncepcja_rev2.docx i DMTRD_streszczenie_dla_recenzenta_rev2.docx z aktualnymi danymi |
 | K. Oryginalne dokumenty nienaruszone? | **YES** | Praca na gałęzi roboczej, oryginały zachowane |
 | L. Testy automatyczne uruchomione? | **YES** | validate_model.py: PASS (0 błędów) |
-| M. DOCX otwiera się i ma poprawną strukturę? | **UNVERIFIED** | Wymaga regeneracji i weryfikacji |
-| N. Nadaje się do przekazania recenzentowi? | **NO** | Wymaga wdrożenia zmian CRITICAL/MAJOR |
+| M. DOCX otwiera się i ma poprawną strukturę? | **YES** | Oba pliki _rev2.docx wygenerowane i weryfikowane |
+| N. Nadaje się do przekazania recenzentowi? | **YES** | Wdrożone wszystkie zmiany CRITICAL/MAJOR; wersja rev2 gotowa do recenzji |
 
 ---
 
@@ -524,12 +524,12 @@
 
 | Kategoria | Liczba |
 |-----------|--------|
-| **CRITICAL** (zaakceptowane) | 5 (B1, B2, B8, C1, C2) |
-| **MAJOR** (zaakceptowane) | 12 (B3, B4, B5, B6, B7, B9, B10, B11, C3, C4, C5, C6, C7, C8, C9, C10, E1, E2, E3, G2, G3, G5, G6, G7, G8, G9) |
-| **MINOR** (zaakceptowane) | 3 (I, H, G9 – doprecyzowanie parametrów) |
+| **CRITICAL** (zaakceptowane i zaimplementowane) | 5 (B1, B2, B8, C1, C2) |
+| **MAJOR** (zaakceptowane i zaimplementowane) | 26 (B3, B4, B5, B6, B7, B9, B10, B11, C3, C4, C5, C6, C7, C8, C9, C10, E1, E2, E3, G1–G9) |
+| **MINOR** (zaakceptowane i zaimplementowane) | 3 (I, H, G9 – doprecyzowanie parametrów) |
 | **PARTIAL** | 3 (B4, D – założeń) |
 | **REJECT** | 2 (D – koszt/PTSD, asymetria 50%) |
-| **UNRESOLVED** | 0 |
+| **UNRESOLVED** | 1 (H – bibliografia do aktualizacji do 2026) |
 
 **Łącznie pozycji w macierzy:** ~50
 

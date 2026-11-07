@@ -135,28 +135,28 @@ def main():
     abstract = (
         "Niniejsze opracowanie przedstawia Dynamiczny Model Trójwymiarowej Regulacji Działania (DMTRD) – "
         "propozycję teoretyczną opisującą stan motywacyjny człowieka względem konkretnego działania "
-        "za pomocą trzech wymiarów binarnych: W (CHCĘ – osobista akceptacja i motywacja), "
+        "za pomocą trzech wymiarów binarnych: W (CHCĘ – osobista akceptacja wartości celu), "
         "C (MOGĘ – subiektywnie oceniana wykonalność) i N (POWINIENEM – poczucie zobowiązania normatywnego). "
         "Osiem możliwych stanów (000–111) tworzą wierzchołki trójwymiarowego hipersześcianu Q3, "
         "a hipoteza przejść elementarnych (HPE) zakłada, że pojedyncza zmiana motywacyjna modyfikuje "
         "dokładnie jeden wymiar (odległość Hamminga = 1). Model generuje 24 kierunkowe przejścia, "
         "którze są interpretowane jako odrębne procesy psychologiczne (np. internalizacja normy, utrata autonomii, "
-        "moral distress, rezygnacja z celu). Przeprowadzono analizę porównawną z 10 głównymi teoriami motywacji "
+        "napięcie motywacyjne, rezygnacja z celu). Przeprowadzono analizę porównawną z 10 głównymi teoriami motywacji "
         "(TPB, SDT, COM-B, Rubikon, SCT, Goal-Setting, samoregulacja, nawyki, MOA, modele dynamiczne), "
-        "zidentyfikowano kluczowe różnice i podobieństwa, a także sformułowano 24 falsyfikowalne hipotezy badawcze "
-        "oraz propozycję metodologii walidacji (EMA, LTA, CTMC). Krytyczna analiza wykazała istotne ograniczenia: "
+        "zidentyfikowano kluczowe różnice i podobieństwa, a także sformułowano 3 hipotezy główne (HPE, HPD, HPP) "
+        "oraz 24 hipotezy eksploracyjne oraz propozycję metodologii walidacji (EMA, CTMC, SEM). Krytyczna analiza wykazała istotne ograniczenia: "
         "binarność konstruktów, brak jawnej intencji i celu, pomijanie automatyzmu/nawyku, "
         "mieszanie kategorii normatywnych w wymiarze N oraz problemy identyfikowalności modelu. "
         "Mimo ograniczeń, DMTRD wnosi nową treść teoretyczną poprzez: formalną topologię stanów Q3, "
-        "hipotezę jednego bitu, jawne modelowanie N jako niezależnego wymiaru, "
-        "oraz identyfikację stanu 101 jako formalizacji moral distress."
+        "hipotezę jednego bitu, jawne modelowanie N jako niezależnego wymiaru z rozdzieleniem źródła i jakości obowiązku, "
+        "oraz identyfikację stanu 101 jako konfiguracji napięcia motywacyjnego (motywacja + obowiązek bez możliwości)."
     )
     add_paragraph_styled(doc, abstract)
     
     # Słowa kluczowe
     add_paragraph_styled(doc, "Słowa kluczowe:", bold=True)
     add_paragraph_styled(doc, "motywacja, samoregulacja, teoria planowanego zachowania, teoria autodeterminacji, "
-                        "model COM-B, model Rubikonu, moral distress, modele Markowa, analiza przejść latentnych, "
+                        "model COM-B, model Rubikonu, modele Markowa, analiza przejść latentnych, "
                         "teoria grafów w psychologii")
     
     # Status epistemiczny
@@ -191,16 +191,16 @@ def main():
         "poprzez zaproponowanie formalnej topologii stanów motywacyjnych i hipotez o ich dynamice.")
     
     add_paragraph_styled(doc, 
-        "Model zakłada, że w dowolnym momencie stan motywacyjny יחס do konkretnego działania można opisać "
-        "trzema wymiarami binarnymi: W (CHCĘ – osobista motywacja/akceptacja), C (MOGĘ – postrzegana wykonalność) "
+        "Model zakłada, że w dowolnym momencie stan motywacyjny względem konkretnego działania można opisać "
+        "trzema wymiarami binarnymi: W (CHCĘ – osobista akceptacja wartości celu), C (MOGĘ – postrzegana wykonalność) "
         "i N (POWINIENEM – poczucie zobowiązania normatywnego). Tworzy to 8 stanów (000–111), które ułożone są "
-        "w strukturę trójwymiarowego hipersześcianu Q3. Kluczowym postulate jest hipoteza przejść elementarnych: "
-        "psychologiczna zmiana stanu następuje przez modyfikację jednego wymiaru (odległość Hamminga = 1).")
+        "w strukturę trójwymiarowego hipersześcianu Q3. Kluczowym postulate jest hipoteza przejść elementarnych (HPE-model): "
+        "elementarne skoki w generatorze CTMC zmieniają dokładnie jeden wymiar (odległość Hamminga = 1).")
     
     add_paragraph_styled(doc, 
         "Opracowanie składa się z trzech głównych części: (1) analiza literatury i porównanie z istniejącymi teoriami, "
         "(2) formalizacja matematyczna (graf Q3, modele Markowa, analiza przejść), "
-        "(3) krytyczna ocena, hipotezy badawcze i plan walidacji empirycznej.")
+        "(3) krytyczna ocena, hipotezy badawcze i plan walidacji empirycznej).")
     
     # ============================================================
     # 5. PROBLEM BADAWCZY
@@ -220,7 +220,7 @@ def main():
         "Q4: Czy graf Q3 z 24 przejściami kierunkowymi generuje przewidywania różniące się od modeli konkurencyjnych (TPB, SDT, COM-B)?",
         "Q5: Jakie są koszty psychologiczne i korzyści adaptacyjne poszczególnych stanów i przejść?",
         "Q6: Czy model jest identyfikowalny statystycznie przy danych z pomiarów okresowych (EMA)?",
-        "Q7: Czy stan 101 (W=1, C=0, N=1) operacjonalizuje zjawisko moral distress?",
+        "Q7: Czy stan 101 (W=1, C=0, N=1) operacjonalizuje konfigurację napięcia motywacyjnego (motywacja + obowiązek bez możliwości), a nie samo moral distress?",
         "Q8: Czy asymetria przejść odwrotnych (np. 011→111 vs 111→011) jest empirycznie potwierdzalna?"
     ]
     for q in questions:
@@ -236,21 +236,22 @@ def main():
         "które człowiek zadaje sobie przed działaniem (por. Ajzen, 1991; Deci & Ryan, 2000; Michie et al., 2011):")
     
     dims = [
-        ("W – CHCĘ (Osobista akceptacja i motywacja)", 
+        ("W – CHCĘ (Osobista akceptacja wartości celu)", 
          "Odpowiada na pytanie: \"Czy chcę to zrobić? Czy zgadzam się z tym celem?\". "
          "W odróżnieniu od postawy (TPB) lub typów motywacji (SDT), W jest binarne – wyraża obecność "
          "lub brak osobistej zgody na realizację celu. Nie rozróżnia motywacji intryntycznej od zidentyfikowanej, "
-         "co jest uproszczeniem wymagającym weryfikacji."),
+         "co jest uproszczeniem wymagającym weryfikacji. W nie jest chwilową chęcią, pragnieniem ani intencją."),
         ("C – MOGĘ (Subiektywnie oceniana wykonalność)", 
          "Odpowiada na pytanie: \"Czy jestem w stanie to zrobić? Czy posiadam zasoby i kompetencje?\". "
          "Bliskie pojęciu self-efficacy (Bandura, 1997) i perceived behavioral control (Ajzen, 1991), "
          "ale w przeciwieństwie do nich jest binarne i nie rozdziela zdolności wewnętrznych od szans zewnętrznych "
-         "(capability vs opportunity w COM-B)."),
+         "(capability vs opportunity w COM-B). C to ocena subiektywna, nie obiektywna możliwość."),
         ("N – POWINIENEM (Poczucie zobowiązania normatywnego)", 
          "Odpowiada na pytanie: \"Czy powinienem to zrobić? Czy czuję się zobowiązany?\". "
          "Jest szersze niż normy subiektywne (TPB) – obejmuje normy moralne (Schwartz, 1977), "
          "obowiązki rolowe (Kahn et al., 1964), zinternalizowane normy (Kelman, 1958) "
-         "oraz presję społeczną (Cialdini et al., 1990). To kluczowe rozróżnienie względem TPB i SDT.")
+         "oraz presję społeczną (Cialdini et al., 1990). To kluczowe rozróżnienie względem TPB i SDT. "
+         "Źródło i jakość regulacji (N_source, N_quality) to osobne zmienne, nie bit N.")
     ]
     
     for title, desc in dims:
@@ -281,17 +282,19 @@ def main():
         "różnic względem bliższych pojęć z literatury.")
     
     constructs = [
-        ("4.1. W – Osobista akceptacja i motywacja (CHCĘ)", 
+        ("4.1. W – Osobista akceptacja wartości celu (CHCĘ)", 
          "Definicja: Stan wewnętrznej zgody na realizację konkretnego celu lub działania, "
-         "objawiający się jako tendencja aproksymacyjna (chęć, pragnienie, zamiar). "
+         "objawiający się jako tendencja aproksymacyjna. "
          "W=1 oznacza, że jednostka pozytywnie wertefikuje cel i czuje wewnętrzny napęd do jego realizacji. "
-         "W=0 oznacza brak takiej zgody (neutralność, obojętność lub aversja – ale aversja nie jest modelowana).",
-         "Różnice: TPB – attitude (ciągła, wielowymiarowa); SDT – autonomous motivation (typy regulacji); "
+         "W=0 oznacza brak takiej zgody (neutralność, obojętność lub aversja – ale aversja nie jest modelowana). "
+         "W nie jest chwilową chęcią, pragnieniem, zamiarem (intencją) ani motywacją intryntyczną.",
+         "Różnice: TPB – attitude (ciągła, wielowymiarowa); SDT – identified/integrated regulation (bliższe W); "
          "COM-B – reflective motivation (układa się z W) + automatic motivation (nie modelowane w DMTRD)."),
         ("4.2. C – Subiektywnie oceniana wykonalność (MOGĘ)", 
          "Definicja: Przekonanie jednostki o posiadaniu niezbędnych zasobów, kompetencji, czasu "
          "i szans środowiskowych do realizacji działania. C=1 = \"widzę sposób na to, by to zrobić\". "
-         "C=0 = \"nie widzę jak to zrobić\" (bariera postrzegana jako nie do przełamania).",
+         "C=0 = \"nie widzę jak to zrobić\" (bariera postrzegana jako nie do przełamania). "
+         "C to ocena subiektywna, nie obiektywna możliwość; C=1 nie gwarantuje wykonania, C=0 nie wyklucza go.",
          "Różnice: Bandura – self-efficacy (ciągła, specyficzna dziedzinowo, 4 źródła); "
          "Ajzen – PBC (mieszanka self-efficacy i kontroli środowiskowej); "
          "COM-B – capability (psychologiczna/fizyczna) + opportunity (społeczna/fizyczna) – rozdzielone; "
@@ -299,7 +302,8 @@ def main():
         ("4.3. N – Poczucie zobowiązania normatywnego (POWINIENEM)", 
          "Definicja: Stan doświadczania presji do działania wynikającej z zinternalizowanych lub zewnętrznych norm: "
          "moralnych (Schwartz), rolowych (Kahn), społecznych (Cialdini), prawnych lub organizacyjnych. "
-         "N=1 = \"czuję, że to moja odpowiedzialność/obowiązek\". N=0 = brak takiego poczucia.",
+         "N=1 = \"czuję, że to moja odpowiedzialność/obowiązek\". N=0 = brak takiego poczucia. "
+         "Źródło i jakość regulacji (N_source, N_quality) to osobne zmienne pomocnicze, nie bit N.",
          "Różnice: TPB – subjective norms (tylko presja społeczna, ciągła); "
          "SDT – introjected/identified regulation (typy motywacji, nie oddzielny wymiar); "
          "Kelman – compliance/identification/internalization (procesy, nie stan); "
@@ -325,11 +329,11 @@ def main():
     assumptions = [
         ("A1 (Trzy wymiary)", "Stan motywacyjny = (W, C, N) ∈ {0,1}³. 8 stanów."),
         ("A2 (Hipersześcian Q3)", "Graf stanów = Q3. 8 węzłów, 12 krawędzi nieskierowanych, 24 przejścia kierunkowe."),
-        ("A3 (Hipoteza jednego bitu – HPE)", "Elementarne przejście zmienia dokładnie 1 bit (d_H = 1). Przejścia wielobitowe = złożone lub artefakt pomiarowy."),
+        ("A3 (Hipoteza przejść elementarnych – HPE-model)", "Generator CTMC ma qᵢⱼ = 0 dla d_H ≥ 2 (24 parametry). Przejścia wielobitowe w P(Δt) = exp(QΔt) są wieloetapowe lub błędy pomiarowe."),
         ("A4 (Asymetria przejść)", "Przejścia odwrotne (np. 011→111 vs 111→011) to odrębne procesy psychologiczne o różnych kosztach/przyczynach."),
         ("A5 (Stan ≠ zachowanie)", "Model opisuje stan motywacyjny, nie deterministycznie zachowanie. Zachowanie zależy od dodatkowych czynników (volicja, kontekst, nawyk)."),
         ("A6 (Dynamiczny charakter)", "Motywacja = proces przechodzenia między stanami w czasie. Czas przebywania, sekwencja i historia mają znaczenie."),
-        ("A7 (Falsyfikowalność)", "HPE, asymetria, specyficzne przewidywania dla stanów 101, 011, 110, 111 są testowalne.")
+        ("A7 (Falsyfikowalność)", "HPE-model, asymetria, specyficzne przewidywania dla stanów 101, 011, 110, 111 są testowalne.")
     ]
     
     for name, desc in assumptions:
@@ -393,7 +397,7 @@ def main():
         "Formalna topologia stanów Q3 (8 stanów, 24 przejścia) – nie znaleziono w literaturze spójnego modelu z tą strukturą.",
         "Hipoteza jednego bitu (HPE) jako postulat o elementarności zmiany motywacyjnej – konkretna, falsyfikowalna.",
         "Jawne wyodrębnienie N jako niezależnego wymiaru (nie zredukowanego do motywacji ani norm subiektywnych).",
-        "Stan 101 (W=1, C=0, N=1) jako formalizacja moral distress i niemożliwych celów z identyfikacją.",
+        "Stan 101 (W=1, C=0, N=1) jako konfiguracja napięcia motywacyjnego (motywacja + obowiązek bez możliwości) i niemożliwych celów z identyfikacją.",
         "Asymetria przejść odwrotnych jako hipoteza o różnych procesach psychologicznych (internalizacja vs utrata autonomii).",
         "Gotowość do modelowania Markowskiego (DTMC, CTMC, LTA) – naturalna struktura danych."
     ]
@@ -449,10 +453,20 @@ def main():
     add_heading_styled(doc, "7.2. Hipoteza Przejść Elementarnych (HPE)", 2)
     
     add_paragraph_styled(doc, 
-        "HPE: Elementarny proces psychologiczny zmiany stanu motywacyjnego modyfikuje dokładnie jeden wymiar. "
-        "Formalnie: dopuszczalne przejścia to tylko te o d_H = 1. "
-        "Lista 24 przejść (Tabela 2 w aneksie). "
-        "Przejścia o d_H ≥ 2 (12 par d_H=2, 4 pary d_H=3) są złożone lub wynikają z ograniczonej rozdzielczości pomiaru.")
+        "HPE-model: W generatorze Q łańcucha Markowskiego w czasie ciągłym (CTMC) intensywności przejść "
+        "między stanami o odległości Hamminga d_H ≥ 2 są równe zero: qᵢⱼ = 0 dla d_H(sᵢ, sⱼ) ≥ 2. "
+        "To ograniczenie na strukturę generatora Q, a nie twierdzenie o psychologicznej atomowości procesów. "
+        "Lista 24 dopuszczalnych przejść (d_H = 1) w Tabela 2 w aneksie. "
+        "Przejścia o d_H ≥ 2 (12 par d_H=2, 4 pary d_H=3) w danych obserwowanych mogą wystąpić jako: "
+        "(a) sekwencje nieobserwowanych przejść jednobitowych w interwale Δt, (b) błędy pomiarowe/klasyfikacji, "
+        "(c) dowody na fałszowanie HPE-model (jeśli estymowane qᵢⱼ > 0 dla d_H ≥ 2).")
+    
+    add_paragraph_styled(doc, 
+        "HPE-empiryczna (hipoteza testowalna): W danych EMA z gęstym próbkowaniem, odsetek obserwowanych zmian "
+        "d_H ≥ 2 między kolejnymi pomiarami jest istotnie mniejszy niż przewidywane przez model alternatywny "
+        "dopuszczający bezpośrednie skoki wielobitowe (np. model z niezależnymi zmianami bitów lub model z błędami klasyfikacji). "
+        "HPE-empiryczna NIE jest równoznaczna z HPE-model – nawet gdy generator Q spełnia HPE-model, "
+        "macierz przejścia P(Δt) = exp(QΔt) dla Δt > 0 może mieć pᵢⱼ > 0 dla d_H ≥ 2.")
     
     add_heading_styled(doc, "7.3. Modele probabilistyczne dynamiki", 2)
     
@@ -466,17 +480,20 @@ def main():
          "24 wolne parametry przejść + 8 samoprzestania (sumy wierszy = 1)."),
         ("CTMC (Łańcuch Markowa w czasie ciągłym)", 
          "Macierz intensywności Q (8×8): qᵢⱼ ≥ 0 dla d_H = 1 (intensywność przejścia), "
-         "qᵢⱼ = 0 dla d_H ≥ 2 (HPE na poziomie generatora). "
+         "qᵢⱼ = 0 dla d_H ≥ 2 (HPE-model na poziomie generatora). "
          "qᵢᵢ = -Σⱼ₌ᵢ qᵢⱼ. P(Δt) = exp(QΔt). "
-         "To kluczowe: HPE dotyczy qᵢⱼ, a P(Δt) może mieć pᵢⱼ > 0 dla d_H ≥ 2 przy Δt > 0 "
+         "To kluczowe: HPE-model dotyczy qᵢⱼ, a P(Δt) może mieć pᵢⱼ > 0 dla d_H ≥ 2 przy Δt > 0 "
          "(przejścia wieloetapowe w jednym interwale pomiarowym). Rozwiązuje problem EMA."),
         ("Semi-Markowski (SMM)", 
          "Czas przebywania w stanie ~ dowolny rozkład Fᵢ(t) (nie wykładniczy). "
          "Przydatne gdy stany mają charakterystyczne czasy trwania (np. 111 stabilny dłużej)."),
-        ("HMM / LTA (Stanów ukrytych / Analiza przejść latentnych)", 
-         "Stany 𝒮 = klasy latentne. Wskaźniki: pomiary W, C, N (binarne/ciągłe). "
-         "Problem identyfikowalności: 3 wskaźniki binarne → 8 wzorców = model nasycony (0 df). "
-         "Wymaga: wskaźników ciągłych (skale Likert), dodatkowych zmiennych (zachowanie, afekt, kontekst) "
+        ("Model ze stanami obserwowanymi (bazowy DMTRD-core)", 
+         "Stany 𝒮 = obserwowane bezpośrednio jako (W,C,N) ciągłe (Likert 1–7) z dyskretyzacją na 8 stanów (próg 4). "
+         "Unika problemu identyfikowalności LTA/HMM z 3 wskaźnikami binarnymi. "
+         "Estymacja Q z danych panelowych EMA (pakiety msm/ctmcm)."),
+        ("LTA / HMM (wersja eksploracyjna, z klasami latentnymi)", 
+         "Stany 𝒮 = klasy latentne. Wskaźniki: pomiary W, C, N (ciągłe Likert). "
+         "Wymaga: wskaźników ciągłych, dodatkowych zmiennych (zachowanie, afekt, kontekst) "
          "lub ograniczeń na macierzach emisji/przejść.")
     ]
     
@@ -546,7 +563,7 @@ def main():
     add_heading_styled(doc, "8.1. Stan 001 – Obowiązek niewykonalny (N=1, W=0, C=0)", 2)
     add_paragraph_styled(doc, 
         "Napięcie między 'powinienem' a 'nie mogę' bez osobistej motywacji. Modeluje sytuacje "
-        "przeciążenia roli bez zasobów (Kahn et al., 1964), moral distress w wersji 'bez identyfikacji'. "
+        "przeciążenia roli bez zasobów (Kahn et al., 1964). "
         "Główne przejścia: 001→011 (pozyskanie C – empowerment), 001→101 (internalizacja N → W), 001→000 (rezygnacja z N). "
         "Hipoteza: presja do zmiany C lub W lub rezygnacji (N→0). Ryzyko depresji, wypalenia.")
     
@@ -559,14 +576,14 @@ def main():
     
     add_heading_styled(doc, "8.3. Stan 101 – Motywacja i obowiązek bez możliwości (W=1, C=0, N=1)", 2)
     add_paragraph_styled(doc, 
-        "Najbardziej napięty stan. Formalizuje moral distress (Jameton, 1984; Corley et al., 2001) – "
-        "wiedza o właściwym działaniu + niemożność wykonania (bariery systemowe). "
+        "Najbardziej napięty stan. Konfiguracja napięcia motywacyjnego: silna motywacja i poczucie obowiązku przy braku możliwości. "
         "Również: cel zidentyfikowany jako własny i normatywny, ale niemożliwy do osiągnięcia (Goal-Setting). "
         "Główne przejścia: 101→111 (rozwiązanie konfliktu – najbardziej pożądane), "
         "101→001 (rezygnacja z W – dezengażowanie), 101→100 (rezygnacja z N – sekularyzacja celu). "
-        "Hipoteza: 'czasowa bomba' – wymaga szybkiej zmiany C lub rezygnacji.")
+        "Hipoteza: 'czasowa bomba' – wymaga szybkiej zmiany C lub rezygnacji. "
+        "Uwaga: Stan 101 NIE jest równoważny moral distress – to osobna hipoteza H_MD (w kontekście moralnym 101 predysponuje do moral distress).")
     
-    add_heading_styled(doc, "8.4. Stan 110 – Działanie autonomiczne (W=1, C=1, N=0)", 2)
+    add_heading_styled(doc, "8.4. Stan 110 – Gotowość autonomiczna (W=1, C=1, N=0)", 2)
     add_paragraph_styled(doc, 
         "Motywacja autonomiczna z poczuciem sprawczości. Bliskie motywacji intryntycznej/zidentyfikowanej (SDT), "
         "wysokiej self-efficacy + outcome expectancy (SCT), Reflective Motivation + Capability (COM-B). "
@@ -581,7 +598,7 @@ def main():
         "W perfekcjonistyczne, C przecenione. Przy internalizowanym N: najwyższa jakość motywacji "
         "(zintegrowana regulacja SDT, wysokie TPB/COM-B, faza actional Rubikonu, role integration). "
         "Główne przejścia: 111→011 (utrata W – dezautonomizacja, groźne), "
-        "111→101 (utrata C – kryzys zasobów, moral distress ostry), "
+        "111→101 (utrata C – kryzys zasobów, napięcie krytyczne), "
         "111→110 (utrata N – delegacja/dezobowiązkowanie, adaptacyjne przy planowanej sukcesji). "
         "Hipoteza: stabilny przy internalizowanym N; 111→011 silniej predykuje wypalenie niż 111→110.")
     
@@ -627,8 +644,8 @@ def main():
          "111 → 011 (Dezautonomizacja)", "Utrata W przy zachowaniu N i C. Proces: wypalenie, utrata sensu, mikromanagement. Koszt: wysoki (wypalenie, cynizm)."),
         ("001 → 101 (Przejęcie odpowiedzialności)", "Pojawienie się W przy N=1, C=0. Internalizacja normy, szukanie sensu. Koszt: umiarkowany (nadzieja).", 
          "101 → 001 (Dezengażowanie)", "Utrata W przy N=1, C=0. Wypalenie, utrata nadziei. Koszt: wysoki (bezsilność, depresja)."),
-        ("101 → 111 (Rozwiązanie konfliktu)", "Pojawienie się C przy W=1, N=1. Przełamanie barier, moral distress resolution. Koszt: niski (olga, sens).", 
-         "111 → 101 (Kryzys zasobów)", "Utrata C przy W=1, N=1. Szok, moral distress ostry. Koszt: bardzo wysoki (ryzyko PTSD)."),
+        ("101 → 111 (Rozwiązanie konfliktu)", "Pojawienie się C przy W=1, N=1. Przełamanie barier. Koszt: niski (olga, sens).", 
+         "111 → 101 (Kryzys zasobów)", "Utrata C przy W=1, N=1. Szok, napięcie krytyczne ostre. Koszt: bardzo wysoki (ryzyko PTSD)."),
         ("110 → 111 (Odpowiedzialność społeczna)", "Dodanie N do autonomii. Internalizacja normy prosocjalnej, OCB. Koszt: niski (dumą, sens).", 
          "111 → 110 (Dezobowiązkowanie)", "Utrata N przy W=1, C=1. Delegacja, sukcesja. Koszt: niski/umiarkowany (ulga, ewentualnie pustka)."),
         ("100 → 110 (Przełamanie barier)", "Pojawienie się C przy W=1. Planowanie, problem-solving, Rubikon. Koszt: umiarkowany (nadzieja).", 
@@ -690,7 +707,7 @@ def main():
         "Pozytywny afekt (radość, nadzieja, olga, dumą): towarzyszy przejściom 'w górę' (0→1) przy W i C, "
         "oraz internalizacji N (011→111, 110→111). Wzmocni tendencję do utrzymania nowego stanu.",
         "Negatywny afekt (lęk, winę, frustracja, bezsilność, gniew, cynizm): towarzyszy przejściom 'w dół' (1→0), "
-        "utracie możliwości (111→101, 110→100), moral distress (101), wypaleniu (110→010, 111→011). "
+        "utracie możliwości (111→101, 110→100), napięciu krytycznemu (101), wypaleniu (110→010, 111→011). "
         "Może inicjować coping (problem-focused → 101→111) lub rezygnację (101→001).",
         "Afekt misto (ulga z winą: 011→010, 101→100; nadzieja z lękiem: 100→110, 001→101) – sygnalizuje ambiwalencję procesu."
     ]
@@ -745,21 +762,21 @@ def main():
     doc.add_page_break()
     
     # ============================================================
-    # 15. ZALEŻNOŚĆ OD ŚCIEŻKI I HISTORII
+    # 15. ZALEŻNOŚĆ OD ŚCIEŻKI I HISTORII (ROZSZERZENIE MODELU)
     # ============================================================
-    add_heading_styled(doc, "12. Zależność od ścieżki i historii procesu (Path Dependence)", 1)
+    add_heading_styled(doc, "12. Zależność od ścieżki i historii procesu (Path Dependence) – rozszerzenie modelu", 1)
     
     add_paragraph_styled(doc, 
-        "Model Markowski (bezpamięciowy) zakłada, że przyszłość zależy tylko od bieżącego stanu. "
-        "Psychologicznie nieuzasadnione – historia ma znaczenie:", bold=True)
+        "Model bazowy DMTRD-core (CTMC/DTMC) jest bezpamięciowy (Markowski): przyszłość zależy tylko od bieżącego stanu (W,C,N). "
+        "Zależność od historii (path dependence) to hipoteza do testowania w modelu rozszerzonym, nie cecha modelu bazowego:", bold=True)
     
     path = [
         "Różne ścieżki do 111: 000→100→110→111 (budowanie autonomii) vs 000→001→011→111 (internalizacja normy). "
-        "Czy stabilność 111 zależy od ścieżki? Hipoteza DMTRD: tak – internalizowana N (ścieżka B) daje wyższą stabilność.",
-        "Stan 101 osiągnięty z 001 (internalizacja) vs z 100 (moralizacja celu) – różna prognaza.",
+        "Hipoteza HPD: stabilność 111 zależy od ścieżki – internalizowana N (ścieżka B) daje wyższą stabilność.",
+        "Stan 101 osiągnięty z 001 (internalizacja) vs z 100 (moralizacja celu) – różna prognaza (HPD).",
         "Liczba poprzednich cykli (np. wielokrotne 110→010→110) może budować odporność lub wrażliwość (sensytyzacja).",
-        "Modelowanie: łańcuch Markowa rzędu wyższego, semi-Markowski ze zmiennymi latentnymi historii, "
-        "lub CTMC z kowariancjami zależnymi od czasu/ścieżki."
+        "Modelowanie rozszerzone: łańcuch Markowa rzędu wyższego, semi-Markowski ze zmiennymi latentnymi historii, "
+        "lub CTMC z kowariancjami zależnymi od czasu/ścieżki. Testowane w hipotezie HPD."
     ]
     for p in path:
         add_paragraph_styled(doc, p, style='List Bullet')
@@ -770,56 +787,35 @@ def main():
     add_heading_styled(doc, "13. Hipotezy badawcze DMTRD", 1)
     
     add_paragraph_styled(doc, 
-        "Poniżej 24 hipotezy (H1–H24) odpowiadających 24 przejściom, plus hipotezy ogólne (HG1–HG5). "
-        "Pełna specyfikacja (zmienne, pomiar, analiza, czynniki zakłócające) w aneksie (research/hipotezy_badawcze.md).")
+        "Poniżej 3 hipotezy główne (HPE, HPD, HPP) stanowiące testy potwierdzające, oraz 24 hipotezy eksploracyjne (E1–E24) "
+        "odpowiadające 24 przejściom. Pełna specyfikacja (zmienne, pomiar, analiza, czynniki zakłócające) w aneksie (research/hipotezy_badawcze_rev1.md).")
     
-    # Tabela hipotez (skrócona)
-    headers = ["Nr", "Przejście", "Hipoteza (skrót)"]
-    rows = []
-    hypotheses = [
-        ("H1", "000→100", "Wzrost outcome expectancies i self-efficacy przewiduje 000→100 (regresja logistyczna EMA)"),
-        ("H2", "100→000", "Niska self-efficacy i negatywne outcome expectancies przewidują rezygnację (analiza przeżycia)"),
-        ("H3", "001→101", "Perceived autonomy support mediuje internalizację obowiązku (mediacja panelowa)"),
-        ("H4", "101→001/011", "Brak perceived control → 001; silne normy społeczne → 011 (multinomial logit)"),
-        ("H5", "010→110", "Motywacja intryntyczna i autonomy support przewidują aktywację potencjału (SEM)"),
-        ("H6", "110→010", "Niskie autonomy support przewiduje utratę autonomicznej motywacji (Cox regression)"),
-        ("H7", "011→111", "Perceived autonomy support i identified regulation mediują internalizację (mediacja longitudinalna)"),
-        ("H8", "111→011", "111→011 silniej predykuje wypalenie niż 111→110 (analiza ryzyka proporcjonalnego)"),
-        ("H9", "000→010", "Mastery experience przewiduje pozyskanie możliwości (analiza sekwencji EMA)"),
-        ("H10", "010→000", "Utrata C bez W/N mniej stresogenna niż 110→100 lub 111→101 (porównanie afektu EMA)"),
-        ("H11", "001→011", "Perceived organizational support przewiduje empowerment w roli (cross-lagged panel)"),
-        ("H12", "011→001", "011→001 silniej predykuje intencję odejścia niż 011→010 (regresja logistyczna)"),
-        ("H13", "100→110", "Implementation intentions mediują przełamanie barier (mediacja Gollwitzer)"),
-        ("H14", "110→100", "110→100 częściej prowadzi do persistencji (100→110) niż rezygnacji (sekwencje stanów)"),
-        ("H15", "101→111", "Problem-focused coping i social support przewidują rozwiązanie konfliktu (SEM)"),
-        ("H16", "111→101", "111→101 silniej predykuje ostre stresowe reakcje niż inne utraty C (porównanie wskaźników stresu)"),
-        ("H17", "000→001", "Internalizacja (→101) vs compliance (→011) rozróżnialne przez autonomy support (interakcja)"),
-        ("H18", "001→000", "Role ambiguity i niskie role commitment przewidują odrzucenie roli (Cox model)"),
-        ("H19", "010→011", "Niskie autonomy support przy 010→011 przewiduje 011→001, nie 011→111 (sekwencje)"),
-        ("H20", "011→010/001", "Wysoka autonomia → 010; niska → 001 (moderacja autonomy)"),
-        ("H21", "100→101", "Personal norm (Schwartz) → 101→111; subjective norms (TPB) → 101→001 (moderacja)"),
-        ("H22", "101→100", "Wysoka identyfikacja z celem (W) przy 101→100 zapobiega 100→000 (interakcja W×N)"),
-        ("H23", "110→111", "Organizational identification i prosocial motivation przewidują OCB (SEM)"),
-        ("H24", "111→110", "Planowana sukcesja przy 111→110 nie predykuje wypalenia; 111→011 tak (porównanie trajektorii)")
+    # Tabela hipotez głównych
+    headers = ["Id", "Nazwa", "Formalna treść", "Kryterium sukcesu"]
+    rows = [
+        ["HPE", "Test HPE-model", 
+         "Generator CTMC spełnia HPE-model: qᵢⱼ = 0 dla d_H ≥ 2. Alternatywa: M_full (56 qᵢⱼ), M_indep (6 intensywności), M_cont (procesy ciągłe).",
+         "LRT n.s. (p > 0.05) – brak istotnej poprawy przez M_full; ΔAIC > 10 na korzyść M_HPE; log-loss out-of-sample niższy dla M_HPE"],
+        ["HPD", "Path Dependence (zależność od historii)", 
+         "Stabilność/przyszłość stanu zależy od drogi dojścia. Alternatywa: model Markowski rzędu 1.",
+         "LRT: p < 0.05 na korzyść modelu z historią; ΔAIC > 6 na korzyść modelu z historią"],
+        ["HPP", "Wartość predykcyjna topologii Q3 (HPE-model)", 
+         "CTMC z HPE-model lepiej przewiduje zachowanie niż: (a) regresja ciągła W,C,N z interakcjami, (b) model 8 stanów bez HPE, (c) AR(1).",
+         "Log-loss out-of-sample istotnie niższy dla DMTRD-core vs wszystkie modele referencyjne (test Diebold-Mariano p < 0.05)."]
     ]
+    add_table_with_style(doc, ["Id", "Nazwa", "Formalna treść", "Kryterium sukcesu"], rows, col_widths=[1, 2, 8, 5])
     
-    for h in hypotheses:
-        rows.append(list(h))
-    add_table_with_style(doc, headers, rows, col_widths=[1, 2, 13])
+    add_paragraph_styled(doc, "Tabela 4. Hipotezy główne DMTRD-core (HPE, HPD, HPP).", italic=True, size=9)
     
-    add_paragraph_styled(doc, "Tabela 4. Hipotezy badawcze DMTRD (H1–H24) – skrócone.", italic=True, size=9)
+    add_paragraph_styled(doc, 
+        "Kryterium odrzucenia wersji DMTRD-core: jeśli którakolwiek z 3 hipotez głównych zostanie odrzucona. "
+        "Nie dopuszczamy 'ratowania' wersji core poprzez dodawanie wymiarów, progów, moderatorów, pamięci po zobaczeniu danych.", bold=True)
     
-    add_heading_styled(doc, "13.1. Hipotezy ogólne (HG)", 2)
+    add_heading_styled(doc, "13.1. Hipotezy eksploracyjne (E1–E24)", 2)
     
-    hg = [
-        "HG1: Model 8-stanowy DMTRD lepiej dopasowuje dane EMA niż modele bez stanów (np. TPB, SDT) – test: porównanie AIC/BIC w LTA.",
-        "HG2: Hipoteza jednego bitu (d_H=1) jest empirycznie poparta – większość obserwowanych zmian w EMA to d_H=1; d_H≥2 są rzadkie lub wyjaśniane przez odstępy pomiarowe – test: analiza sekwencji.",
-        "HG3: Asymetria przejść odwrotnych jest istotna statystycznie – qᵢⱼ ≠ qⱼᵢ dla co najmniej 50% par – test: test likelihodu w CTMC.",
-        "HG4: Stan 101 operacjonalizuje moral distress – silna korelacja z istniejącymi skalami (MDS, Corley) i predykcja wypalenia/odejścia – test: walidacja kryterialna.",
-        "HG5: Topologia Q3 ma wartość heurystyczną – generuje przewidywania niedostępne w modelach płaskich (np. specyficzność 101, asymetria 111→011 vs 111→110) – test: porównanie mocy predykcyjnej."
-    ]
-    for h in hg:
-        add_paragraph_styled(doc, h, style='List Bullet')
+    add_paragraph_styled(doc, 
+        "Poniżej 24 hipotezy eksploracyjne (E1–E24) odpowiadające 24 przejściom, poprawione po rewizji ASTRA. "
+        "Oznaczone jako eksploracyjne – generują hipotezy do przyszłych badań, nie są testami potwierdzającymi wersji core.")
     
     doc.add_page_break()
     
@@ -831,24 +827,30 @@ def main():
     add_heading_styled(doc, "14.1. Operacjonalizacja W, C, N", 2)
     
     add_paragraph_styled(doc, 
-        "Binarna operacjonalizacja (tak/nie) ma ograniczenia. Zalecane podejście hybrydowe:", bold=True)
+        "Model bazowy DMTRD-core używa wersji ciągłej (Likert 1–7) jako podstawowej. "
+        "Wersja binarna to uproszczenie do interpretacji i wizualizacji Q3.", bold=True)
     
     oper = [
-        "Wersja binarna (dla LTA/Markov): 3 itemy tak/nie na każdy wymiar (np. 'Czy chcę to zrobić? Tak/Nie'). "
-        "Problem: model nasycony (3 wskaźniki → 8 stanów = 0 df).",
-        "Wersja ciągła (dla SEM/regresji): Skale Likert 1–7 dla każdego wymiaru (np. W: 'W jakim stopniu osobiście chcę to zrobić?'). "
-        "Stan = oktaant w [1,7]³ (próg np. 4). Umożliwia testowanie HPE na poziomie ciągłym (przecinanie płaszczyzn).",
-        "Istniejące skale do adaptacji:"
+        "Wersja ciągła (bazowa – do estymacji CTMC, SEM, regresji): Skale Likert 1–7 dla każdego wymiaru. "
+        "Stan = oktaant w [1,7]³ (próg 4). Zachowuje informację o natężeniu; unika błędów progu.",
+        "Wersja binarna (uproszczenie – do wizualizacji Q3, interpretacji): Próg 4 na skali 1–7. "
+        "Tylko do interpretacji/wizualizacji; traci informację, generuje błędy klasyfikacji u osób blisko granicy.",
+        "Model bazowy: Stany obserwowane bezpośrednio (W,C,N ciągłe → dyskretyzacja), NIE klasy latentne. "
+        "Unika problemu identyfikowalności LTA/HMM z 3 wskaźnikami binarnymi (model nasycony).",
+        "Istniejące skale do adaptacji (wersja ciągła):"
     ]
     for o in oper:
         add_paragraph_styled(doc, o, style='List Bullet')
     
-    add_paragraph_styled(doc, "Istniejące skale do adaptacji:", bold=True)
+    add_paragraph_styled(doc, "Skale referencyjne do adaptacji:", bold=True)
     
     scales = [
-        "W: Intrinsic Motivation Inventory (IMI) – Interest/Enjoyment; Identified Regulation (SDT); Attitude (TPB).",
-        "C: General Self-Efficacy Scale (Schwarzer & Jerusalem); Perceived Behavioral Control (TPB); Capability items (TDF/COM-B).",
-        "N: Moral Obligation Scale (Ajzen); Personal Norm (Schwartz); Role Overload/Conflict (Kahn); Internalization (Kelman)."
+        "W: Identified Regulation (SDT, BRSQ/SRQ) – najbliższy konstrukt; Integrated Regulation (SDT); Attitude (TPB). "
+        "UWAGA: IMI Interest/Enjoyment to motywacja intryntyczna, NIE W (osobista akceptacja wartości celu).",
+        "C: Perceived Behavioral Control (TPB) – najbliższy; General Self-Efficacy (Schwarzer & Jerusalem); "
+        "Capability/Opportunity items (TDF/COM-B).",
+        "N: Personal Norm (Schwartz); Subjective Norms (TPB); Role Overload/Conflict (Kahn); "
+        "Moral Obligation (Ajzen); Internalization (Kelman) – predyktor N_quality, nie N."
     ]
     for s in scales:
         add_paragraph_styled(doc, s, style='List Bullet 2')
@@ -856,7 +858,7 @@ def main():
     add_heading_styled(doc, "14.2. Projekt badania pilotażowego (EMA)", 2)
     
     pilot = [
-        ("Cel", "Test HPE, asymetrii, stabilności stanów, przewidywania H1–H24."),
+        ("Cel", "Test HPE, asymetrii, stabilności stanów, przewidywania E1–E24."),
         ("Populacja", "Dorosli pracownicy (N=100–150) lub studenci (N=200) wykonujący konkretne, powtarzalne działanie (np. ćwiczenia, nauka, zadanie zawodowe)."),
         ("Kryteria doboru", "Wiek 18–65, zgoda na EMA, posiadanie smartfona, wykonywanie badanego działania min. 3×/tydzień."),
         ("Badanego działanie", "Np. regularna aktywność fizyczna, nauka języka, zadanie projektowe w pracy – zdefiniowane wspólnie z uczestnikiem."),
@@ -868,10 +870,13 @@ def main():
          "Łącznie ~100–150 pomiarów/osoba."),
         ("Częstotliwość", "Losowe: 5×/dzień (9:00–21:00). Event-based: do 1h po działaniu. "
          "Rozdzielczość czasowa ~2–3h – kluczowe dla HPE (d_H=1 w interwale)."),
-        ("Analiza statystyczna", "1. LTA (Mplus/R): 8 klas, wskaźniki ciągłe, macierz przejść P. Test HPE: pᵢⱼ=0 dla d_H≥2. "
-         "2. CTMC (msm/ctmcm): estymacja Q z danych panelowych. Test asymetrii: qᵢⱼ ≠ qⱼᵢ. "
-         "3. Regresje logistyczne wielopoziomowe: przewidywanie przejść (H1–H24). "
-         "4. SEM (lavaan): mediacje (np. H3, H7, H13, H15)."),
+        ("Analiza statystyczna", "1. CTMC (msm/ctmcm w R/Python): estymacja generatora Q z danych panelowych EMA. "
+         "Test HPE (HPE-model): LRT M_HPE (qᵢⱼ=0 dla d_H≥2) vs M_full (56 qᵢⱼ) z bootstrap parametrycznym. "
+         "Test asymetrii: LRT qᵢⱼ = qⱼᵢ dla kluczowych par (011↔111, 101↔111, 111↔110). "
+         "2. LTA/HMM (wersja eksploracyjna): 8 klas latentnych, wskaźniki ciągłe (W,C,N Likert), "
+         "ograniczenia emisji. Test HPE-empiryczna: odsetek obserwowanych d_H≥2 vs model alternatywny. "
+         "3. Regresje logistyczne wielopoziomowe: przewidywanie przejść (E1–E24). "
+         "4. SEM (lavaan): mediacje (np. E3, E7, E13, E15)."),
         ("Walidacja trafności konstruktu", "CFA: 3 czynniki (W,C,N) – dopasowanie (CFI>0.95, RMSEA<0.06). "
          "Dyskryminacyjna: AVE > kwadrat korelacji między czynnikami. "
          "Kryterialna: korelacje ze skalami referencyjnymi (IMI, GSE, MDS)."),
@@ -880,7 +885,7 @@ def main():
         ("Porównanie z modelami konkurencyjnymi", "TPB (intencja → zachowanie), SDT (typy regulacji), COM-B (M,O,A), "
          "Model Rubikon (fazy), Model ciągły (Carver & Scheier). Kryteria: AIC, BIC, R², moc predykcyjna out-of-sample."),
         ("Analiza mocy", "Symulacja Monte Carlo (N=100, T=100, efekty małe/średnie) do wyznaczenia mocy dla: "
-         "testu HPE (d_H≥2), asymetrii (qᵢⱼ≠qⱼᵢ), mediacji (H3, H7). Plan: 1000 replikacji."),
+         "testu HPE (d_H≥2), asymetrii (qᵢⱼ≠qⱼᵢ), mediacji (E3, E7). Plan: 1000 replikacji."),
         ("Ograniczenia", "Selekcja próby (motywowani do udziału), reaktywność pomiaru (EMA zmienia stan), "
          "brak kontroli eksperymentalnej, ograniczone uogólnienie na inne działania/kultury."),
         ("Etyka i dane", "Zgoda KE, anonimizacja, prawo do wycofania, przechowywanie na serwerze UE (GDPR), "
@@ -976,7 +981,7 @@ def main():
         ["10", "Czy wyjaśnia działanie bez świadomej W?", "Wysokie", "Dodać System 1 / parametr H (nawyk)"],
         ["11", "Czy wrażliwy na kontekst/kulturę?", "Średnie", "Badania cross-cultural, multiniveau"],
         ["12", "Czy historia zmienia dynamikę?", "Wysokie", "Modele z path dependence (rząd wyższego)"],
-        ["13", "Czy założenia są falsyfikowalne?", "Tak", "H1–H24, HG1–HG5 – specyfikacja gotowa"],
+        ["13", "Czy założenia są falsyfikowalne?", "Tak", "HPE, HPD, HPP, E1–E24 – specyfikacja gotowa"],
         ["14", "Czy model identyfikowalny statystycznie?", "Krytyczne", "Wskaźniki ciągłe + dodatkowe zmienne"],
         ["15", "Czy prognostyczne dla zachowania?", "Nieznane", "Walidacja predykcyjna EMA vs TPB/SDT/COM-B"],
         ["16", "Czy ryzyko tautologii (stan=zachowanie)?", "Średnie", "Rozdzielenie stanu od zachowania (wymiar A)"],
@@ -1084,12 +1089,12 @@ def main():
         "Kluczowy postulat – Hipoteza Przejść Elementarnych (HPE) – zakłada, że elementarna zmiana motywacyjna "
         "modyfikuje jeden wymiar (d_H=1). To falsyfikowalna hipoteza, nie potwierdzone prawo.",
         "Model wnosi nową treść teoretyczną poprzez: formalną topologię Q3, jawne wyodrębnienie N jako "
-        "niezależnego wymiaru, identyfikację stanu 101 z moral distress, oraz asymetrię przejść odwrotnych.",
+        "niezależnego wymiaru, identyfikację stanu 101 jako konfiguracji napięcia motywacyjnego, oraz asymetrię przejść odwrotnych.",
         "Krytyczna analiza wykazała istotne ograniczenia: binarność konstruktów, brak intencji i celu, "
-        "pomijanie automatyzmu/nawyku, mieszanie kategorii normatywnych w N, problemy identyfikowalności. "
+        "pomijanie automatyzmu/nawyku, mieszanie kategorii normatywnych w wymiarze N oraz problemy identyfikowalności. "
         "Te ograniczenia nie unieważniają modelu, ale wskazują kierunki koniecznych rozszerzeń.",
-        "Sformułowano 24 hipotezy badawcze (H1–H24) i 5 hipotez ogólnych (HG1–HG5), "
-        "zaproponowano metodologię walidacji (EMA, LTA, CTMC, SEM) oraz program badawczy 6 etapów.",
+        "Sformułowano 3 hipotezy główne (HPE, HPD, HPP) oraz 24 hipotezy eksploracyjne (E1–E24), "
+        "zaproponowano metodologię walidacji (EMA, CTMC, SEM) oraz program badawczy 6 etapów.",
         "DMTRD nie ma ambicji bycia 'lepszym' od TPB, SDT, COM-B czy Rubikonu – ma być "
         "komplementarną perspektywą dynamiczną, uzupełniającą modele statyczne i fazowe o topologię stanów "
         "i hipotezę o elementarności zmiany. Wartość modelu ostatecznie zależy od wyników weryfikacji empirycznej."
@@ -1157,12 +1162,12 @@ def main():
     add_heading_styled(doc, "Aneks F: Analiza krytyczna (research/analiza_krytyczna.md)", 1)
     add_paragraph_styled(doc, "20 pytań krytycznych, 5 najpoważniejszych argumentów, propozycje poprawek.")
     
-    add_heading_styled(doc, "Aneks G: Hipotezy badawcze (research/hipotezy_badawcze.md)", 1)
-    add_paragraph_styled(doc, "Pełna specyfikacja H1–H24, HG1–HG5: zmienne, pomiar, analiza, czynniki zakłócające.")
+    add_heading_styled(doc, "Aneks G: Hipotezy badawcze (research/hipotezy_badawcze_rev1.md)", 1)
+    add_paragraph_styled(doc, "Pełna specyfikacja 3 hipotez głównych (HPE, HPD, HPP) i 24 hipotez eksploracyjnych (E1–E24): zmienne, pomiar, analiza, czynniki zakłócające.")
     
     # Save
-    output_path = BASE / "DMTRD_koncepcja.docx"
-    doc.save(output_path)
+    output_path = BASE / "DMTRD_koncepcja_rev2.docx"
+    doc.save(str(output_path))
     print(f"Saved: {output_path}")
 
 if __name__ == "__main__":
