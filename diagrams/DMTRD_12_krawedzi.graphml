@@ -1,0 +1,414 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:y="http://www.yworks.com/xml/graphml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://www.yworks.com/xml/schema/graphml/1.1/ygraphml.xsd">
+  <key id="d0" for="node" attr_name="label" attr_type="string"/>
+  <key id="d1" for="node" attr_name="description" attr_type="string"/>
+  <key id="d2" for="node" attr_name="W" attr_type="string"/>
+  <key id="d3" for="node" attr_name="C" attr_type="string"/>
+  <key id="d4" for="node" attr_name="N" attr_type="string"/>
+  <key id="d5" for="node" attr_name="psych_interpretation" attr_type="string"/>
+  <key id="d6" for="node" attr_name="consequences" attr_type="string"/>
+  <key id="d7" for="node" attr_name="allowed_transitions" attr_type="string"/>
+  <key id="d8" for="node" attr_name="name" attr_type="string"/>
+  <key id="d9" for="node" attr_name="graphics" attr_type="string" yfiles.type="nodegraphics"/>
+  <key id="e0" for="edge" attr_name="label" attr_type="string"/>
+  <key id="e1" for="edge" attr_name="description" attr_type="string"/>
+  <key id="e2" for="edge" attr_name="source" attr_type="string"/>
+  <key id="e3" for="edge" attr_name="target" attr_type="string"/>
+  <key id="e4" for="edge" attr_name="dimension" attr_type="string"/>
+  <key id="e5" for="edge" attr_name="direction" attr_type="string"/>
+  <key id="e6" for="edge" attr_name="process_name" attr_type="string"/>
+  <key id="e7" for="edge" attr_name="psych_interpretation" attr_type="string"/>
+  <key id="e8" for="edge" attr_name="mechanisms" attr_type="string"/>
+  <key id="e9" for="edge" attr_name="empirical_status" attr_type="string"/>
+  <key id="e10" for="edge" attr_name="graphics" attr_type="string" yfiles.type="edgegraphics"/>
+  <graph id="DMTRD_12_edges" edgedefault="undirected">
+    <node id="000">
+      <data key="d0">000</data>
+      <data key="d1">Brak gotowości do działania; stan spoczynku motywacyjnego lub apatii</data>
+      <data key="d2">0</data>
+      <data key="d3">0</data>
+      <data key="d4">0</data>
+      <data key="d5">Brak gotowości do działania; stan spoczynku motywacyjnego lub apatii</data>
+      <data key="d6">Spoczynek po pracy; czas wolny bez planów; Oszczędność zasobów; gotowość do reakcji na nowe sygnały</data>
+      <data key="d7">T01, T09, T17</data>
+      <data key="d8">Stan neutralny / Brak aktywnej motywacji</data>
+      <data key="d9">
+        <y:ShapeNode>
+          <y:Geometry x="100" y="400" width="120" height="80"/>
+          <y:Fill color="#F5F5F5" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" fontFamily="Arial" fontSize="14" fontStyle="bold" textColor="#000000" modelName="internal" modelPosition="c">000</y:NodeLabel>
+          <y:Shape type="roundrectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="001">
+      <data key="d0">001</data>
+      <data key="d1">Napięcie między 'powinienem' a 'nie mogę'; bezsilność, frustracja</data>
+      <data key="d2">0</data>
+      <data key="d3">0</data>
+      <data key="d4">1</data>
+      <data key="d5">Napięcie między 'powinienem' a 'nie mogę'; bezsilność, frustracja</data>
+      <data key="d6">Przeciążony opiekun bez wsparcia; dług nie do spłaty; Sygnał do zmiany środowiska lub redefinicji ról</data>
+      <data key="d7">T03, T11, T18</data>
+      <data key="d8">Obowiązek niewykonalny</data>
+      <data key="d9">
+        <y:ShapeNode>
+          <y:Geometry x="100" y="200" width="120" height="80"/>
+          <y:Fill color="#FFF3E0" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" fontFamily="Arial" fontSize="14" fontStyle="bold" textColor="#000000" modelName="internal" modelPosition="c">001</y:NodeLabel>
+          <y:Shape type="roundrectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="010">
+      <data key="d0">010</data>
+      <data key="d1">Potencjał do działania bez napędu; gotowość bez kierunku</data>
+      <data key="d2">0</data>
+      <data key="d3">1</data>
+      <data key="d4">0</data>
+      <data key="d5">Potencjał do działania bez napędu; gotowość bez kierunku</data>
+      <data key="d6">Wolny wieczór z możliwością wyjścia; Elastyczność; gotowość do szans</data>
+      <data key="d7">T05, T10, T19</data>
+      <data key="d8">Możliwość niewykorzystana</data>
+      <data key="d9">
+        <y:ShapeNode>
+          <y:Geometry x="300" y="400" width="120" height="80"/>
+          <y:Fill color="#FFF3E0" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" fontFamily="Arial" fontSize="14" fontStyle="bold" textColor="#000000" modelName="internal" modelPosition="c">010</y:NodeLabel>
+          <y:Shape type="roundrectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="011">
+      <data key="d0">011</data>
+      <data key="d1">Działanie z presji zewnętrznej/wewnętrznej bez wewnętrznej zgody</data>
+      <data key="d2">0</data>
+      <data key="d3">1</data>
+      <data key="d4">1</data>
+      <data key="d5">Działanie z presji zewnętrznej/wewnętrznej bez wewnętrznej zgody</data>
+      <data key="d6">Praca 'na etacie' bez pasji; podatki; obowiązkowe szkolenia; Unikanie kosztów społecznych; spełnienie roli</data>
+      <data key="d7">T07, T12, T20</data>
+      <data key="d8">Obowiązek wykonalny bez autonomii</data>
+      <data key="d9">
+        <y:ShapeNode>
+          <y:Geometry x="300" y="200" width="120" height="80"/>
+          <y:Fill color="#FFE0B2" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" fontFamily="Arial" fontSize="14" fontStyle="bold" textColor="#000000" modelName="internal" modelPosition="c">011</y:NodeLabel>
+          <y:Shape type="roundrectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="100">
+      <data key="d0">100</data>
+      <data key="d1">Motywacja autonomiczna zablokowana barierami; frustracja celowa</data>
+      <data key="d2">1</data>
+      <data key="d3">0</data>
+      <data key="d4">0</data>
+      <data key="d5">Motywacja autonomiczna zablokowana barierami; frustracja celowa</data>
+      <data key="d6">Artysta bez studia; przedsiębiorca bez kapitału; Rozwój kompetencji; kreatywne omijanie barier</data>
+      <data key="d7">T02, T13, T21</data>
+      <data key="d8">Pragnienie bez możliwości</data>
+      <data key="d9">
+        <y:ShapeNode>
+          <y:Geometry x="500" y="400" width="120" height="80"/>
+          <y:Fill color="#FFF3E0" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" fontFamily="Arial" fontSize="14" fontStyle="bold" textColor="#000000" modelName="internal" modelPosition="c">100</y:NodeLabel>
+          <y:Shape type="roundrectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="101">
+      <data key="d0">101</data>
+      <data key="d1">Konflikt motywacyjny o wysokim natężeniu; moral distress</data>
+      <data key="d2">1</data>
+      <data key="d3">0</data>
+      <data key="d4">1</data>
+      <data key="d5">Konflikt motywacyjny o wysokim natężeniu; moral distress</data>
+      <data key="d6">Lekarz bez sprzętu do ratowania życia; nauczyciel bez czasu na uczniów; Mobilizacja wsparcia; zmiana systemu; rezygnacja z celu</data>
+      <data key="d7">T04, T15, T22</data>
+      <data key="d8">Motywacja i obowiązek bez możliwości</data>
+      <data key="d9">
+        <y:ShapeNode>
+          <y:Geometry x="500" y="200" width="120" height="80"/>
+          <y:Fill color="#FFE0B2" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" fontFamily="Arial" fontSize="14" fontStyle="bold" textColor="#000000" modelName="internal" modelPosition="c">101</y:NodeLabel>
+          <y:Shape type="roundrectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="110">
+      <data key="d0">110</data>
+      <data key="d1">Motywacja autonomiczna z poczuciem sprawczości; flow potencjalny</data>
+      <data key="d2">1</data>
+      <data key="d3">1</data>
+      <data key="d4">0</data>
+      <data key="d5">Motywacja autonomiczna z poczuciem sprawczości; flow potencjalny</data>
+      <data key="d6">Rozwój, samorealizacja, innowacyjność; Wysiłek; ryzyko izolacji; brak wsparcia normatywnego</data>
+      <data key="d7">T06, T14, T23</data>
+      <data key="d8">Działanie autonomiczne</data>
+      <data key="d9">
+        <y:ShapeNode>
+          <y:Geometry x="700" y="400" width="120" height="80"/>
+          <y:Fill color="#FFE0B2" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" fontFamily="Arial" fontSize="14" fontStyle="bold" textColor="#000000" modelName="internal" modelPosition="c">110</y:NodeLabel>
+          <y:Shape type="roundrectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="111">
+      <data key="d0">111</data>
+      <data key="d1">Pełna gotowość motywacyjna; zbieżność autonomii, sprawczości i normy</data>
+      <data key="d2">1</data>
+      <data key="d3">1</data>
+      <data key="d4">1</data>
+      <data key="d5">Pełna gotowość motywacyjna; zbieżność autonomii, sprawczości i normy</data>
+      <data key="d6">Pełne zaangażowanie; odporność; rozwój innych; Wysokie oczekiwania własne; ryzyko perfekcjonizmu; koszty oportunistyczne</data>
+      <data key="d7">T08, T16, T24</data>
+      <data key="d8">Zbieżność trzech wymiarów</data>
+      <data key="d9">
+        <y:ShapeNode>
+          <y:Geometry x="700" y="200" width="120" height="80"/>
+          <y:Fill color="#FFCC80" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="2.0"/>
+          <y:NodeLabel alignment="center" fontFamily="Arial" fontSize="14" fontStyle="bold" textColor="#000000" modelName="internal" modelPosition="c">111</y:NodeLabel>
+          <y:Shape type="roundrectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
+    <edge id="e1" source="000" target="100">
+      <data key="e0">000↔100 (W)</data>
+      <data key="e1">Przejścia: Pojawienie się motywacji / Inicjacja celu; Utrata motywacji / Rezygnacja z celu</data>
+      <data key="e2">000</data>
+      <data key="e3">100</data>
+      <data key="e4">W</data>
+      <data key="e5">bidirectional</data>
+      <data key="e6">Pojawienie się motywacji / Inicjacja celu; Utrata motywacji / Rezygnacja z celu</data>
+      <data key="e7"></data>
+      <data key="e8"></data>
+      <data key="e9">Hipoteza: proces dyskretny; wymaga weryfikacji EMA</data>
+      <data key="e10">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#E74C3C" type="line" width="2.0"/>
+          <y:EdgeLabel alignment="center" fontFamily="Arial" fontSize="10" fontStyle="plain" textColor="#000000" modelName="six_pos" modelPosition="center" preferredPlacement="anywhere">CHCĘ</y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e2" source="001" target="101">
+      <data key="e0">001↔101 (W)</data>
+      <data key="e1">Przejścia: Internalizacja obowiązku / Przejęcie odpowiedzialności; Utrata motywacji przy obowiązku / Dezengażowanie</data>
+      <data key="e2">001</data>
+      <data key="e3">101</data>
+      <data key="e4">W</data>
+      <data key="e5">bidirectional</data>
+      <data key="e6">Internalizacja obowiązku / Przejęcie odpowiedzialności; Utrata motywacji przy obowiązku / Dezengażowanie</data>
+      <data key="e7"></data>
+      <data key="e8"></data>
+      <data key="e9">Hipoteza: kluczowy moment w moral distress</data>
+      <data key="e10">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#E74C3C" type="line" width="2.0"/>
+          <y:EdgeLabel alignment="center" fontFamily="Arial" fontSize="10" fontStyle="plain" textColor="#000000" modelName="six_pos" modelPosition="center" preferredPlacement="anywhere">CHCĘ</y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e3" source="010" target="110">
+      <data key="e0">010↔110 (W)</data>
+      <data key="e1">Przejścia: Aktywacja potencjału / Przejęcie inicjatywy; Utrata autonomicznej motywacji / Wypalenie od pasji</data>
+      <data key="e2">010</data>
+      <data key="e3">110</data>
+      <data key="e4">W</data>
+      <data key="e5">bidirectional</data>
+      <data key="e6">Aktywacja potencjału / Przejęcie inicjatywy; Utrata autonomicznej motywacji / Wypalenie od pasji</data>
+      <data key="e7"></data>
+      <data key="e8"></data>
+      <data key="e9">Hipoteza: najbardziej adaptacyjne przejście do działania</data>
+      <data key="e10">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#E74C3C" type="line" width="2.0"/>
+          <y:EdgeLabel alignment="center" fontFamily="Arial" fontSize="10" fontStyle="plain" textColor="#000000" modelName="six_pos" modelPosition="center" preferredPlacement="anywhere">CHCĘ</y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e4" source="011" target="111">
+      <data key="e0">011↔111 (W)</data>
+      <data key="e1">Przejścia: Internalizacja obowiązku / Autonomizacja compliance; Utrata autonomii przy obowiązku i możliwości / Dezautonomizacja</data>
+      <data key="e2">011</data>
+      <data key="e3">111</data>
+      <data key="e4">W</data>
+      <data key="e5">bidirectional</data>
+      <data key="e6">Internalizacja obowiązku / Autonomizacja compliance; Utrata autonomii przy obowiązku i możliwości / Dezautonomizacja</data>
+      <data key="e7"></data>
+      <data key="e8"></data>
+      <data key="e9">Hipoteza: kluczowe dla jakości działania</data>
+      <data key="e10">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#E74C3C" type="line" width="2.0"/>
+          <y:EdgeLabel alignment="center" fontFamily="Arial" fontSize="10" fontStyle="plain" textColor="#000000" modelName="six_pos" modelPosition="center" preferredPlacement="anywhere">CHCĘ</y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e5" source="000" target="010">
+      <data key="e0">000↔010 (C)</data>
+      <data key="e1">Przejścia: Pojawienie się możliwości / Pozyskanie zasobów; Utrata możliwości / Utrata zasobów</data>
+      <data key="e2">000</data>
+      <data key="e3">010</data>
+      <data key="e4">C</data>
+      <data key="e5">bidirectional</data>
+      <data key="e6">Pojawienie się możliwości / Pozyskanie zasobów; Utrata możliwości / Utrata zasobów</data>
+      <data key="e7"></data>
+      <data key="e8"></data>
+      <data key="e9">Hipoteza: C rośnie stopniowo, ale HPE zakłada skok</data>
+      <data key="e10">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#2ECC71" type="line" width="2.0"/>
+          <y:EdgeLabel alignment="center" fontFamily="Arial" fontSize="10" fontStyle="plain" textColor="#000000" modelName="six_pos" modelPosition="center" preferredPlacement="anywhere">MOGĘ</y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e6" source="001" target="011">
+      <data key="e0">001↔011 (C)</data>
+      <data key="e1">Przejścia: Pozyskanie możliwości do obowiązku / Empowerment w roli; Utrata możliwości przy obowiązku / Dezempowerment</data>
+      <data key="e2">001</data>
+      <data key="e3">011</data>
+      <data key="e4">C</data>
+      <data key="e5">bidirectional</data>
+      <data key="e6">Pozyskanie możliwości do obowiązku / Empowerment w roli; Utrata możliwości przy obowiązku / Dezempowerment</data>
+      <data key="e7"></data>
+      <data key="e8"></data>
+      <data key="e9">Hipoteza: C→0→1 przy N=1, W=0 to compliance enablement</data>
+      <data key="e10">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#2ECC71" type="line" width="2.0"/>
+          <y:EdgeLabel alignment="center" fontFamily="Arial" fontSize="10" fontStyle="plain" textColor="#000000" modelName="six_pos" modelPosition="center" preferredPlacement="anywhere">MOGĘ</y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e7" source="100" target="110">
+      <data key="e0">100↔110 (C)</data>
+      <data key="e1">Przejścia: Pozyskanie możliwości do celu / Przełamanie barier; Utrata możliwości przy autonomicznej motywacji / Blokada działania</data>
+      <data key="e2">100</data>
+      <data key="e3">110</data>
+      <data key="e4">C</data>
+      <data key="e5">bidirectional</data>
+      <data key="e6">Pozyskanie możliwości do celu / Przełamanie barier; Utrata możliwości przy autonomicznej motywacji / Blokada działania</data>
+      <data key="e7"></data>
+      <data key="e8"></data>
+      <data key="e9">Hipoteza: 100→110 = przejście Rubikonu (planowanie)</data>
+      <data key="e10">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#2ECC71" type="line" width="2.0"/>
+          <y:EdgeLabel alignment="center" fontFamily="Arial" fontSize="10" fontStyle="plain" textColor="#000000" modelName="six_pos" modelPosition="center" preferredPlacement="anywhere">MOGĘ</y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e8" source="101" target="111">
+      <data key="e0">101↔111 (C)</data>
+      <data key="e1">Przejścia: Rozwiązanie konfliktu / Przełamanie barier przy motywacji i obowiązku; Utrata możliwości przy pełnej gotowości / Kryzys zasobów</data>
+      <data key="e2">101</data>
+      <data key="e3">111</data>
+      <data key="e4">C</data>
+      <data key="e5">bidirectional</data>
+      <data key="e6">Rozwiązanie konfliktu / Przełamanie barier przy motywacji i obowiązku; Utrata możliwości przy pełnej gotowości / Kryzys zasobów</data>
+      <data key="e7"></data>
+      <data key="e8"></data>
+      <data key="e9">Hipoteza: 101→111 = adaptacyjne copingiem; najbardziej pożądane</data>
+      <data key="e10">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#2ECC71" type="line" width="2.0"/>
+          <y:EdgeLabel alignment="center" fontFamily="Arial" fontSize="10" fontStyle="plain" textColor="#000000" modelName="six_pos" modelPosition="center" preferredPlacement="anywhere">MOGĘ</y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e9" source="000" target="001">
+      <data key="e0">000↔001 (N)</data>
+      <data key="e1">Przejścia: Pojawienie się obowiązku / Przyjęcie odpowiedzialności; Utrata obowiązku / Odrzucenie roli</data>
+      <data key="e2">000</data>
+      <data key="e3">001</data>
+      <data key="e4">N</data>
+      <data key="e5">bidirectional</data>
+      <data key="e6">Pojawienie się obowiązku / Przyjęcie odpowiedzialności; Utrata obowiązku / Odrzucenie roli</data>
+      <data key="e7"></data>
+      <data key="e8"></data>
+      <data key="e9">Hipoteza: N może być internalizowane (→W) lub eksternalne (→compliance)</data>
+      <data key="e10">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#3498DB" type="line" width="2.0"/>
+          <y:EdgeLabel alignment="center" fontFamily="Arial" fontSize="10" fontStyle="plain" textColor="#000000" modelName="six_pos" modelPosition="center" preferredPlacement="anywhere">POWINIENEM</y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e10" source="010" target="011">
+      <data key="e0">010↔011 (N)</data>
+      <data key="e1">Przejścia: Narzucony obowiązek przy możliwości / Compliance enablement; Utrata obowiązku przy możliwości / Deregulacja</data>
+      <data key="e2">010</data>
+      <data key="e3">011</data>
+      <data key="e4">N</data>
+      <data key="e5">bidirectional</data>
+      <data key="e6">Narzucony obowiązek przy możliwości / Compliance enablement; Utrata obowiązku przy możliwości / Deregulacja</data>
+      <data key="e7"></data>
+      <data key="e8"></data>
+      <data key="e9">Hipoteza: 010→011 przy niskim autonomy support → 011 (compliance)</data>
+      <data key="e10">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#3498DB" type="line" width="2.0"/>
+          <y:EdgeLabel alignment="center" fontFamily="Arial" fontSize="10" fontStyle="plain" textColor="#000000" modelName="six_pos" modelPosition="center" preferredPlacement="anywhere">POWINIENEM</y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e11" source="100" target="101">
+      <data key="e0">100↔101 (N)</data>
+      <data key="e1">Przejścia: Pojawienie się obowiązku przy celu / Moralizacja celu; Utrata obowiązku przy motywacji / Sekularyzacja celu</data>
+      <data key="e2">100</data>
+      <data key="e3">101</data>
+      <data key="e4">N</data>
+      <data key="e5">bidirectional</data>
+      <data key="e6">Pojawienie się obowiązku przy celu / Moralizacja celu; Utrata obowiązku przy motywacji / Sekularyzacja celu</data>
+      <data key="e7"></data>
+      <data key="e8"></data>
+      <data key="e9">Hipoteza: 100→101 = internalizacja normy moralnej (autonomiczna) vs eksternalna</data>
+      <data key="e10">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#3498DB" type="line" width="2.0"/>
+          <y:EdgeLabel alignment="center" fontFamily="Arial" fontSize="10" fontStyle="plain" textColor="#000000" modelName="six_pos" modelPosition="center" preferredPlacement="anywhere">POWINIENEM</y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e12" source="110" target="111">
+      <data key="e0">110↔111 (N)</data>
+      <data key="e1">Przejścia: Pojawienie się obowiązku przy autonomii / Odpowiedzialność społeczna; Utrata obowiązku przy pełnej gotowości / Dezobowiązkowanie</data>
+      <data key="e2">110</data>
+      <data key="e3">111</data>
+      <data key="e4">N</data>
+      <data key="e5">bidirectional</data>
+      <data key="e6">Pojawienie się obowiązku przy autonomii / Odpowiedzialność społeczna; Utrata obowiązku przy pełnej gotowości / Dezobowiązkowanie</data>
+      <data key="e7"></data>
+      <data key="e8"></data>
+      <data key="e9">Hipoteza: 110→111 = OCB / citizenship; N internalizowane</data>
+      <data key="e10">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#3498DB" type="line" width="2.0"/>
+          <y:EdgeLabel alignment="center" fontFamily="Arial" fontSize="10" fontStyle="plain" textColor="#000000" modelName="six_pos" modelPosition="center" preferredPlacement="anywhere">POWINIENEM</y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+  </graph>
+</graphml>

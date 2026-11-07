@@ -1,0 +1,27 @@
+typ,autor,tytul,rok,doi,url,uwagi
+article,Ajzen I.,The theory of planned behavior,1991,10.1016/0749-5978(91)90020-T,https://doi.org/10.1016/0749-5978(91)90020-T,TPB podstawowy
+article,Deci E.L. & Ryan R.M.,The "what" and "why" of goal pursuits,2000,10.1207/S15327965PLI1104_01,https://doi.org/10.1207/S15327965PLI1104_01,SDT podstawowy
+article,Michie S. et al.,The behaviour change wheel,2011,10.1186/1748-5908-6-42,https://doi.org/10.1186/1748-5908-6-42,COM-B podstawowy
+article,Heckhausen H. & Gollwitzer P.M.,Thought contents and cognitive functioning...,1987,10.1007/BF00992338,https://doi.org/10.1007/BF00992338,Rubikon podstawowy
+book,Bandura A.,Self-efficacy: The exercise of control,1997,,,SCT podstawowy
+article,Locke E.A. & Latham G.P.,Building a practically useful theory of goal setting...,2002,10.1037/0003-066X.57.9.705,https://doi.org/10.1037/0003-066X.57.9.705,Goal-Setting podstawowy
+book,Carver C.S. & Scheier M.F.,On the self-regulation of behavior,1998,,,Samoregulacja podstawowy
+article,Wood W. & Neal D.T.,A new look at habits...,2007,10.1037/0033-295X.114.4.843,https://doi.org/10.1037/0033-295X.114.4.843,Nawyki podstawowy
+article,Wrosch C. et al.,Adaptive self-regulation of unattainable goals...,2003,10.1177/0146167203256921,https://doi.org/10.1177/0146167203256921,Goal disengagement
+article,Cialdini R.B. et al.,A focus theory of normative conduct...,1990,10.1037/0022-3514.58.6.1015,https://doi.org/10.1037/0022-3514.58.6.1015,Normy społeczne
+article,Kelman H.C.,Compliance, identification, and internalization...,1958,10.1177/002200275800200106,https://doi.org/10.1177/002200275800200106,Internalizacja norm
+incollection,Schwartz S.H.,Normative influences on altruism,1977,10.1016/S0065-2601(08)60358-5,https://doi.org/10.1016/S0065-2601(08)60358-5,Normy moralne
+book,Jameton A.,Nursing practice: The ethical issues,1984,,,Moral distress - klasyka
+article,Corley M.C. et al.,Development and evaluation of a moral distress scale,2001,10.1046/j.1365-2648.2001.01659.x,https://doi.org/10.1046/j.1365-2648.2001.01659.x,Moral distress - skala
+book,Kahn R.L. et al.,Organizational stress...,1964,,,Role theory - klasyka
+book,Stryker S.,Symbolic interactionism...,1980,,,Role theory - tożsamość
+article,Ölander F. & Thøgersen J.,Understanding of consumer behaviour...,1995,10.1007/BF01024160,https://doi.org/10.1007/BF01024160,MOA model
+article,Gollwitzer P.M.,Implementation intentions...,1999,10.1037/0003-066X.54.7.493,https://doi.org/10.1037/0003-066X.54.7.493,Intencje implementacyjne
+book,Vallacher R.R. & Nowak A.,Dynamical social psychology,1997,,,Modele dynamiczne
+article,Borsboom D. & Cramer A.O.J.,Network analysis...,2013,10.1146/annurev-clinpsy-050212-185608,https://doi.org/10.1146/annurev-clinpsy-050212-185608,Sieci psychopatologii
+article,Asparouhov T. et al.,Dynamic structural equation models,2018,10.1080/10705511.2017.1406803,https://doi.org/10.1080/10705511.2017.1406803,DSEM
+book,Collins L.M. & Lanza S.T.,Latent class and latent transition analysis,2010,,,LTA/LCA podręcznik
+article,Nylund-Gibson K. & Choi A.Y.,Ten frequently asked questions about LCA/LTA,2018,10.1037/tps0000176,https://doi.org/10.1037/tps0000176,LTA - FAQ
+article,Sheeran P. et al.,The impact of changing attitudes...,2016,10.1037/hea0000387,https://doi.org/10.1037/hea0000387,Meta-analiza TPB vs SCT
+article,McEachan R.R.C. et al.,Prospective prediction of health-related behaviours...,2011,10.1080/17437199.2010.521684,https://doi.org/10.1080/17437199.2010.521684,Meta-analiza TPB w zdrowiu
+article,Armitage C.J. & Conner M.,Efficacy of the Theory of Planned Behaviour...,2001,10.1348/014466601164939,https://doi.org/10.1348/014466601164939,Meta-analiza TPB
