@@ -37,7 +37,7 @@
 | **Proponowana poprawka** | 1. Zmiana definicji w `model/definicje.md` (linia 7) na: `W ∈ {0,1} – CHCĘ (osobista akceptacja wartości celu / zgoda na realizację celu)`<br>2. Aktualizacja `model/stany.csv` – kolumna `interpretacja_psychologiczna` dla stanów z W=1<br>3. Usunięcie z `model/definicje.md` i dokumentu DOCX utożsamień: „chęć, pragnienie, zamiar”, „autonomiczna motywacja”, „intencja”<br>4. W sekcji 4.1 (DOCX) – precyzyjna definicja operacyjna z wyliczeniem co W **nie** jest<br>5. Aktualizacja wskaźników pomiarowych: IMI Interest/Enjoyment → nie; Identified Regulation (SDT) → tak (jako proxy); Attitude (TPB) → częściowo |
 | **Pliki do aktualizacji** | `model/definicje.md`, `model/stany.csv`, `src/build_document.py`, `DMTRD_koncepcja.docx` (przez regenerację), `research/operacjonalizacja_WCN_rev1.md` (nowy) |
 | **Metoda weryfikacji** | Sprawdzenie spójności definicji we wszystkich plachach; test CFA na 3 czynniki (W, C, N) – AVE > kwadrat korelacji |
-| **Status realizacji** | TODO |
+| **Status realizacji** | DONE |
 
 ---
 
@@ -55,7 +55,7 @@
 | **Proponowana poprawka** | 1. Zmiana definicji w `model/definicje.md` (linia 9): `N ∈ {0,1} – POWINIENEM (poczucie zobowiązania normatywnego wobec realizacji celu; źródło: zewnętrzne lub internalizowane)`<br>2. Dodanie zmiennej pomocniczej `N_source` (niezmieniającej liczby stanów) do opisu stanów<br>3. Przeanalizowanie i poprawienie opisów stanów 110 i 111 w `model/stany.csv` – usunięcie sprzeczności<br>4. Aktualizacja interpretacji przejść 011→111, 110→111, 111→011, 111→110 w `model/przejscia_24.csv`<br>5. Usunięcie z dokumentu twierdzenia, że internalizacja *zawsze* oznacza spadek N |
 | **Pliki do aktualizacji** | `model/definicje.md`, `model/stany.csv`, `model/przejscia_24.csv`, `src/build_document.py`, `DMTRD_koncepcja.docx`, `research/operacjonalizacja_WCN_rev1.md` |
 | **Metoda weryfikacji** | Sprawdzenie logicznej spójności: dla każdego stanu i przejścia – czy reguła kodowania N daje jednoznaczną odpowiedź? Test na przykładach brzegowych (np. ktoś kto internalizował normę, ale czuje, że *nie powinien* już robić czegoś). |
-| **Status realizacji** | TODO |
+| **Status realizacji** | DONE |
 
 ---
 
@@ -73,7 +73,7 @@
 | **Proponowana poprawka** | 1. `model/definicje.md` linia 8: doprecyzowanie definicji C<br>2. `model/stany.csv` – przejrzenie kolumn `interpretacja_psychologiczna`, `procesy_poznawcze`, `przyczyny_wewnetrzne/srodowiskowe` w `przejscia_24.csv` – usunięcie traktowania C jako obiektywnego warunku<br>3. Dodanie w `model/definicje.md` sekcji „C a COM-B / SCT / TPB” z tabelą rozróżnień |
 | **Pliki do aktualizacji** | `model/definicje.md`, `model/stany.csv`, `model/przejscia_24.csv`, `DMTRD_koncepcja.docx` |
 | **Metoda weryfikacji** | Przejrzenie wszystkich 24 opisów przejść – czy żaden nie twierdzi, że C=1 gwarantuje wykonanie lub C=0 uniemożliwia? |
-| **Status realizacji** | TODO |
+| **Status realizacji** | DONE |
 
 ---
 
@@ -91,7 +91,7 @@
 | **Proponowana poprawka** | 1. `model/definicje.md` – dodanie sekcji „Wymiary vs konstrukty psychiczne”<br>2. `src/build_document.py` – aktualizacja rozdziału 2 i 5 w DOCX<br>3. Usunięcie sformułowań „niezależne konstrukty” na rzecz „odrębne wymiary opisu” |
 | **Pliki do aktualizacji** | `model/definicje.md`, `src/build_document.py`, `DMTRD_koncepcja.docx` |
 | **Metoda weryfikacji** | Sprawdzenie, czy dokument nie twierdzi ortogonalności W, C, N. |
-| **Status realizacji** | TODO |
+| **Status realizacji** | DONE |
 
 ---
 
@@ -109,7 +109,7 @@
 | **Proponowana poprawka** | 1. `model/stany.csv` – zmiana kolumny `nazwa_naukowa` na neutralne etykiety (np. „Konfiguracja 000”) + dodanie kolumny `etykieta_interpretacyjna` z dotychczasowymi nazwami<br>2. `src/build_document.py` – aktualizacja generowania tabeli stanów i opisów<br>3. Dodanie w `model/definicje.md` sekcji „Status epistemiczny ośmiu stanów” |
 | **Pliki do aktualizacji** | `model/stany.csv`, `model/definicje.md`, `src/build_document.py`, `DMTRD_koncepcja.docx` |
 | **Metoda weryfikacji** | Sprawdzenie, czy dokument nie twierdzi, że 8 stanów to „naturalne kategorie psychiczne”. |
-| **Status realizacji** | TODO |
+| **Status realizacji** | DONE |
 
 ---
 
@@ -127,7 +127,7 @@
 | **Proponowana poprawka** | 1. `model/stany.csv` – stan 101: usunięcie „moral distress” z `interpretacja_psychologiczna`, `procesy_emocjonalne`, `powiazania_teorie`<br>2. `model/przejscia_24.csv` – T15, T16: zmiana `nazwa_procesu` na neutralne<br>3. Dodanie hipotezy H_MD do `research/hipotezy_badawcze_rev1.md`<br>4. Aktualizacja `DMTRD_koncepcja.docx` |
 | **Pliki do aktualizacji** | `model/stany.csv`, `model/przejscia_24.csv`, `research/hipotezy_badawcze_rev1.md`, `DMTRD_koncepcja.docx` |
 | **Metoda weryfikacji** | Sprawdzenie, czy żaden fragment nie twierdzi tożsamości 101 z moral distress. |
-| **Status realizacji** | TODO |
+| **Status realizacji** | DONE |
 
 ---
 
@@ -145,7 +145,7 @@
 | **Proponowana poprawka** | 1. `model/przejscia_24.csv` – restrukturyzacja: usunięcie `nazwa_procesu`, `interpretacja_psychologiczna`; dodanie `etykieta_neutralna`, `hipotezy_mechanistyczne` (jako lista rozdzielona `; `)<br>2. `src/build_document.py` – aktualizacja generowania tabeli przejść i opisów<br>3. `src/build_graph.py` – aktualizacja GraphML (Custom Properties)<br>4. `DMTRD_koncepcja.docx` – regeneracja |
 | **Pliki do aktualizacji** | `model/przejscia_24.csv`, `src/build_document.py`, `src/build_graph.py`, `DMTRD_koncepcja.docx` |
 | **Metoda weryfikacji** | Dla każdego z 24 przejść: czy `etykieta_neutralna` wynika wyłącznie z kodów? Czy `hipotezy_mechanistyczne` zawiera co najmniej 2 alternatywne wyjaśnienia? |
-| **Status realizacji** | TODO |
+| **Status realizacji** | DONE |
 
 ---
 
@@ -163,7 +163,7 @@
 | **Proponowana poprawka** | 1. `model/definicje.md` sekcja 3 – przepisanie HPE jako ograniczenia modelowego + hipotezy empirycznej<br>2. `research/hipotezy_badawcze_rev1.md` – przepisanie HG2 z usunięciem arbitralnego progu 15%<br>3. `model/HPE_formalizacja_rev1.md` (nowy) – formalna specyfikacja HPE-model, HPE-empiryczna, modeli alternatywnych (M1–M5), skali czasu, błędu pomiarowego<br>4. `research/HPE_testowalnosc_rev1.md` (nowy) – plan testów symulacyjnych i empirycznych<br>5. Kod symulacyjny w `src/` do weryfikacji numerycznej kontrprzykładu Astry |
 | **Pliki do aktualizacji** | `model/definicje.md`, `research/hipotezy_badawcze_rev1.md`, `model/HPE_formalizacja_rev1.md`, `research/HPE_testowalnosc_rev1.md`, `src/hpe_simulation.py` (nowy), `DMTRD_koncepcja.docx` |
 | **Metoda weryfikacji** | Symulacja numeryczna: czy przy generatorze Q spełniającym HPE-model, przy realistycznych odstępach EMA (2-3h) i intensywnościach, odsetek obserwowanych d_H≥2 przekracza 15%? (Kontrprzykład Astry). |
-| **Status realizacji** | TODO |
+| **Status realizacji** | DONE |
 
 ---
 
@@ -181,7 +181,7 @@
 | **Proponowana poprawka** | 1. `model/definicje.md` sekcje 4.1–4.5, 5.7 – restrukturyzacja: model bazowy vs rozszerzenia<br>2. `src/build_document.py` – aktualizacja rozdziału 12 i 7 w DOCX<br>3. `research/model_pomiarowy_rev1.md` (nowy) – specyfikacja modelu bazowego i rozszerzeń |
 | **Pliki do aktualizacji** | `model/definicje.md`, `src/build_document.py`, `research/model_pomiarowy_rev1.md`, `DMTRD_koncepcja.docx` |
 | **Metoda weryfikacji** | Sprawdzenie, czy dokument nie twierdzi jednocześnie bezpamięciowości i path dependence dla tego samego modelu. |
-| **Status realizacji** | TODO |
+| **Status realizacji** | DONE |
 
 ---
 
@@ -199,7 +199,7 @@
 | **Proponowana poprawka** | 1. `model/stany.csv` – stan 110: `nazwa_naukowa` = „Gotowość autonomiczna”, `nazwa_opisowa` = „Chcę i mogę, nie powinienem”<br>2. `model/definicje.md` – dodanie sekcji „Stan vs zachowanie”<br>3. `src/build_document.py` – aktualizacja opisów<br>4. Przejrzenie `model/przejscia_24.csv` pod kątem języka sugerującego wykonanie |
 | **Pliki do aktualizacji** | `model/stany.csv`, `model/definicje.md`, `src/build_document.py`, `DMTRD_koncepcja.docx` |
 | **Metoda weryfikacji** | Sprawdzenie, czy żaden opis stanu nie zawiera słowa „działanie” jako składowej nazwy lub definicji stanu. |
-| **Status realizacji** | TODO |
+| **Status realizacji** | DONE |
 
 ---
 
@@ -217,7 +217,7 @@
 | **Proponowana poprawka** | 1. `model/definicje.md` – sekcja „Zakres modelu i ograniczenia”<br>2. `model/stany.csv` – aktualizacja `ograniczenia_interpretacyjne` dla stanów 010, 011<br>3. `src/build_document.py` – aktualizacja rozdziału 3, 11, 15 w DOCX<br>4. `research/operacjonalizacja_WCN_rev1.md` – jawne zadeklarowanie zakresu |
 | **Pliki do aktualizacji** | `model/definicje.md`, `model/stany.csv`, `src/build_document.py`, `DMTRD_koncepcja.docx`, `research/operacjonalizacja_WCN_rev1.md` |
 | **Metoda weryfikacji** | Sprawdzenie, czy dokument nie twierdzi, że model wyjaśnia działania nawykowe bez rozszerzenia. |
-| **Status realizacji** | TODO |
+| **Status realizacji** | DONE |
 
 ---
 
@@ -237,7 +237,7 @@
 | **Proponowana poprawka** | 1. `research/hipotezy_badawcze_rev1.md` – przepisanie HG2, usunięcie progu 15%, zmiana metody na estymację Q (CTMC)<br>2. `research/HPE_testowalnosc_rev1.md` – szczegółowy plan testu CTMC<br>3. `src/hpe_simulation.py` – symulacja weryfikująca kontrprzykład Astry<br>4. `src/build_document.py` – aktualizacja rozdziału 13, 14 w DOCX |
 | **Pliki do aktualizacji** | `research/hipotezy_badawcze_rev1.md`, `research/HPE_testowalnosc_rev1.md`, `src/hpe_simulation.py`, `src/build_document.py`, `DMTRD_koncepcja.docx` |
 | **Metoda weryfikacji** | Uruchomienie symulacji: czy przy Q spełniającym HPE (qᵢⱼ=0 dla d_H≥2) i realistycznych intensywnościach, estymowany Q z danych EMA (Δt=2-3h) ma qᵢⱼ≈0 dla d_H≥2? |
-| **Status realizacji** | TODO |
+| **Status realizacji** | DONE |
 
 ---
 
@@ -255,7 +255,7 @@
 | **Proponowana poprawka** | 1. `model/definicje.md` sekcja 7 – restrukturyzacja: jasny wybór modelu bazowego<br>2. `research/model_pomiarowy_rev1.md` (nowy) – pełna specyfikacja modelu pomiarowego<br>3. `research/hipotezy_badawcze_rev1.md` – aktualizacja sekcji metodologicznej<br>4. `src/build_document.py` – aktualizacja rozdziału 14 w DOCX |
 | **Pliki do aktualizacji** | `model/definicje.md`, `research/model_pomiarowy_rev1.md`, `research/hipotezy_badawcze_rev1.md`, `src/build_document.py`, `DMTRD_koncepcja.docx` |
 | **Metoda weryfikacji** | Sprawdzenie, czy dokument zawiera **jedną, spójną specyfikację** modelu pomiarowego z liczbą parametrów, df, ograniczeniami. |
-| **Status realizacji** | TODO |
+| **Status realizacji** | DONE |
 
 ---
 
@@ -273,7 +273,7 @@
 | **Proponowana poprawka** | 1. `model/definicje.md` sekcja 6.1 – wersja ciągła jako domyślna<br>2. `research/hipotezy_badawcze_rev1.md` – aktualizacja planu pomiarowego (wersja ciągła jako podstawowa)<br>3. `research/model_pomiarowy_rev1.md` – specyfikacja modelu z progowaniem i błędem klasyfikacji<br>4. `src/build_document.py` – aktualizacja rozdziału 7, 14 w DOCX |
 | **Pliki do aktualizacji** | `model/definicje.md`, `research/hipotezy_badawcze_rev1.md`, `research/model_pomiarowy_rev1.md`, `src/build_document.py`, `DMTRD_koncepcja.docx` |
 | **Metoda weryfikacji** | Sprawdzenie, czy wersja ciągła jest domyślna, a binarna oznaczona jako uproszczenie. |
-| **Status realizacji** | TODO |
+| **Status realizacji** | DONE |
 
 ---
 
@@ -291,7 +291,7 @@
 | **Proponowana poprawka** | 1. `research/hipotezy_badawcze_rev1.md` – restrukturyzacja sekcji walidacji<br>2. `research/model_pomiarowy_rev1.md` – specyfikacja walidacji within-person<br>3. `src/build_document.py` – aktualizacja rozdziału 14, 18 w DOCX |
 | **Pliki do aktualizacji** | `research/hipotezy_badawcze_rev1.md`, `research/model_pomiarowy_rev1.md`, `src/build_document.py`, `DMTRD_koncepcja.docx` |
 | **Metoda weryfikacji** | Sprawdzenie, czy plan badawczy zawiera: wywiady poznawcze, analizę within-person, jawne role itemów. |
-| **Status realizacji** | TODO |
+| **Status realizacji** | DONE |
 
 ---
 
@@ -309,7 +309,7 @@
 | **Proponowana poprawka** | 1. `research/model_pomiarowy_rev1.md` – jasna separacja: wskaźniki stanu (W,C,N) vs predyktory (kontekst) vs wyniki (zachowanie, afekt)<br>2. `research/hipotezy_badawcze_rev1.md` – aktualizacja sekcji modelu pomiarowego<br>3. `src/build_document.py` – aktualizacja rozdziału 14 w DOCX |
 | **Pliki do aktualizacji** | `research/model_pomiarowy_rev1.md`, `research/hipotezy_badawcze_rev1.md`, `src/build_document.py`, `DMTRD_koncepcja.docx` |
 | **Metoda weryfikacji** | Sprawdzenie, czy specyfikacja modelu LTA/HMM nie zawiera zachowania w macierzy emisji. |
-| **Status realizacji** | TODO |
+| **Status realizacji** | DONE |
 
 ---
 
@@ -327,7 +327,7 @@
 | **Proponowana poprawka** | 1. `research/hipotezy_badawcze_rev1.md` – przepisanie HG1, HG5 z konkretnymi modelami referencyjnymi i wspólnym wynikiem<br>2. `research/hipotezy_badawcze_rev1.md` – dodanie modelu „pełne 8 konfiguracji bez HPE” jako referencyjnego<br>4. `src/build_document.py` – aktualizacja rozdziału 13 w DOCX |
 | **Pliki do aktualizacji** | `research/hipotezy_badawcze_rev1.md`, `src/build_document.py`, `DMTRD_koncepcja.docx` |
 | **Metoda weryfikacji** | Sprawdzenie, czy HG1 i HG5 określają: ten sam wynik, te same dane, te same horyzonty, konkretne modele referencyjne. |
-| **Status realizacji** | TODO |
+| **Status realizacji** | DONE |
 
 ---
 
@@ -345,7 +345,7 @@
 | **Proponowana poprawka** | 1. `research/hipotezy_badawcze_rev1.md` – przepisanie HG3 i dodanie H_mech jako hipotez eksploracyjnych<br>2. `research/hipotezy_badawcze_rev1.md` – dla każdego przejścia: oddzielenie testu asymetrii q od interpretacji mechanistycznej<br>3. `src/build_document.py` – aktualizacja rozdziału 13 w DOCX |
 | **Pliki do aktualizacji** | `research/hipotezy_badawcze_rev1.md`, `src/build_document.py`, `DMTRD_koncepcja.docx` |
 | **Metoda weryfikacji** | Sprawdzenie, czy HG3 testuje tylko nierówność parametrów, a interpretacje mechanistyczne są oddzielnymi hipotezami. |
-| **Status realizacji** | TODO |
+| **Status realizacji** | DONE |
 
 ---
 
@@ -363,7 +363,7 @@
 | **Proponowana poprawka** | 1. `research/hipotezy_badawcze_rev1.md` – całkowite przepisanie:<br>   - 3 hipotezy główne (HPE-test, HPD-path dependence, HPP-predykcyjna wartość Q3)<br>   - Tabela hipotez eksploracyjnych (dawniej H1–H24, poprawione i oznaczone jako eksploracyjne)<br>   - Usunięcie błędnych specyfikacji<br>2. `src/build_document.py` – aktualizacja rozdziału 13 w DOCX |
 | **Pliki do aktualizacji** | `research/hipotezy_badawcze_rev1.md`, `src/build_document.py`, `DMTRD_koncepcja.docx` |
 | **Metoda weryfikacji** | Sprawdzenie: czy są dokładnie 3 hipotezy główne z pełną specyfikacją? Czy reszta oznaczona jako eksploracyjna? Czy usunięto błędy H4, H16, H22? |
-| **Status realizacji** | TODO |
+| **Status realizacji** | DONE |
 
 ---
 
@@ -381,7 +381,7 @@
 | **Proponowana poprawka** | 1. `research/hipotezy_badawcze_rev1.md` – sekcja „Projekt badania pilotażowego”: redukcja do 1 działania + 1 populacja<br>2. `research/hipotezy_badawcze_rev1.md` – gęstość próbkowania z symulacji, nie arbitralna<br>3. `src/build_document.py` – aktualizacja rozdziału 14, 18 w DOCX |
 | **Pliki do aktualizacji** | `research/hipotezy_badawcze_rev1.md`, `src/build_document.py`, `DMTRD_koncepcja.docx` |
 | **Metoda weryfikacji** | Sprawdzenie: czy plan badawczy dotyczy 1 działania w 1 populacji? Czy gęstość wyznaczona z symulacji? |
-| **Status realizacji** | TODO |
+| **Status realizacji** | DONE |
 
 ---
 
@@ -399,7 +399,7 @@
 | **Proponowana poprawka** | 1. `research/hipotezy_badawcze_rev1.md` – sekcja „DMTRD-core: wersja potwierczająca”<br>2. `research/hipotezy_badawcze_rev1.md` – tabela: wynik testu → co odrzucamy / co modyfikujemy<br>3. `src/build_document.py` – aktualizacja rozdziału 13, 15 w DOCX |
 | **Pliki do aktualizacji** | `research/hipotezy_badawcze_rev1.md`, `src/build_document.py`, `DMTRD_koncepcja.docx` |
 | **Metoda weryfikacji** | Sprawdzenie, czy dokument zawiera zamkniętą definicję DMTRD-core z kryteriami odrzucenia. |
-| **Status realizacji** | TODO |
+| **Status realizacji** | DONE |
 
 ---
 

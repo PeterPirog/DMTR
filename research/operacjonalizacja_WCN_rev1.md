@@ -142,21 +142,27 @@
   - Internalizacja (internalization) – to proces/jakość regulacji (N_source), nie bit N.
   - Presja społeczna (social pressure) – tylko jedno źródło (external).
 
-### 4.2. Zmienna pomocnicza: Źródło obowiązku ($N_{source}$)
+### 4.2. Zmienne pomocnicze: Źródło i Jakość Obowiązku
 
-Bit $N$ informuje **tylko o obecności/braku poczucia "powinienem"**. Źródło i jakość regulacji to osobna zmienna:
+Bit $N$ informuje **tylko o obecności/braku poczucia "powinienem"**. Źródło obowiązku i jakość regulacji to **dwie osobne zmienne**:
 
+**1. Źródło obowiązku ($N_{source}$) – skąd wynika "powinienem":**
 $$N_{source} \in \{
-\text{external (presja zewnętrzna)},
-\text{introjected (wewnętrzna presja, winę/lęk)},
-\text{identified (uznana wartość, zgoda)},
-\text{integrated (zintegrowana z tożsamością)},
-\text{moral (norma moralna personalna)},
+\text{external (presja zewnętrzna, oczekiwania innych)},
+\text{moral (przekonania moralne, sumienie)},
 \text{role (obowiązek rolowy, stanowiskowy)},
-\text{legal (obowiązek prawny)}
+\text{legal (przepisy, prawo, regulamin)}
 \}$$
 
-**Kluczowa zasada:** Internalizacja normy to zmiana $N_{source}$ (np. external → identified), a **nie** koniecznie zmiana $N$ z 1 na 0. Osoba może mieć $N=1$ z $N_{source}=\text{identified}$ (dobrowolnie przyjęty obowiązek) LUB $N=1$ z $N_{source}=\text{external}$ (presja zewnętrzna). Obie to $N=1$, ale różna jakość regulacji.
+**2. Jakość regulacji ($N_{quality}$) – jak jest doświadczany obowiązek (według SDT/Kelman):**
+$$N_{quality} \in \{
+\text{external (compliance, tylko presja zewnętrzna)},
+\text{introjected (wewnętrzna presja, winę, lęk)},
+\text{identified (uznana wartość, osobista zgoda)},
+\text{integrated (zintegrowane z tożsamością, autonomiczne)}
+\}$$
+
+**Kluczowa zasada:** Internalizacja normy to zmiana $N_{quality}$ (np. external → identified), a **nie** koniecznie zmiana $N$ z 1 na 0. Osoba może mieć $N=1$ z $N_{quality}=\text{identified}$ (dobrowolnie przyjęty obowiązek) LUB $N=1$ z $N_{quality}=\text{external}$ (presja zewnętrzna). Obie to $N=1$, ale różna jakość regulacji.
 
 ### 4.3. Definicja operacyjna (wersja ciągła – bazowa)
 
@@ -166,15 +172,19 @@ $$N_{source} \in \{
 > 4 – Częściowo / nie mam zdania  
 > 7 – Czuję silne zobowiązanie / silne "powinienem"
 
-**Item dodatkowy (źródło – $N_{source}$, kategoryczny):**
+**Item dodatkowy 1 (źródło – $N_{source}$, kategoryczny):**
 > "Skąd wynika Twoje poczucie, że powinieneś to zrobić? (Wybierz jedno główne)"
 > 1. Presja zewnętrzna / oczekiwania innych (external)
-> 2. Wewnętrzna presja, winę, lęk, jeśli nie zrobię (introjected)
+> 2. Moje przekonania moralne / sumienie (moral)
+> 3. Moja rola / stanowisko / funkcja (role)
+> 4. Przepisy / prawo / regulamin (legal)
+
+**Item dodatkowy 2 (jakość regulacji – $N_{quality}$, kategoryczny):**
+> "Jak doświadczasz tego obowiązku? (Wybierz jedno)"
+> 1. Tylko dlatego, że inni oczekują / każą (external)
+> 2. Czuję winę/lęk, jeśli nie zrobię (introjected)
 > 3. Osobiście uważam, to jest wartościowe / słuszne (identified)
 > 4. To część moich wartości i tożsamości (integrated)
-> 5. Moje przekonania moralne / sumienie (moral)
-> 6. Moja rola / stanowisko / funkcja (role)
-> 7. Przepisy / prawo / regulamin (legal)
 
 ### 4.4. Kodowanie binarne
 - **N = 1** jeśli średnia itemu głównego ≥ 4
@@ -182,33 +192,33 @@ $$N_{source} \in \{
 
 ### 4.5. Przypadki brzegowe i kodowanie
 
-| Sytuacja | N (binarne) | $N_{source}$ | Uwagi |
-|----------|-------------|--------------|-------|
-| "Muszę, bo szef kazał, ale nie chcę" | 1 | external | Compliance |
-| "Czuję winę, jak nie zrobię, choć nikt nie każe" | 1 | introjected | Presja wewnętrzna |
-| "Uważam, że to jest dobre i warto, więc powinienem" | 1 | identified | Zidentyfikowana regulacja |
-| "To jest częścią moich wartości, to ja jestem" | 1 | integrated | Zintegrowana regulacja |
-| "Moje sumienie mi nakazuje / moja moralność" | 1 | moral | Norma moralna |
-| "To moja rola/funkcja, muszę to robić" | 1 | role | Obowiązek rolowy |
-| "Prawo/przepis mi nakazuje" | 1 | legal | Obowiązek prawny |
-| "Nikt nie każe, nie czuję, że powinienem" | 0 | (brak) | Brak obowiązku |
+| Sytuacja | N (binarne) | $N_{source}$ | $N_{quality}$ | Uwagi |
+|----------|-------------|--------------|---------------|-------|
+| "Muszę, bo szef kazał, ale nie chcę" | 1 | external | external | Compliance |
+| "Czuję winę, jak nie zrobię, choć nikt nie każe" | 1 | external/moral | introjected | Presja wewnętrzna |
+| "Uważam, że to jest dobre i warto, więc powinienem" | 1 | moral | identified | Zidentyfikowana regulacja |
+| "To jest częścią moich wartości, to ja jestem" | 1 | moral/role | integrated | Zintegrowana regulacja |
+| "Moje sumienie mi nakazuje / moja moralność" | 1 | moral | identified/integrated | Norma moralna |
+| "To moja rola/funkcja, muszę to robić" | 1 | role | identified/integrated | Obowiązek rolowy |
+| "Prawo/przepis mi nakazuje" | 1 | legal | external/identified | Obowiązek prawny |
+| "Nikt nie każe, nie czuję, że powinienem" | 0 | (brak) | (brak) | Brak obowiązku |
 
 ### 4.6. Rozwiązanie sprzeczności 110 vs 111
 
-| Stan | W | C | N | Interpretacja $N_{source}$ |
+| Stan | W | C | N | Interpretacja $N_{source}$ / $N_{quality}$ |
 |------|---|---|---|----------------------------|
-| 110 | 1 | 1 | 0 | Brak poczucia "powinienem" LUB zinternalizowany obowiązek ($N_{source}$=identified/integrated) który nie jest doświadczany jako "powinienem" (bo zinternalizowany = "chcę", nie "powinienem") |
-| 111 | 1 | 1 | 1 | Poczucie "powinienem" obecne ($N_{source}$ dowolne: external, introjected, identified, integrated, moral, role, legal) |
+| 110 | 1 | 1 | 0 | Brak poczucia "powinienem" LUB zinternalizowany obowiązek ($N_{quality}$=identified/integrated) który nie jest doświadczany jako "powinienem" (bo zinternalizowany = "chcę", nie "powinienem") |
+| 111 | 1 | 1 | 1 | Poczucie "powinienem" obecne ($N_{source}$ dowolne, $N_{quality}$ dowolne) |
 
 **Klucz:** $N=0$ w 110 **nie** oznacza "brak internalizacji". Może oznaczać: (a) brak kontekstu normatywnego, (b) zinternalizowany obowiązek który nie generuje poczucia "powinienem" (bo "chcę" zastępuje "powinienem").
 
-### 4.5. Wskaźniki referencyjne
-| Konstrukt referencyjny | Skala | Relacja z N |
-|------------------------|-------|-------------|
+### 4.7. Wskaźniki referencyjne
+| Konstrukt referencyjny | Skala | Relacja z N / $N_{quality}$ |
+|------------------------|-------|-----------------------------|
 | Personal Norm (Schwartz) | PN scale | Korelacja z N przy $N_{source}$=moral |
 | Subjective Norms (TPB) | SN scale | Korelacja z N przy $N_{source}$=external |
 | Role Overload/Conflict (Kahn) | RCS | Korelacja z N przy $N_{source}$=role |
-| Internalization (Kelman) | Kelman scale | Predyktor $N_{source}$ (identified/integrated) |
+| Internalization (Kelman) | Kelman scale | Predyktor $N_{quality}$ (identified/integrated) |
 | Moral Obligation (Ajzen) | MO scale | Korelacja z N przy $N_{source}$=moral |
 
 ---

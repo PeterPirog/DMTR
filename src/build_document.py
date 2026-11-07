@@ -614,10 +614,10 @@ def main():
     add_heading_styled(doc, "9.1. Zestawienie 24 przejść (skrócone)", 2)
     
     transitions = load_transitions()
-    headers = ["ID", "Start→Koniec", "Wymiar", "Kierunek", "Nazwa procesu"]
+    headers = ["ID", "Start→Koniec", "Wymiar", "Kierunek", "Etykieta neutralna"]
     rows = []
     for t in transitions:
-        rows.append([t['id'], f"{t['start']}→{t['end']}", t['zmieniony_wymiar'], t['kierunek'], t['nazwa_procesu'][:50]])
+        rows.append([t['id'], f"{t['start']}→{t['end']}", t['zmieniony_wymiar'], t['kierunek'], t['etykieta_neutralna'][:50]])
     add_table_with_style(doc, headers, rows, col_widths=[1, 2, 1.5, 1.5, 9])
     
     add_heading_styled(doc, "9.2. Asymetria przejść odwrotnych – kluczowe przykłady", 2)

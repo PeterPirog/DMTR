@@ -20,11 +20,13 @@
 
 | Siła dowodu | Test | Interpretacja |
 |-------------|------|---------------|
-| **Najmocniejszy** | LRT (M_HPE vs M_full) na estymowanym $Q$ | Bezpośredni test HPE-model na poziomie generatora |
-| **Mocny** | Porównanie AIC/BIC: M_HPE vs M_full vs M_indep vs M_cont | Selekcja modelu; HPE-model preferowany jeśli ΔAIC > 10 |
-| **Wspierający** | Predykcja out-of-sample: log-loss M_HPE vs M_full vs M_indep | Wartość predykcyjna HPE-model |
-| **Wspierający** | Odsetek $d_H \geq 2$ w danych vs predykcje modeli | Konsystencja obserwacji z M_HPE |
-| **Słaby** | Odsetek $d_H \geq 2$ w surowych danych (bez modelu) | Tylko opisowy; nie rozróżnia HPE od błędów pomiarowych |
+| **Najmocniejszy** | LRT (M_HPE vs M_full) na estymowanym $Q$ | Test HPE-model: $H_0: q_{ij}=0$ dla $d_H \geq 2$. **Istotny LRT ($p < 0.05$) = dowód PRZECIW HPE-model** (M_full dopasowuje lepiej). Brak istotności = brak dowodu przeciwko HPE-model. |
+| **Mocny** | Porównanie AIC/BIC: M_HPE vs M_full vs M_indep vs M_cont | Selekcja modelu; HPE-model preferowany jeśli ΔAIC > 10 na korzyść M_HPE. |
+| **Wspierający** | Predykcja out-of-sample: log-loss M_HPE vs M_full vs M_indep | Wartość predykcyjna HPE-model. |
+| **Wspierający** | Odsetek $d_H \geq 2$ w danych vs predykcje modeli | Konsystencja obserwacji z M_HPE. |
+| **Słaby** | Odsetek $d_H \geq 2$ w surowych danych (bez modelu) | Tylko opisowy; nie rozróżnia HPE od błędów pomiarowych. |
+
+**Uwaga:** Standardowy test LRT zakłada parametry w wnętrzu przestrzeni parametrów. Dla $q_{ij}=0$ (brzeg przestrzeni) rozkład asymptotyczny LRT nie jest standardowym $\chi^2$. **Wymagana kalibracja bootstrap parametryczny** lub symulacja Monte Carlo pod $H_0$.
 
 ---
 
@@ -287,11 +289,13 @@ if __name__ == "__main__":
 
 | Test | Kryterium sukcesu |
 |------|-------------------|
-| LRT (M_HPE vs M_full) | $p < 0.05$ na korzyść M_HPE (HPE-model nie odrzucane) |
+| LRT (M_HPE vs M_full) | $p > 0.05$ – brak istotnej poprawy dopasowania przez M_full (HPE-model nie odrzucane) |
 | ΔAIC (M_HPE vs M_full) | > 10 na korzyść M_HPE |
 | ΔAIC (M_HPE vs M_indep) | > 6 na korzyść M_HPE (zależność od konfiguracji) |
 | Asymetria | Istotna ($p < 0.05$ po FDR) dla ≥ 3 kluczowych par (011↔111, 111↔011, 101↔111) |
 | Predykcja out-of-sample | Log-loss M_HPE < M_full, M_indep, M_cont (test Diebold-Mariano $p < 0.05$) |
+
+**Uwaga:** Istotny LRT ($p < 0.05$) oznacza, że M_full dopasowuje istotnie lepiej – to dowód **PRZECIW** HPE-model. Brak istotności ($p > 0.05$) nie dowodzi HPE-model, ale nie pozwala go odrzucić. Wymagana kalibracja bootstrap parametryczny ze względu na parametry na brzegu przestrzeni.
 
 ---
 

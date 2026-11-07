@@ -15,6 +15,23 @@
 - **Wersja binarna (uproszczenie):** $W,C,N \in \{0,1\}$ (próg 4). Tylko do wizualizacji Q3, interpretacji, nie do estymacji.
 - **Stan ≠ klasa latentna.** W modelu bazowym stany są **obserwowane bezpośrednio** (observed states) – unika problemu identyfikowalności LTA/HMM z 3 wskaźnikami binarnymi.
 
+### 1.3. Relacja między wersją ciągłą a dyskretną (Rozstrzygnięcie sprzeczności)
+
+**Model bazowy (DMTRD-core) używa podejścia hybrydowego:**
+
+1. **Pomiar:** $W_{it}, C_{it}, N_{it}$ są obserwowane jako zmienne ciągłe (Likert 1–7) w każdym punkcie czasowym $t$.
+2. **Dyskretyzacja do CTMC:** Do estymacji CTMC, zmienne ciągłe są dyskretyzowane na 8 stanów binarnych przy użyciu progu 4:
+   - $W_{bin} = 1$ jeśli $W \geq 4$, wpp. 0
+   - $C_{bin} = 1$ jeśli $C \geq 4$, wpp. 0
+   - $N_{bin} = 1$ jeśli $N \geq 4$, wpp. 0
+   - Stan CTMC: $S_{it} = (W_{bin}, C_{bin}, N_{bin}) \in \{0,1\}^3$
+3. **Estymacja CTMC:** Generator $Q$ estymowany na dyskretyzowanych stanach $S_{it}$ (8 stanów).
+4. **Kowariancje:** Efekty kowariancji ($\beta_{ij}$) modelowane na **ciągłych** wartościach $W_{it}, C_{it}, N_{it}$ oraz zmiennych eksogenicznych $X_t$:
+   $$q_{ij}(X_t) = q_{ij}^0 \cdot \exp(\beta_{ij}^T X_t) \quad \text{dla} \quad d_H(i,j)=1$$
+   Gdzie $X_t$ zawiera ciągłe $W_{it}, C_{it}, N_{it}$ oraz zmienne eksogeniczne.
+
+**Uzasadnienie:** To podejście zachowuje informację ciągłą w pomiarze i modelowaniu kowariancji, a jednocześnie pozwala na estymację CTMC na dyskretnej przestrzeni stanów Q3. Dyskretyzacja jest tylko narzędziem do estymacji dynamiki, a nie definicją konstruktów.
+
 ### 1.2. Trzy role zmiennych (kluczowe rozróżnienie)
 
 | Rola | Zmienne | Przykłady | Uwagi |
@@ -88,9 +105,11 @@ Dla danych EMA z odstępami $\Delta t$ (zmiennych, znanych z znaczników czasu).
 
 | Parametr | Wartość / Specyfikacja |
 |----------|------------------------|
-| **Stan** | Obserwowany $(W_{it}, C_{it}, N_{it})$ ciągły 1–7 (dyskretyzacja na 8 stanów próg 4) |
+| **Pomiar stanu** | $(W_{it}, C_{it}, N_{it})$ ciągły 1–7 (Likert) |
+| **Stan CTMC** | Dyskretyzacja: $S_{it} = (W_{bin}, C_{bin}, N_{bin}) \in \{0,1\}^3$, próg 4 |
 | **Generator $Q$** | 24 wolne parametry $q_{ij}$ ($d_H=1$) + $\beta_{ij}$ dla kowariancji |
 | **HPE-model** | $q_{ij}=0$ dla $d_H \geq 2$ (ograniczenie na $Q$) |
+| **Kowariancje** | $q_{ij}(X_t) = q_{ij}^0 \cdot \exp(\beta_{ij}^T X_t)$, $X_t$ zawiera ciągłe $W,C,N$ i zmienne eksogenne |
 | **Estymacja** | MLE / Bayesian (pakiety `msm`/`ctmcm` w R, `ctmcm` w Python) |
 | **Dane** | Panel EMA: $N$ osób × $T$ pomiarów, znane $\Delta t$ (znaczniki czasu) |
 
@@ -173,7 +192,8 @@ Dla danych EMA z odstępami $\Delta t$ (zmiennych, znanych z znaczników czasu).
 - **Jedno działanie, jedna populacja** (np. nauka języka 15 min/dzień, studenci)
 - Gęstość próbkowania: pilotaż + symulacje (cel: rozdzielenie skoków elementarnych)
 - Event-based EMA: pomiar *przed* oknem zachowania (predyktory) vs *po* (skutki)
-- Estymacja CTMC (M_HPE vs M_full vs M_indep) – test HPE (LRT)
+- Estymacja CTMC (M_HPE vs M_full vs M_indep) – test HPE (LRT z bootstrap parametrycznym)
+- **Uwaga:** Istotny LRT ($p < 0.05$) = dowód PRZECIW HPE-model (M_full lepsze). Brak istotności = brak dowodu przeciwko HPE.
 - Analiza mocy dla głównego badania (symulacje Monte Carlo)
 
 ### 6.3. Etap 4 – Badanie EMA główne (N=300–500, T=21 dni)
