@@ -31,7 +31,7 @@
       <data key="d5">Brak gotowości do działania; stan spoczynku motywacyjnego lub apatii</data>
       <data key="d6">Spoczynek po pracy; czas wolny bez planów; Oszczędność zasobów; gotowość do reakcji na nowe sygnały</data>
       <data key="d7">T01, T09, T17</data>
-      <data key="d8">Stan neutralny / Brak aktywnej motywacji</data>
+      <data key="d8">Konfiguracja 000</data>
       <data key="d9">
         <y:ShapeNode>
           <y:Geometry x="100" y="400" width="120" height="80"/>
@@ -51,7 +51,7 @@
       <data key="d5">Napięcie między 'powinienem' a 'nie mogę'; bezsilność, frustracja</data>
       <data key="d6">Przeciążony opiekun bez wsparcia; dług nie do spłaty; Sygnał do zmiany środowiska lub redefinicji ról</data>
       <data key="d7">T03, T11, T18</data>
-      <data key="d8">Obowiązek niewykonalny</data>
+      <data key="d8">Konfiguracja 001</data>
       <data key="d9">
         <y:ShapeNode>
           <y:Geometry x="100" y="200" width="120" height="80"/>
@@ -71,7 +71,7 @@
       <data key="d5">Potencjał do działania bez napędu; gotowość bez kierunku</data>
       <data key="d6">Wolny wieczór z możliwością wyjścia; Elastyczność; gotowość do szans</data>
       <data key="d7">T05, T10, T19</data>
-      <data key="d8">Możliwość niewykorzystana</data>
+      <data key="d8">Konfiguracja 010</data>
       <data key="d9">
         <y:ShapeNode>
           <y:Geometry x="300" y="400" width="120" height="80"/>
@@ -91,7 +91,7 @@
       <data key="d5">Działanie z presji zewnętrznej/wewnętrznej bez wewnętrznej zgody</data>
       <data key="d6">Praca 'na etacie' bez pasji; podatki; obowiązkowe szkolenia; Unikanie kosztów społecznych; spełnienie roli</data>
       <data key="d7">T07, T12, T20</data>
-      <data key="d8">Obowiązek wykonalny bez autonomii</data>
+      <data key="d8">Konfiguracja 011</data>
       <data key="d9">
         <y:ShapeNode>
           <y:Geometry x="300" y="200" width="120" height="80"/>
@@ -111,7 +111,7 @@
       <data key="d5">Motywacja autonomiczna zablokowana barierami; frustracja celowa</data>
       <data key="d6">Artysta bez studia; przedsiębiorca bez kapitału; Rozwój kompetencji; kreatywne omijanie barier</data>
       <data key="d7">T02, T13, T21</data>
-      <data key="d8">Pragnienie bez możliwości</data>
+      <data key="d8">Konfiguracja 100</data>
       <data key="d9">
         <y:ShapeNode>
           <y:Geometry x="500" y="400" width="120" height="80"/>
@@ -124,14 +124,14 @@
     </node>
     <node id="101">
       <data key="d0">101</data>
-      <data key="d1">Konflikt motywacyjny o wysokim natężeniu; moral distress</data>
+      <data key="d1">Konflikt motywacyjny o wysokim natężeniu; napięcie krytyczne</data>
       <data key="d2">1</data>
       <data key="d3">0</data>
       <data key="d4">1</data>
-      <data key="d5">Konflikt motywacyjny o wysokim natężeniu; moral distress</data>
+      <data key="d5">Konflikt motywacyjny o wysokim natężeniu; napięcie krytyczne</data>
       <data key="d6">Lekarz bez sprzętu do ratowania życia; nauczyciel bez czasu na uczniów; Mobilizacja wsparcia; zmiana systemu; rezygnacja z celu</data>
       <data key="d7">T04, T15, T22</data>
-      <data key="d8">Motywacja i obowiązek bez możliwości</data>
+      <data key="d8">Konfiguracja 101</data>
       <data key="d9">
         <y:ShapeNode>
           <y:Geometry x="500" y="200" width="120" height="80"/>
@@ -144,14 +144,14 @@
     </node>
     <node id="110">
       <data key="d0">110</data>
-      <data key="d1">Motywacja autonomiczna z poczuciem sprawczości; flow potencjalny</data>
+      <data key="d1">Gotowość autonomiczna z poczuciem sprawczości; flow potencjalny</data>
       <data key="d2">1</data>
       <data key="d3">1</data>
       <data key="d4">0</data>
-      <data key="d5">Motywacja autonomiczna z poczuciem sprawczości; flow potencjalny</data>
+      <data key="d5">Gotowość autonomiczna z poczuciem sprawczości; flow potencjalny</data>
       <data key="d6">Rozwój, samorealizacja, innowacyjność; Wysiłek; ryzyko izolacji; brak wsparcia normatywnego</data>
       <data key="d7">T06, T14, T23</data>
-      <data key="d8">Działanie autonomiczne</data>
+      <data key="d8">Konfiguracja 110</data>
       <data key="d9">
         <y:ShapeNode>
           <y:Geometry x="700" y="400" width="120" height="80"/>
@@ -164,14 +164,14 @@
     </node>
     <node id="111">
       <data key="d0">111</data>
-      <data key="d1">Pełna gotowość motywacyjna; zbieżność autonomii, sprawczości i normy</data>
+      <data key="d1">Pełna gotowość motywacyjna; zbieżność trzech wymiarów</data>
       <data key="d2">1</data>
       <data key="d3">1</data>
       <data key="d4">1</data>
-      <data key="d5">Pełna gotowość motywacyjna; zbieżność autonomii, sprawczości i normy</data>
+      <data key="d5">Pełna gotowość motywacyjna; zbieżność trzech wymiarów</data>
       <data key="d6">Pełne zaangażowanie; odporność; rozwój innych; Wysokie oczekiwania własne; ryzyko perfekcjonizmu; koszty oportunistyczne</data>
       <data key="d7">T08, T16, T24</data>
-      <data key="d8">Zbieżność trzech wymiarów</data>
+      <data key="d8">Konfiguracja 111</data>
       <data key="d9">
         <y:ShapeNode>
           <y:Geometry x="700" y="200" width="120" height="80"/>
@@ -184,15 +184,15 @@
     </node>
     <edge id="e1" source="000" target="100">
       <data key="e0">000↔100 (W)</data>
-      <data key="e1">Przejścia: Pojawienie się motywacji / Inicjacja celu; Utrata motywacji / Rezygnacja z celu</data>
+      <data key="e1">Przejścia: Zmiana W: 0→1 przy C=0, N=0; Zmiana W: 1→0 przy C=0, N=0</data>
       <data key="e2">000</data>
       <data key="e3">100</data>
       <data key="e4">W</data>
       <data key="e5">bidirectional</data>
-      <data key="e6">Pojawienie się motywacji / Inicjacja celu; Utrata motywacji / Rezygnacja z celu</data>
-      <data key="e7"></data>
+      <data key="e6">Zmiana W: 0→1 przy C=0, N=0; Zmiana W: 1→0 przy C=0, N=0</data>
+      <data key="e7">Internalizacja wartości celu; pojawienie się pragnienia; zmiana oceny atrakcyjności celu; Rezygnacja z celu; utrata wartości; zmiana priorytetów; depresja</data>
       <data key="e8"></data>
-      <data key="e9">Hipoteza: proces dyskretny; wymaga weryfikacji EMA</data>
+      <data key="e9">H1: Przejście 000→100 przewidywane przez wzrost outcome expectancies i self-efficacy (SCT); test: regresja logistyczna w EMA</data>
       <data key="e10">
         <y:PolyLineEdge>
           <y:LineStyle color="#E74C3C" type="line" width="2.0"/>
@@ -203,15 +203,15 @@
     </edge>
     <edge id="e2" source="001" target="101">
       <data key="e0">001↔101 (W)</data>
-      <data key="e1">Przejścia: Internalizacja obowiązku / Przejęcie odpowiedzialności; Utrata motywacji przy obowiązku / Dezengażowanie</data>
+      <data key="e1">Przejścia: Zmiana W: 0→1 przy C=0, N=1; Zmiana W: 1→0 przy C=0, N=1</data>
       <data key="e2">001</data>
       <data key="e3">101</data>
       <data key="e4">W</data>
       <data key="e5">bidirectional</data>
-      <data key="e6">Internalizacja obowiązku / Przejęcie odpowiedzialności; Utrata motywacji przy obowiązku / Dezengażowanie</data>
-      <data key="e7"></data>
+      <data key="e6">Zmiana W: 0→1 przy C=0, N=1; Zmiana W: 1→0 przy C=0, N=1</data>
+      <data key="e7">Internalizacja obowiązku (N_source: external→identified); przejęcie odpowiedzialności; autonomizacja; Dezengażowanie (rezygnacja z W przy N=1); wypalenie; utrata sensu</data>
       <data key="e8"></data>
-      <data key="e9">Hipoteza: kluczowy moment w moral distress</data>
+      <data key="e9">H3: Przejście 001→101 mediuje przez wzrost perceived autonomy support; test: mediacja w modelu panelowym</data>
       <data key="e10">
         <y:PolyLineEdge>
           <y:LineStyle color="#E74C3C" type="line" width="2.0"/>
@@ -222,15 +222,15 @@
     </edge>
     <edge id="e3" source="010" target="110">
       <data key="e0">010↔110 (W)</data>
-      <data key="e1">Przejścia: Aktywacja potencjału / Przejęcie inicjatywy; Utrata autonomicznej motywacji / Wypalenie od pasji</data>
+      <data key="e1">Przejścia: Zmiana W: 0→1 przy C=1, N=0; Zmiana W: 1→0 przy C=1, N=0</data>
       <data key="e2">010</data>
       <data key="e3">110</data>
       <data key="e4">W</data>
       <data key="e5">bidirectional</data>
-      <data key="e6">Aktywacja potencjału / Przejęcie inicjatywy; Utrata autonomicznej motywacji / Wypalenie od pasji</data>
-      <data key="e7"></data>
+      <data key="e6">Zmiana W: 0→1 przy C=1, N=0; Zmiana W: 1→0 przy C=1, N=0</data>
+      <data key="e7">Aktywacja potencjału; pojawienie się chęci przy istniejących możliwościach; autonomizacja; Utrata autonomicznej motywacji; wypalenie od pasji; nudza; utrata sensu</data>
       <data key="e8"></data>
-      <data key="e9">Hipoteza: najbardziej adaptacyjne przejście do działania</data>
+      <data key="e9">H5: Przejście 010→110 przewidywane przez intrinsic motivation i autonomy support; test: SEM</data>
       <data key="e10">
         <y:PolyLineEdge>
           <y:LineStyle color="#E74C3C" type="line" width="2.0"/>
@@ -241,15 +241,15 @@
     </edge>
     <edge id="e4" source="011" target="111">
       <data key="e0">011↔111 (W)</data>
-      <data key="e1">Przejścia: Internalizacja obowiązku / Autonomizacja compliance; Utrata autonomii przy obowiązku i możliwości / Dezautonomizacja</data>
+      <data key="e1">Przejścia: Zmiana W: 0→1 przy C=1, N=1; Zmiana W: 1→0 przy C=1, N=1</data>
       <data key="e2">011</data>
       <data key="e3">111</data>
       <data key="e4">W</data>
       <data key="e5">bidirectional</data>
-      <data key="e6">Internalizacja obowiązku / Autonomizacja compliance; Utrata autonomii przy obowiązku i możliwości / Dezautonomizacja</data>
-      <data key="e7"></data>
+      <data key="e6">Zmiana W: 0→1 przy C=1, N=1; Zmiana W: 1→0 przy C=1, N=1</data>
+      <data key="e7">Internalizacja obowiązku (N_source: introjected→identified); autonomizacja compliance; znalezienie sensu; Dezautonomizacja (utrata W przy N=1); wypalenie; utrata sensu; konflikt wartości</data>
       <data key="e8"></data>
-      <data key="e9">Hipoteza: kluczowe dla jakości działania</data>
+      <data key="e9">H7: Przejście 011→111 mediuje przez perceived autonomy support i identified regulation; test: mediacja longitudinalna</data>
       <data key="e10">
         <y:PolyLineEdge>
           <y:LineStyle color="#E74C3C" type="line" width="2.0"/>
@@ -260,15 +260,15 @@
     </edge>
     <edge id="e5" source="000" target="010">
       <data key="e0">000↔010 (C)</data>
-      <data key="e1">Przejścia: Pojawienie się możliwości / Pozyskanie zasobów; Utrata możliwości / Utrata zasobów</data>
+      <data key="e1">Przejścia: Zmiana C: 0→1 przy W=0, N=0; Zmiana C: 1→0 przy W=0, N=0</data>
       <data key="e2">000</data>
       <data key="e3">010</data>
       <data key="e4">C</data>
       <data key="e5">bidirectional</data>
-      <data key="e6">Pojawienie się możliwości / Pozyskanie zasobów; Utrata możliwości / Utrata zasobów</data>
-      <data key="e7"></data>
+      <data key="e6">Zmiana C: 0→1 przy W=0, N=0; Zmiana C: 1→0 przy W=0, N=0</data>
+      <data key="e7">Pojawienie się możliwości; mastery experience; zdobycie zasobów; zmiana oceny wykonalności; Utrata możliwości; utrata umiejętności (nieużywanie); lęk; zmiana oceny</data>
       <data key="e8"></data>
-      <data key="e9">Hipoteza: C rośnie stopniowo, ale HPE zakłada skok</data>
+      <data key="e9">H9: Przejście 000→010 częstsze po mastery experience; test: analiza sekwencji EMA</data>
       <data key="e10">
         <y:PolyLineEdge>
           <y:LineStyle color="#2ECC71" type="line" width="2.0"/>
@@ -279,15 +279,15 @@
     </edge>
     <edge id="e6" source="001" target="011">
       <data key="e0">001↔011 (C)</data>
-      <data key="e1">Przejścia: Pozyskanie możliwości do obowiązku / Empowerment w roli; Utrata możliwości przy obowiązku / Dezempowerment</data>
+      <data key="e1">Przejścia: Zmiana C: 0→1 przy W=0, N=1; Zmiana C: 1→0 przy W=0, N=1</data>
       <data key="e2">001</data>
       <data key="e3">011</data>
       <data key="e4">C</data>
       <data key="e5">bidirectional</data>
-      <data key="e6">Pozyskanie możliwości do obowiązku / Empowerment w roli; Utrata możliwości przy obowiązku / Dezempowerment</data>
-      <data key="e7"></data>
+      <data key="e6">Zmiana C: 0→1 przy W=0, N=1; Zmiana C: 1→0 przy W=0, N=1</data>
+      <data key="e7">Pozyskanie możliwości do obowiązku; empowerment w roli; zdobycie zasobów; Dezempowerment (utrata C przy N=1); utrata kompetencji; zmiana oceny</data>
       <data key="e8"></data>
-      <data key="e9">Hipoteza: C→0→1 przy N=1, W=0 to compliance enablement</data>
+      <data key="e9">H11: Przejście 001→011 przewidywane przez perceived organizational support; test: cross-lagged panel</data>
       <data key="e10">
         <y:PolyLineEdge>
           <y:LineStyle color="#2ECC71" type="line" width="2.0"/>
@@ -298,15 +298,15 @@
     </edge>
     <edge id="e7" source="100" target="110">
       <data key="e0">100↔110 (C)</data>
-      <data key="e1">Przejścia: Pozyskanie możliwości do celu / Przełamanie barier; Utrata możliwości przy autonomicznej motywacji / Blokada działania</data>
+      <data key="e1">Przejścia: Zmiana C: 0→1 przy W=1, N=0; Zmiana C: 1→0 przy W=1, N=0</data>
       <data key="e2">100</data>
       <data key="e3">110</data>
       <data key="e4">C</data>
       <data key="e5">bidirectional</data>
-      <data key="e6">Pozyskanie możliwości do celu / Przełamanie barier; Utrata możliwości przy autonomicznej motywacji / Blokada działania</data>
-      <data key="e7"></data>
+      <data key="e6">Zmiana C: 0→1 przy W=1, N=0; Zmiana C: 1→0 przy W=1, N=0</data>
+      <data key="e7">Pozyskanie możliwości do celu; przełamanie barier; planowanie implementacji; Blokada działania (utrata C przy W=1); frustracja; bezsilność</data>
       <data key="e8"></data>
-      <data key="e9">Hipoteza: 100→110 = przejście Rubikonu (planowanie)</data>
+      <data key="e9">H13: Przejście 100→110 mediuje przez implementation intentions (Gollwitzer); test: mediacja</data>
       <data key="e10">
         <y:PolyLineEdge>
           <y:LineStyle color="#2ECC71" type="line" width="2.0"/>
@@ -317,15 +317,15 @@
     </edge>
     <edge id="e8" source="101" target="111">
       <data key="e0">101↔111 (C)</data>
-      <data key="e1">Przejścia: Rozwiązanie konfliktu / Przełamanie barier przy motywacji i obowiązku; Utrata możliwości przy pełnej gotowości / Kryzys zasobów</data>
+      <data key="e1">Przejścia: Zmiana C: 0→1 przy W=1, N=1; Zmiana C: 1→0 przy W=1, N=1</data>
       <data key="e2">101</data>
       <data key="e3">111</data>
       <data key="e4">C</data>
       <data key="e5">bidirectional</data>
-      <data key="e6">Rozwiązanie konfliktu / Przełamanie barier przy motywacji i obowiązku; Utrata możliwości przy pełnej gotowości / Kryzys zasobów</data>
-      <data key="e7"></data>
+      <data key="e6">Zmiana C: 0→1 przy W=1, N=1; Zmiana C: 1→0 przy W=1, N=1</data>
+      <data key="e7">Rozwiązanie konfliktu; przełamanie barier przy motywacji i obowiązku; problem-focused coping; Kryzys zasobów (utrata C przy W=1, N=1); szok; moral distress ostry</data>
       <data key="e8"></data>
-      <data key="e9">Hipoteza: 101→111 = adaptacyjne copingiem; najbardziej pożądane</data>
+      <data key="e9">H15: Przejście 101→111 przewidywane przez problem-focused coping i social support; test: SEM</data>
       <data key="e10">
         <y:PolyLineEdge>
           <y:LineStyle color="#2ECC71" type="line" width="2.0"/>
@@ -336,15 +336,15 @@
     </edge>
     <edge id="e9" source="000" target="001">
       <data key="e0">000↔001 (N)</data>
-      <data key="e1">Przejścia: Pojawienie się obowiązku / Przyjęcie odpowiedzialności; Utrata obowiązku / Odrzucenie roli</data>
+      <data key="e1">Przejścia: Zmiana N: 0→1 przy W=0, C=0; Zmiana N: 1→0 przy W=0, C=0</data>
       <data key="e2">000</data>
       <data key="e3">001</data>
       <data key="e4">N</data>
       <data key="e5">bidirectional</data>
-      <data key="e6">Pojawienie się obowiązku / Przyjęcie odpowiedzialności; Utrata obowiązku / Odrzucenie roli</data>
-      <data key="e7"></data>
+      <data key="e6">Zmiana N: 0→1 przy W=0, C=0; Zmiana N: 1→0 przy W=0, C=0</data>
+      <data key="e7">Pojawienie się obowiązku; przyjęcie odpowiedzialności; socjalizacja do roli; Utrata obowiązku; odrzucenie roli; deprecjacja normy</data>
       <data key="e8"></data>
-      <data key="e9">Hipoteza: N może być internalizowane (→W) lub eksternalne (→compliance)</data>
+      <data key="e9">H17: Przejście 000→001 z internalizacją (→101) vs bez (→011) rozróżnialne autonomy support; test: interaction effect</data>
       <data key="e10">
         <y:PolyLineEdge>
           <y:LineStyle color="#3498DB" type="line" width="2.0"/>
@@ -355,15 +355,15 @@
     </edge>
     <edge id="e10" source="010" target="011">
       <data key="e0">010↔011 (N)</data>
-      <data key="e1">Przejścia: Narzucony obowiązek przy możliwości / Compliance enablement; Utrata obowiązku przy możliwości / Deregulacja</data>
+      <data key="e1">Przejścia: Zmiana N: 0→1 przy W=0, C=1; Zmiana N: 1→0 przy W=0, C=1</data>
       <data key="e2">010</data>
       <data key="e3">011</data>
       <data key="e4">N</data>
       <data key="e5">bidirectional</data>
-      <data key="e6">Narzucony obowiązek przy możliwości / Compliance enablement; Utrata obowiązku przy możliwości / Deregulacja</data>
-      <data key="e7"></data>
+      <data key="e6">Zmiana N: 0→1 przy W=0, C=1; Zmiana N: 1→0 przy W=0, C=1</data>
+      <data key="e7">Narzucony obowiązek przy możliwości; compliance enablement; socjalizacja do nowej roli; Deregulacja (utrata N przy C=1); autonomizacja; odrzucenie normy</data>
       <data key="e8"></data>
-      <data key="e9">Hipoteza: 010→011 przy niskim autonomy support → 011 (compliance)</data>
+      <data key="e9">H19: Przejście 010→011 przy niskim autonomy support przewiduje 011→001 (rezygnacja z C) nie 011→111; test: sekwencje</data>
       <data key="e10">
         <y:PolyLineEdge>
           <y:LineStyle color="#3498DB" type="line" width="2.0"/>
@@ -374,15 +374,15 @@
     </edge>
     <edge id="e11" source="100" target="101">
       <data key="e0">100↔101 (N)</data>
-      <data key="e1">Przejścia: Pojawienie się obowiązku przy celu / Moralizacja celu; Utrata obowiązku przy motywacji / Sekularyzacja celu</data>
+      <data key="e1">Przejścia: Zmiana N: 0→1 przy W=1, C=0; Zmiana N: 1→0 przy W=1, C=0</data>
       <data key="e2">100</data>
       <data key="e3">101</data>
       <data key="e4">N</data>
       <data key="e5">bidirectional</data>
-      <data key="e6">Pojawienie się obowiązku przy celu / Moralizacja celu; Utrata obowiązku przy motywacji / Sekularyzacja celu</data>
-      <data key="e7"></data>
+      <data key="e6">Zmiana N: 0→1 przy W=1, C=0; Zmiana N: 1→0 przy W=1, C=0</data>
+      <data key="e7">Moralizacja celu; pojawienie się poczucia 'powinienem' przy chęci; internalizacja normy moralnej; Sekularyzacja celu (utrata N przy W=1); odrzucenie normy; redefinicja celu</data>
       <data key="e8"></data>
-      <data key="e9">Hipoteza: 100→101 = internalizacja normy moralnej (autonomiczna) vs eksternalna</data>
+      <data key="e9">H21: Przejście 100→101 z personal norm (Schwartz) przewiduje 101→111; z subjective norms (TPB) przewiduje 101→001; test: moderacja</data>
       <data key="e10">
         <y:PolyLineEdge>
           <y:LineStyle color="#3498DB" type="line" width="2.0"/>
@@ -393,15 +393,15 @@
     </edge>
     <edge id="e12" source="110" target="111">
       <data key="e0">110↔111 (N)</data>
-      <data key="e1">Przejścia: Pojawienie się obowiązku przy autonomii / Odpowiedzialność społeczna; Utrata obowiązku przy pełnej gotowości / Dezobowiązkowanie</data>
+      <data key="e1">Przejścia: Zmiana N: 0→1 przy W=1, C=1; Zmiana N: 1→0 przy W=1, C=1</data>
       <data key="e2">110</data>
       <data key="e3">111</data>
       <data key="e4">N</data>
       <data key="e5">bidirectional</data>
-      <data key="e6">Pojawienie się obowiązku przy autonomii / Odpowiedzialność społeczna; Utrata obowiązku przy pełnej gotowości / Dezobowiązkowanie</data>
-      <data key="e7"></data>
+      <data key="e6">Zmiana N: 0→1 przy W=1, C=1; Zmiana N: 1→0 przy W=1, C=1</data>
+      <data key="e7">Pojawienie się obowiązku przy autonomii; odpowiedzialność społeczna; internalizacja normy prosocjalnej; Dezobowiązkowanie (utrata N przy W=1, C=1); delegacja; planowana sukcesja</data>
       <data key="e8"></data>
-      <data key="e9">Hipoteza: 110→111 = OCB / citizenship; N internalizowane</data>
+      <data key="e9">H23: Przejście 110→111 przewidywane przez organizational identification i prosocial motivation; test: SEM</data>
       <data key="e10">
         <y:PolyLineEdge>
           <y:LineStyle color="#3498DB" type="line" width="2.0"/>
