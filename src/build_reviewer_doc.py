@@ -56,7 +56,7 @@ def main():
     
     meta = doc.add_paragraph()
     meta.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    run = meta.add_run(f"Data: {datetime.now().strftime('%d.%m.%Y')}\nProjekt: DMTRD – Etap 1\nDokument główny: DMTRD_koncepcja_rev3.docx")
+    run = meta.add_run(f"Data: {datetime.now().strftime('%d.%m.%Y')}\nProjekt: DMTRD – Etap 1\nDokument główny: DMTRD_koncepcja_rev3_1.docx")
     run.font.size = Pt(11)
     run.italic = True
     

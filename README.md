@@ -1,6 +1,6 @@
 # DMTRD – Dynamiczny Model Trójwymiarowej Regulacji Działania
 
-**Wersja kanoniczna: rev3** (08.11.2026)
+**Wersja kanoniczna: rev3.1** (08.11.2026)
 
 ## Etap 1 – Analiza naukowa, formalizacja matematyczna i przygotowanie dokumentacji do recenzji
 
@@ -10,8 +10,8 @@
 
 ```
 DMTRD/
-├── DMTRD_koncepcja_rev3.docx                    # Główny dokument naukowy (wersja kanoniczna)
-├── DMTRD_streszczenie_dla_recenzenta_rev3.docx  # Streszczenie dla recenzenta (~2-4 strony)
+├── DMTRD_koncepcja_rev3_1.docx                    # Główny dokument naukowy (wersja kanoniczna rev3.1)
+├── DMTRD_streszczenie_dla_recenzenta_rev3_1.docx  # Streszczenie dla recenzenta (~2-4 strony)
 ├── README.md                                    # Ten plik
 ├── requirements.txt                             # Zależności Python
 │
@@ -48,17 +48,19 @@ DMTRD/
 ├── src/                                         # Skrypty Python
 │   ├── build_graph.py                          # Generowanie GraphML (yEd)
 │   ├── generate_diagrams.py                    # Generowanie SVG/PNG (matplotlib/networkx)
-│   ├── build_document.py                       # Generowanie DMTRD_koncepcja_rev3.docx
-│   ├── build_reviewer_doc.py                   # Generowanie DMTRD_streszczenie_dla_recenzenta_rev3.docx
+│   ├── build_document.py                       # Generowanie DMTRD_koncepcja_rev3_1.docx
+│   ├── build_reviewer_doc.py                   # Generowanie DMTRD_streszczenie_dla_recenzenta_rev3_1.docx
 │   ├── hpe_simulation.py                       # Symulacja CTMC (naprawiony CR-01)
 │   ├── validate_model.py                       # Walidacja modelu (CSV, GraphML, Q3)
-│   └── validate_docx.py                        # Walidacja DOCX (10 kryteriów)
+│   └── validate_docx.py                        # Walidacja DOCX (11 kryteriów)
 │
 ├── tests/                                       # Testy automatyczne
 │   └── (zintegrowane z validate_model.py)
 │
 └── reports/                                     # Raporty
-    ├── DMTRD_rev3_conceptual_restoration.md    # Raport audytu i przywracania koncepcji (ten plik)
+    ├── DMTRD_rev3_1_consistency_audit.md       # Audyt spójności rev3.1
+    ├── DMTRD_rev3_1_docx_validation.md         # Walidacja DOCX rev3.1
+    ├── DMTRD_rev3_conceptual_restoration.md    # Raport audytu i przywracania koncepcji (rev3)
     ├── DMTRD_rev2_docx_validation.md           # Walidacja DOCX rev2
     ├── DMTRD_rev1_final_validation.md          # Walidacja końcowa rev1
     ├── DMTRD_rev1_change_report.md             # Raport zmian rev1
@@ -87,7 +89,7 @@ pip install -r requirements.txt
 # Walidacja modelu (testy CSV, GraphML, Q3 topologia)
 .venv\Scripts\python.exe src\validate_model.py
 
-# Walidacja dokumentu DOCX (10 kryteriów)
+# Walidacja dokumentu DOCX (11 kryteriów)
 .venv\Scripts\python.exe src\validate_docx.py
 
 # Generowanie diagramów GraphML (dla yEd)
@@ -96,23 +98,23 @@ pip install -r requirements.txt
 # Generowanie diagramów SVG/PNG (matplotlib)
 .venv\Scripts\python.exe src\generate_diagrams.py
 
-# Generowanie dokumentu głównego (wersja kanoniczna rev3)
+# Generowanie dokumentu głównego (wersja kanoniczna rev3.1)
 .venv\Scripts\python.exe src\build_document.py
 
-# Generowanie streszczenia dla recenzenta (wersja rev3)
+# Generowanie streszczenia dla recenzenta (wersja rev3.1)
 .venv\Scripts\python.exe src\build_reviewer_doc.py
 
 # Test symulacji CTMC (w tym test CR-01)
 .venv\Scripts\python.exe src\hpe_simulation.py
 ```
 
-## Pliki wyjściowe (kluczowe – wersja rev3)
+## Pliki wyjściowe (kluczowe – wersja rev3.1)
 
-1. **DMTRD_koncepcja_rev3.docx** – Główny dokument naukowy do recenzji (wersja kanoniczna)
-2. **DMTRD_streszczenie_dla_recenzenta_rev3.docx** – Streszczenie dla recenzenta z 8 pytaniami
+1. **DMTRD_koncepcja_rev3_1.docx** – Główny dokument naukowy do recenzji (wersja kanoniczna)
+2. **DMTRD_streszczenie_dla_recenzenta_rev3_1.docx** – Streszczenie dla recenzenta z 8 pytaniami
 3. **DMTRD_12_krawedzi.graphml** – Graf Q3 do yEd (12 krawędzi nieskierowanych)
 4. **DMTRD_24_przejscia.graphml** – Graf Q3 do yEd (24 przejścia skierowane)
-4. **DMTRD_diagram.svg/png** – Diagramy do włączenia do dokumentu
+5. **DMTRD_diagram.svg/png** – Diagramy do włączenia do dokumentu
 
 ## Walidacja
 
@@ -122,18 +124,18 @@ Wszystkie testy przechodzą (0 błędów):
 - Spójność CSV (stany ↔ przejścia)
 - GraphML: 8 węzłów, 12/24 krawędzie, poprawny edgedefault
 - Topologia Q3 (NetworkX): stopnie=3, spójny, dwudzielny, średnica=3
-- DOCX rev3: 10/10 kryteriów (otwarcie, rozdziały, diagram, 8 stanów, 24 przejścia, hipotezy, brak starych błędów, bibliografia, tabele, wersja)
+- DOCX rev3.1: 11/11 kryteriów (otwarcie, rozdziały, diagram, 8 stanów, 24 przejścia, hipotezy, brak starych błędów, definicje kanoniczne, bibliografia, tabele, wersja)
 - Symulacja CTMC: test CR-01 przechodzi (Monte Carlo vs exp(Q*dt): różnica < 0.02)
 
 ## Status projektu
 
-**ETAP 1 – ZAKOŃCZONY (wersja kanoniczna rev3)** ✓
+**ETAP 1 – ZAKOŃCZONY (wersja kanoniczna rev3.1)** ✓
 
 Wszystkie kryteria ukończenia spełnione:
-1. ✓ DMTRD_koncepcja_rev3.docx istnieje (wersja kanoniczna)
-2. ✓ DMTRD_streszczenie_dla_recenzenta_rev3.docx istnieje
-3. ✓ Opisano wszystkie 8 stanów (szczegółowo, schemat A-L)
-4. ✓ Opisano wszystkie 24 przejścia (szczegółowo, schemat 1-12)
+1. ✓ DMTRD_koncepcja_rev3_1.docx istnieje (wersja kanoniczna)
+2. ✓ DMTRD_streszczenie_dla_recenzenta_rev3_1.docx istnieje
+3. ✓ Opisano wszystkie 8 stanów (szczegółowo, schemat A-L) w dokumencie głównym
+4. ✓ Opisano wszystkie 24 przejścia (szczegółowo, schemat 1-12) w dokumencie głównym
 5. ✓ Przeprowadzono analizę porównawną z 10 teoriami
 6. ✓ Zidentyfikowano istotne ograniczenia (5 argumentów krytycznych)
 7. ✓ Przedstawiono formalizację matematyczną (Q3, DTMC, CTMC, LTA)
@@ -143,7 +145,7 @@ Wszystkie kryteria ukończenia spełnione:
 11. ✓ Zweryfikowano strukturę grafów (testy przechodzą)
 12. ✓ Utworzono bibliografię (20+ pozycji, z DOI)
 13. ✓ Sprawdzono spójność cytowań
-14. ✓ Przeprowadzono audyt końcowy i przywrócenie koncepcji (rev3)
+14. ✓ Przeprowadzono audyt spójności i poprawy definicyjne (rev3.1)
 15. ✓ Wszystkie pliki w katalogu projektu
 16. ✓ Naprawiono błąd CR-01 w symulacji CTMC (test deterministyczny przechodzi)
 17. ✓ Przywrócono kanoniczne definicje W, C, N (bez utożsamień z TPB/SDT/COM-B)
@@ -153,7 +155,7 @@ Wszystkie kryteria ukończenia spełnione:
 
 ## Następne kroki (Etap 2+)
 
-1. **Niezależna recenzja** – przekazanie `DMTRD_koncepcja_rev3.docx` i `DMTRD_streszczenie_dla_recenzenta_rev3.docx` psychologowi-metodologowi (z tą recenzją i jawym wykazem ograniczeń)
+1. **Niezależna recenzja** – przekazanie `DMTRD_koncepcja_rev3_1.docx` i `DMTRD_streszczenie_dla_recenzenta_rev3_1.docx` psychologowi-metodologowi (z tą recenzją i jawym wykazem ograniczeń)
 2. **Etap 2 – Walidacja psychometryczna** (N=300–500): CFA, walidacja konstruktu, wersja ciągła W,C,N, rozdzielenie N na podwymiary, wywiady poznawcze
 3. **Etap 3 – Badanie EMA pilotażowe** (N=100, T=14 dni): test HPE, asymetrii, hipotez E1-E24, gęstość próbkowania z symulacji
 4. **Etap 4 – Badanie EMA główne** (N=300–500, T=21 dni): pełna walidacja predykcyjna, analiza path dependence
@@ -182,4 +184,4 @@ Wszystkie kryteria ukończenia spełnione:
 Projekt realizowany w ramach prac badawczych nad modelem DMTRD.
 Wszelkie pytania kierować do autora projektu.
 
-*Ostatnia aktualizacja: 08.11.2026 (wersja rev3 – kanoniczna)*
+*Ostatnia aktualizacja: 08.11.2026 (wersja rev3.1 – kanoniczna)*

@@ -533,114 +533,112 @@ def main():
     doc.add_page_break()
     
     # ============================================================
-    # 11. CHARAKTERYSTYKA OŚMIU STANÓW
+    # 8. CHARAKTERYSTYKA OŚMIU STANÓW MOTYWACYJNYCH
     # ============================================================
     add_heading_styled(doc, "8. Charakterystyka ośmiu stanów motywacyjnych", 1)
     
     add_paragraph_styled(doc, 
-        "Każdy stan opisano według ujednoliconego schematu (kod, nazwa, definicja, interpretacje, "
-        "procesy, emocje, zachowanie, mechanizmy, koszty/korzyści, przykłady, przejścia, hipotezy, powiązania, ograniczenia). "
-        "Pełne opisy w aneksie (model/stany.csv). Poniżej syntetyczne zestawienie.")
+        "Każdy stan opisano według ujednoliconego schematu: kod, nazwa, dosłowne znaczenie W/C/N, "
+        "charakterystyka psychologiczna, typowe możliwe zachowania, typowe sytuacje życiowe, "
+        "przykłady, możliwe źródła napięcia, sytuacje adaptacyjne i niekorzystne, granice interpretacji. "
+        "Poniżej kompletne opisy wszystkich ośmiu stanów.")
     
     states = load_states()
     
-    # Tabela stanów
-    headers = ["Kod", "W", "C", "N", "Nazwa naukowa", "Kluczowa interpretacja"]
+    # Tabela stanów - skrócona
+    headers = ["Kod", "W", "C", "N", "Nazwa praktyczna", "Dosłowne znaczenie"]
     rows = []
     for code in sorted(states.keys()):
         s = states[code]
-        rows.append([code, s['W'], s['C'], s['N'], s['nazwa_naukowa'], 
-                     s['interpretacja_psychologiczna'][:100] + "..."])
-    add_table_with_style(doc, headers, rows, col_widths=[1, 0.8, 0.8, 0.8, 4, 8])
+        rows.append([code, s['W'], s['C'], s['N'], s['nazwa_opisowa'], 
+                     f"W={s['W']}, C={s['C']}, N={s['N']}"])
+    add_table_with_style(doc, headers, rows, col_widths=[1, 0.8, 0.8, 0.8, 4, 3])
     
-    add_paragraph_styled(doc, "Tabela 2. Osiem stanów motywacyjnych DMTRD (opracowanie własne).", italic=True, size=9)
+    add_paragraph_styled(doc, "Tabela 2. Osiem stanów motywacyjnych DMTRD – przegląd.", italic=True, size=9)
     
-    # Szczegóły kluczowych stanów
-    add_heading_styled(doc, "8.1. Stan 000 – Spoczynek / Brak przesłanek (W=0, C=0, N=0)", 2)
-    add_paragraph_styled(doc, 
-        "Osoba nie chce wykonywać danego działania, nie uważa, że może je wykonać, i nie uważa, że powinna je wykonać. "
-        "To stan braku motywacyjnego napędu względem tego konkretnego działania. Może to być stan odpoczynku po wykonaniu zadania, "
-        "przerwa między zadaniami, albo po prostu brak aktualnego zainteresowania tym działaniem. "
-        "Główne przejścia: 000→100 (pojawienie się chęci), 000→010 (pojawienie się przekonania o możliwości), "
-        "000→001 (pojawienie się przekonania o konieczności). "
-        "Hipoteza: stabilny jako punkt spoczynku; niestabilny przy silnych bodźcach.")
-    
-    add_heading_styled(doc, "8.2. Stan 001 – Tylko powinność (N=1, W=0, C=0)", 2)
-    add_paragraph_styled(doc, 
-        "Osoba uważa, że powinna wykonać działanie (w świetle swoich celów), ale nie chce tego robić i nie uważa, że może to zrobić. "
-        "To stan napięcia: \"powinienem, ale nie chcę i nie mogę\". Często towarzyszy mu poczucie bezsilności, frustracji, winy lub lęku. "
-        "Główne przejścia: 001→011 (pozyskanie przekonania o możliwości – empowerment), "
-        "001→101 (pojawienie się chęci – internalizacja konieczności), 001→000 (rezygnacja z przekonania o konieczności). "
-        "Hipoteza: niestabilny – presja do zmiany przekonania o możliwości, chęci lub rezygnacji z przekonania o konieczności. "
-        "Ryzyko depresji, wypalenia.")
-    
-    add_heading_styled(doc, "8.2. Stan 010 – Możliwość bez napędu (C=1, W=0, N=0)", 2)
-    add_paragraph_styled(doc, 
-        "Osoba uważa, że może wykonać działanie, ale nie chce go robić i nie uważa, że powinna. "
-        "To stan potencjału bez kierunku – \"mogę, ale nie chcę i nie muszę\". Często towarzyszy spokój, ciekawość, czasem nudza. "
-        "Stan ten jest neutralny lub lekko pozytywny (poczucie swobody). "
-        "Główne przejścia: 010→110 (pojawienie się chęci), 010→011 (pojawienie się przekonania o konieczności), "
-        "010→000 (utrata przekonania o możliwości). "
-        "Hipoteza: stabilny (brak naprężenia); przejście do działania wymaga chęci lub przekonania o konieczności.")
-    
-    add_heading_styled(doc, "8.2. Stan 011 – Compliance (C=1, N=1, W=0)", 2)
-    add_paragraph_styled(doc, 
-        "Osoba uważa, że może wykonać działanie i uważa, że powinna, ale nie chce. "
-        "To stan compliance: działanie z presji (wewnętrznej lub zewnętrznej) bez wewnętrznej zgody. "
-        "Towarzyszą: opór, złość, winę, obojętność, ryzyko wypalenia. Jakość działania zazwyczaj niższa. "
-        "Główne przejścia: 011→111 (internalizacja – pojawienie się chęci), "
-        "011→001 (utrata przekonania o możliwości – dezempowerment), 011→010 (utrata przekonania o konieczności – deregulacja). "
-        "Hipoteza: metastabilny – ryzyko wypalenia lub internalizacji.")
-    
-    add_heading_styled(doc, "8.3. Stan 100 – Chęć zablokowana (W=1, C=0, N=0)", 2)
-    add_paragraph_styled(doc, 
-        "Osoba chce wykonać działanie, ale nie uważa, że może je wykonać i nie uważa, że powinna. "
-        "To stan frustracji celowej: silny napęd (chęć) spotyka barierę (brak przekonania o możliwości). "
-        "Towarzyszą: frustracja, żal, nadzieja, determinacja. Osoba planuje, szuka dróg, lobbyuje o zasoby. "
-        "Główne przejścia: 100→110 (pojawienie się przekonania o możliwości – przełamanie barier), "
-        "100→101 (pojawienie się przekonania o konieczności – moralizacja celu), "
-        "100→000 (rezygnacja z chęci – adaptacyjna lub patologiczna). "
-        "Hipoteza: niestabilny – presja na zdobycie przekonania o możliwości lub rezygnację z chęci.")
-    
-    add_heading_styled(doc, "8.3. Stan 101 – Napięcie krytyczne (W=1, C=0, N=1)", 2)
-    add_paragraph_styled(doc, 
-        "Najbardziej napięty stan. Osoba chce i uważa, że powinna, ale nie uważa, że może. "
-        "Silna motywacja (chęć + przekonanie o konieczności) zablokowana barierą (brak przekonania o możliwości). "
-        "Towarzyszą: lęk, winę, gniew, bezsilność, ryzyko wypalenia. Stan ten wymaga szybkiej zmiany przekonania o możliwości lub rezygnacji. "
-        "Główne przejścia: 101→111 (rozwiązanie konfliktu – najbardziej pożądane), "
-        "101→001 (rezygnacja z chęci – dezengażowanie), 101→100 (rezygnacja z przekonania o konieczności – sekularyzacja celu). "
-        "Hipoteza: 'czasowa bomba' – wymaga szybkiej zmiany przekonania o możliwości lub rezygnacji. "
-        "Uwaga: Stan 101 NIE jest równoważny moral distress – to osobna hipoteza H_MD (w kontekście moralnym 101 predysponuje do moral distress).")
-    
-    add_heading_styled(doc, "8.4. Stan 110 – Gotowość autonomiczna (W=1, C=1, N=0)", 2)
-    add_paragraph_styled(doc, 
-        "Osoba chce i uważa, że może, ale nie uważa, że powinna. To stan motywacji autonomicznej, sprawczości, potencjalnego flow. "
-        "N=0 nie oznacza brak norm – mogą być zinternalizowane (wtedy chęć zastępuje przekonanie o konieczności) lub brak kontekstu normatywnego. "
-        "Główne przejścia: 110→111 (pojawienie się przekonania o konieczności – odpowiedzialność społeczna/OCB), "
-        "110→100 (utrata przekonania o możliwości – blokada), 110→010 (utrata chęci – wypalenie od pasji, nudza). "
-        "Hipoteza: stabilny przy autonomii; ryzyko 110→010 przy narzuconych zadaniach.")
-    
-    add_heading_styled(doc, "8.5. Stan 111 – Pełna zbieżność (W=1, C=1, N=1)", 2)
-    add_paragraph_styled(doc, 
-        "Osoba chce, uważa, że może, i uważa, że powinna. Pełna gotowość motywacyjna. "
-        "Przy racjonalnym przekonaniu o konieczności: najwyższa jakość motywacji. "
-        "Ale 111 NIE ZAWSZE OPTYMALNE – przekonanie o konieczności może być błędne, chęć chwilowa, przekonanie o możliwości przecenione. "
-        "Główne przejścia: 111→011 (utrata chęci przy przekonaniu o konieczności – dezautonomizacja, groźne, wypalenie), "
-        "111→101 (utrata przekonania o możliwości przy chęci i przekonaniu o konieczności – kryzys zasobów, napięcie krytyczne), "
-        "111→110 (utrata przekonania o konieczności – dezobowiązkowanie, delegacja, sukcesja, adaptacyjne). "
-        "Hipoteza: stabilny przy racjonalnym przekonaniu o konieczności; 111→011 groźniejsze niż 111→110.")
+    # Szczegółowe opisy wszystkich stanów
+    for code in sorted(states.keys()):
+        s = states[code]
+        w_val, c_val, n_val = s['W'], s['C'], s['N']
+        
+        # Nagłówek stanu
+        add_heading_styled(doc, f"8.{int(code, 2)+1}. Stan {code} – {s['nazwa_opisowa']} (W={w_val}, C={c_val}, N={n_val})", 2)
+        
+        # Dosłowne znaczenie
+        add_paragraph_styled(doc, "Dosłowne znaczenie:", bold=True)
+        w_text = "chce" if w_val == "1" else "nie chce"
+        c_text = "uważa, że może" if c_val == "1" else "nie uważa, że może"
+        n_text = "uważa, że powinna" if n_val == "1" else "nie uważa, że powinna"
+        add_paragraph_styled(doc, f"Osoba {w_val} wykonania działania ({w_text}), {c_val} możliwości wykonania ({c_text}), {n_val} konieczności ({n_text}).")
+        
+        # Charakterystyka psychologiczna
+        add_paragraph_styled(doc, "Charakterystyka psychologiczna:", bold=True)
+        add_paragraph_styled(doc, s['interpretacja_psychologiczna'])
+        
+        # Typowe możliwe zachowania
+        add_paragraph_styled(doc, "Typowe możliwe zachowania:", bold=True)
+        add_paragraph_styled(doc, s['relacja_do_zachowania'])
+        
+        # Typowe sytuacje życiowe
+        add_paragraph_styled(doc, "Typowe sytuacje życiowe:", bold=True)
+        # Parse przykłady from CSV
+        examples = []
+        if s['przyklady_codzienne']:
+            examples.append(f"Codziennie: {s['przyklady_codzienne']}")
+        if s['przyklady_zarzadzanie']:
+            examples.append(f"Praca: {s['przyklady_zarzadzanie']}")
+        if s['przyklady_spoleczne']:
+            examples.append(f"Społeczne: {s['przyklady_spoleczne']}")
+        for ex in examples:
+            add_paragraph_styled(doc, ex, style='List Bullet')
+        
+        # Możliwe źródła napięcia
+        add_paragraph_styled(doc, "Możliwe źródła napięcia:", bold=True)
+        # Extract from koszty_psychologiczne and interpretacja
+        napiecia = s['koszty_psychologiczne'].split('; ')
+        for n in napiecia:
+            if n.strip():
+                add_paragraph_styled(doc, n.strip(), style='List Bullet')
+        
+        # Sytuacje adaptacyjne
+        add_paragraph_styled(doc, "Sytuacje adaptacyjne:", bold=True)
+        adapt = s['korzysci_adaptacyjne'].split('; ')
+        for a in adapt:
+            if a.strip():
+                add_paragraph_styled(doc, a.strip(), style='List Bullet')
+        
+        # Sytuacje niekorzystne
+        add_paragraph_styled(doc, "Sytuacje niekorzystne (ryzyka):", bold=True)
+        niekorz = s['koszty_psychologiczne'].split('; ')
+        for n in niekorz:
+            if n.strip() and ('ryzyko' in n.lower() or 'wypalenie' in n.lower() or 'depres' in n.lower() or 'apatia' in n.lower() or 'bezsilność' in n.lower()):
+                add_paragraph_styled(doc, n.strip(), style='List Bullet')
+        
+        # Granice interpretacji
+        add_paragraph_styled(doc, "Granice interpretacji:", bold=True)
+        ogr = s['ograniczenia_interpretacyjne'].split('; ')
+        for o in ogr:
+            if o.strip():
+                add_paragraph_styled(doc, o.strip(), style='List Bullet')
+        
+        # Przejścia
+        add_paragraph_styled(doc, f"Przejścia wychodzące: {s['przejscia_wychodzace']}", italic=True)
+        add_paragraph_styled(doc, f"Przejścia przychodzące: {s['przejscia_przychodzace']}", italic=True)
+        
+        doc.add_paragraph()
     
     doc.add_page_break()
     
     # ============================================================
-    # 12. GRAF I TOPOLOGIA PRZEJŚĆ
+    # 9. GRAF STANÓW I TOPOLOGIA PRZEJŚĆ
     # ============================================================
     add_heading_styled(doc, "9. Graf stanów i topologia przejść", 1)
     
     add_paragraph_styled(doc, 
         "Graf Q3 (Rysunek 1) przedstawia 8 stanów jako wierzchołki i 12 krawędzi nieskierowanych "
         "jako dopuszczalne relacje sąsiedztwa (odległość Hamminga = 1). Każdy węzeł ma stopień 3. "
-        "Graf jest dwudzielny, spójny, średnica 3.")
+        "Graf jest dwudzielny, spójny, średnica 3. Każda krawędź nieskierowana odpowiada paře "
+        "przejść odwrotnych – 24 przejścia kierunkowych łącznie.")
     
     # Wstaw diagram
     diagram_path = DIAGRAMS_DIR / "DMTRD_diagram.png"
@@ -649,13 +647,7 @@ def main():
         add_paragraph_styled(doc, "Rysunek 1. Graf stanów DMTRD – 24 przejścia kierunkowe (kolory: czerwony=W, zielony=C, niebieski=N).", 
                             italic=True, size=9, bold=False)
     
-    add_paragraph_styled(doc, 
-        "Tabela 3 (w aneksie: model/przejscia_24.csv) zawiera pełną charakterystykę 24 przejść kierunkowych: "
-        "stan początkowy/końcowy, zmieniony wymiar, kierunek, nazwa procesu, definicja, przyczyny, "
-        "mechanizmy, skutki emocjonalne, wpływ na zachowanie, czynniki sprzyjające/hamujące, "
-        "interwencje, przykład, literatura, status empiryczny, hipoteza testowalna.")
-    
-    # Tabela przejść (skrócona)
+    # Tabela przejść (skrócone zestawienie)
     add_heading_styled(doc, "9.1. Zestawienie 24 przejść (skrócone)", 2)
     
     transitions = load_transitions()
@@ -665,25 +657,111 @@ def main():
         rows.append([t['id'], f"{t['start']}→{t['end']}", t['zmieniony_wymiar'], t['kierunek'], t['etykieta_neutralna'][:50]])
     add_table_with_style(doc, headers, rows, col_widths=[1, 2, 1.5, 1.5, 9])
     
-    add_heading_styled(doc, "9.2. Asymetria przejść odwrotnych – kluczowe przykłady", 2)
+    add_paragraph_styled(doc, 
+        "Poniżej szczegółowa charakterystyka wszystkich 24 przejść. Każde przejście zmienia dokładnie "
+        "jeden wymiar (HPE: d_H = 1). Opis zawiera: stan początkowy/końcowy, zmieniony wymiar, "
+        "dosłowne znaczenie zmiany, możliwy mechanizm, praktyczny przykład, możliwe konsekwencje, "
+        "granice interpretacji.")
     
-    asym = [
-        ("011 → 111 (Internalizacja)", "Pojawienie się chęci przy możliwości i przekonaniu o konieczności. Proces: identyfikacja z wartością zadania, autonomizacja. Koszt: niski (wzrost autonomii).", 
-         "111 → 011 (Dezautonomizacja)", "Utrata chęci przy zachowaniu przekonania o możliwości i konieczności. Proces: wypalenie, utrata sensu, mikromanagement. Koszt: wysoki (wypalenie, cynizm)."),
-        ("001 → 101 (Internalizacja konieczności)", "Pojawienie się chęci przy przekonaniu o konieczności i braku przekonania o możliwości. Proces: identyfikacja z wartością konieczności, autonomizacja. Koszt: umiarkowany (nadzieja).", 
-         "101 → 001 (Dezengażowanie)", "Utrata chęci przy przekonaniu o konieczności i braku przekonania o możliwości. Proces: wypalenie, utrata nadziei. Koszt: wysoki (bezsilność, depresja)."),
-        ("101 → 111 (Rozwiązanie konfliktu)", "Pojawienie się przekonania o możliwości przy chęci i przekonaniu o konieczności. Proces: przełamanie barier. Koszt: niski (olga, sens).", 
-         "111 → 101 (Kryzys zasobów)", "Utrata przekonania o możliwości przy chęci i przekonaniu o konieczności. Proces: szok, napięcie krytyczne ostre. Koszt: bardzo wysoki (ryzyko PTSD)."),
-        ("110 → 111 (Pojawienie się przekonania o konieczności)", "Pojawienie się przekonania o konieczności przy chęci i przekonaniu o możliwości. Proces: internalizacja normy prosocjalnej, OCB. Koszt: niski (dumą, sens).", 
-         "111 → 110 (Dezobowiązkowanie)", "Utrata przekonania o konieczności przy chęci i przekonaniu o możliwości. Proces: delegacja, sukcesja. Koszt: niski/umiarkowany (ulga, ewentualnie pustka)."),
-        ("100 → 110 (Przełamanie barier)", "Pojawienie się przekonania o możliwości przy chęci. Proces: planowanie, problem-solving, Rubikon. Koszt: umiarkowany (nadzieja).", 
-         "110 → 100 (Blokada działania)", "Utrata przekonania o możliwości przy chęci. Proces: frustracja, bezsilność. Koszt: wysoki (ryzyko rezygnacji).")
-    ]
-    
-    for pair in asym:
-        add_paragraph_styled(doc, f"{pair[0]} vs {pair[2]}:", bold=True)
-        add_paragraph_styled(doc, f"  {pair[0]}: {pair[1]}")
-        add_paragraph_styled(doc, f"  {pair[2]}: {pair[3]}")
+    # Pełne opisy wszystkich 24 przejść
+    for i, t in enumerate(transitions):
+        add_heading_styled(doc, f"9.{i+1}. Przejście {t['id']}: {t['start']} → {t['end']} ({t['zmieniony_wymiar']} {t['kierunek']})", 2)
+        
+        # Stan początkowy i końcowy
+        add_paragraph_styled(doc, f"Stan początkowy: {t['start']} | Stan końcowy: {t['end']}", bold=True)
+        
+        # Zmieniony wymiar i dosłowne znaczenie
+        add_paragraph_styled(doc, f"Zmieniony wymiar: {t['zmieniony_wymiar']} ({t['kierunek']})", bold=True)
+        add_paragraph_styled(doc, f"Dosłowne znaczenie: {t['etykieta_neutralna']}")
+        
+        # Definicja przejścia
+        add_paragraph_styled(doc, "Definicja:", bold=True)
+        add_paragraph_styled(doc, t['definicja_przejscia'])
+        
+        # Możliwe przyczyny/wewnętrzne mechanizmy
+        add_paragraph_styled(doc, "Możliwe przyczyny i mechanizmy:", bold=True)
+        if t['przyczyny_wewnetrzne']:
+            add_paragraph_styled(doc, f"Wewnętrzne: {t['przyczyny_wewnetrzne']}", style='List Bullet')
+        if t['przyczyny_srodowiskowe']:
+            add_paragraph_styled(doc, f"Środowiskowe: {t['przyczyny_srodowiskowe']}", style='List Bullet')
+        if t['hipotezy_mechanistyczne']:
+            add_paragraph_styled(doc, f"Hipotezy mechanistyczne: {t['hipotezy_mechanistyczne']}", style='List Bullet')
+        
+        # Praktyczny przykład
+        add_paragraph_styled(doc, "Przykład praktyczny:", bold=True)
+        add_paragraph_styled(doc, t['przyklad_sytuacyjny'])
+        
+        # Możliwe konsekwencje
+        add_paragraph_styled(doc, "Możliwe konsekwencje (emocjonalne i behawioralne):", bold=True)
+        if t['skutki_emocjonalne']:
+            add_paragraph_styled(doc, f"Emocjonalne: {t['skutki_emocjonalne']}", style='List Bullet')
+        if t['wplyw_na_zachowanie']:
+            add_paragraph_styled(doc, f"Behawioralne: {t['wplyw_na_zachowanie']}", style='List Bullet')
+        
+        # Czynniki sprzyjające/hamujące
+        if t['czynniki_sprzyjajace'] or t['czynniki_hamujace']:
+            add_paragraph_styled(doc, "Czynniki modyfikujące:", bold=True)
+            if t['czynniki_sprzyjajace']:
+                add_paragraph_styled(doc, f"Sprzyjające: {t['czynniki_sprzyjajace']}", style='List Bullet')
+            if t['czynniki_hamujace']:
+                add_paragraph_styled(doc, f"Hamujące: {t['czynniki_hamujace']}", style='List Bullet')
+        
+        # Granice interpretacji - KLUCZOWE dla 4 przejść N:1→0
+        add_paragraph_styled(doc, "Granice interpretacji:", bold=True)
+        granice = []
+        
+        # Ogólne granice z CSV
+        if t.get('status_empiryczny'):
+            granice.append(f"Status empiryczny: {t['status_empiryczny']}")
+        
+        # Specyficzne granice dla przejść N:1→0 (001→000, 011→010, 101→100, 111→110)
+        if t['zmieniony_wymiar'] == 'N' and t['kierunek'] == '1→0':
+            granice.append(
+                "Zmiana N:1→0 oznacza ponowną racjonalną ocenę konieczności działania względem własnych celów. "
+                "NIE jest to automatycznie ucieczka, redukcja stresu ani uwolnienie emocjonalne. "
+                "Może być adaptacyjne (delegacja, sukcesja, rezygnacja z niemożliwego celu) "
+                "lub nieadaptacyjne (unikanie odpowiedzialności) – zależy od kontekstu i przyczyn."
+            )
+        
+        # Dodatkowe granice specyficzne dla konkretnych przejść
+        if t['id'] == 'T18':  # 001→000
+            granice.append(
+                "001→000: Rezygnacja z przekonania o konieczności przy braku chęci i możliwości. "
+                "Może być adaptacyjną rezygnacją z niemożliwego obowiązku (role overload) "
+                "lub ucieczką od odpowiedzialności. Rozróżnienie wymaga oceny kontekstu."
+            )
+        elif t['id'] == 'T20':  # 011→010
+            granice.append(
+                "011→010: Utrata przekonania o konieczności przy zachowaniu możliwości. "
+                "Może oznaczać deregulację (usunięcie biurokratycznych procedur), autonomizację "
+                "lub odrzucenie normy. NIE automatycznie 'wolność' – zależy od tego, czy decyzja "
+                "była racjonalną reoceną, czy reakcją na presję."
+            )
+        elif t['id'] == 'T22':  # 101→100
+            granice.append(
+                "101→100: Utrata przekonania o konieczności przy zachowaniu chęci. "
+                "Sekularyzacja celu – działanie staje się czysto osobistym wyborem. "
+                "Może być adaptacyjną autonomizacją lub rezygnacją z wartości. "
+                "NIE automatycznie 'ulga' – przy silnej identyfikacji z celem (W) ryzyko 100→000."
+            )
+        elif t['id'] == 'T24':  # 111→110
+            granice.append(
+                "111→110: Utrata przekonania o konieczności przy zachowaniu chęci i możliwości. "
+                "Dezobowiązkowanie: delegacja, planowana sukcesja, zmiana ról. "
+                "Przy planowanej sukcesji NIE predykuje wypalenia (w przeciwieństwie do 111→011). "
+                "Kluczowe: racjonalna reocena konieczności ≠ ucieczka."
+            )
+        
+        for g in granice:
+            add_paragraph_styled(doc, g, style='List Bullet')
+        
+        # Literatura i hipoteza testowalna
+        if t['zwiazek_z_literatura']:
+            add_paragraph_styled(doc, f"Związki z literaturą: {t['zwiazek_z_literatura']}", italic=True, size=10)
+        if t['hipoteza_testowalna']:
+            add_paragraph_styled(doc, f"Hipoteza testowalna: {t['hipoteza_testowalna']}", italic=True, size=10)
+        
+        doc.add_paragraph()
     
     doc.add_page_break()
     

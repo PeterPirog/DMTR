@@ -1,13 +1,14 @@
-# DMTRD rev3.1 – Raport Audytu Spójności
+# DMTRD rev3.1 – Raport Audytu Spójności i Brama Wydania (Release Gate)
 
 **Data:** 2026-11-08  
 **Wersja:** 3.1  
-**Commit bazowy:** 7fde239 (rev3: restore canonical WCN definitions)  
+**Commit bazowy:** b08449a (rev3.1: canonical consistency fixes and practical utility gate)  
 **Gałąź:** research/dmtrd-rev3-canonical  
+**Pull Request:** #3 (base: research/dmtrd-rev1-critical)
 
 ---
 
-## 1. Wykonane poprawki
+## 1. Wykonane poprawki (Release Gate rev3.1)
 
 ### 1.1. AGENTS.md
 - **Zmieniono definicję W** w sekcji "Zasady ochrony przed dryftem koncepcyjnym" z:
@@ -28,35 +29,36 @@
   - W: "W jakim stopniu chcesz wykonać to działanie?"
   - N: "W jakim stopniu uważasz, że powinieneś to zrobić ze względu na swoje cele?"
 
-### 1.3. src/build_document.py (Generator dokumentu głównego)
-- **Streszczenie naukowe (abstract):** Zastąpiono stare definicje kanonicznymi.
-- **Wstęp (sekcja 1):** Zaktualizowano opis trzech wymiarów.
-- **Sekcja 3 (Uzasadnienie trzech wymiarów):** Pełna przebudowa opisów W, C, N z kanonicznymi definicjami i wyliczeniem "co to NIE jest".
-- **Sekcja 4 (Definicje konstruktów):** Przeredagowano wszystkie trzy definicje operacyjne.
-- **Sekcja 8 (Charakterystyka ośmiu stanów):** Pełna przebudowa opisów wszystkich 8 stanów (000–111) zgodnie z kaninem.
-- **Sekcja 9.2 (Asymetria przejść odwrotnych):** Zaktualizowano opisy procesów (np. "internalizacja" → "pojawienie się chęci", "dezautonomizacja" → "utrata chęci").
-- **Sekcja 10 (Mechanizmy dynamiki):** Zaktualizowano terminologię (motywacja → chęć, możliwość → przekonanie o możliwości, obowiązek → przekonanie o konieczności).
-- **Sekcja 11 (Związek stanów z działaniem):** Zaktualizowano opisy stanów.
-- **Sekcja 12 (Zależność od ścieżki):** Zaktualizowano terminologię (internalizacja normy → internalizacja przekonania o konieczności).
-- **Sekcja 14 (Skale pomiarowe):** Zaktualizowano uwagę o IMI.
+### 1.3. src/build_document.py (Generator dokumentu głównego) – GŁÓWNA ZMIANA REV3.1
+- **Pełna treść w dokumencie głównym:** Usunięto odsyłacze do zewnętrznych plików Markdown/CSV. Dokument główny zawiera teraz:
+  - **Szczegółowe opisy wszystkich 8 stanów** (sekcja 8): kod, nazwa, dosłowne znaczenie W/C/N, charakterystyka psychologiczna, typowe możliwe zachowania, typowe sytuacje życiowe, przykłady, możliwe źródła napięcia, sytuacje adaptacyjne i niekorzystne, granice interpretacji, przejścia wychodzące/przychodzące.
+  - **Szczegółowe opisy wszystkich 24 przejść** (sekcja 9): stan początkowy/końcowy, zmieniony wymiar, dosłowne znaczenie, definicja, możliwe przyczyny i mechanizmy, praktyczny przykład, możliwe konsekwencje (emocjonalne i behawioralne), czynniki modyfikujące, granice interpretacji (z szczególnym uwzględnieniem 4 przejść N:1→0), literatura i hipoteza testowalna.
+- **Specyficzne przejścia N:1→0 (001→000, 011→010, 101→100, 111→110):** Wyjaśnione jako możliwe skutki **ponownej oceny racjonalnej zasadności działania względem własnych celów**. NIE utożsamiano automatycznie z redukcją stresu ani uwolnieniem emocjonalnym.
+- **Streszczenie naukowe (abstract), Wstęp, Sekcje 3, 4, 10, 11, 12, 14:** Zaktualizowano terminologię na kanoniczną (motywacja → chęć, możliwość → przekonanie o możliwości, obowiązek → przekonanie o konieczności).
+- **Sekcja 9.2 (Asymetria przejść):** Zaktualizowano opisy procesów na neutralne/kanoniczne.
 
 ### 1.4. src/build_reviewer_doc.py (Generator streszczenia dla recenzenta)
-- **Sekcja 1 (Istota modelu):** Kanoniczne definicje W, C, N.
-- **Sekcja 2 (Wyjaśnienie trzech wymiarów):** Kanoniczne pytania.
-- **Sekcja 3 (Struktura ośmiu stanów):** Zaktualizowano nazwy i opisy stanów (np. "Stan neutralny" → "Spoczynek / Brak przesłanek", "Obowiązek niewykonalny" → "Tylko powinność", "Pragnienie bez możliwości" → "Tylko chęć", "Motywacja i obowiązek bez możliwości" → "Chęć + powinność (bez możliwości)", "Motywacja autonomiczna" → "Gotowość autonomiczna").
-- **Sekcja 5 (Powiązania z teoriami):** Zaktualizowano terminologię ("brak motywacji" → "brak chęci").
-- **Sekcja 7 (Wątpliwości):** Zaktualizowano terminologię.
+- Zaktualizowano odniesienie do dokumentu głównego na `DMTRD_koncepcja_rev3_1.docx`.
+- Treść zgodna z kanonicznymi definicjami i nazwami stanów z rev3.1.
 
 ### 1.5. src/validate_docx.py (Walidator DOCX)
-- **check_24_transitions():** Zmieniono warunek z `found_transitions > 20` na wymóg **dokładnie 24/24**.
-- **Dodano check_canonical_definitions():** Nowa walidacja wykrywająca twierdzenia pozytywne ze starymi definicjami (W = osobista akceptacja..., N = poczucie zobowiązania..., N = presja społeczna, N = emocjonalna wina) z wykluczeniem negacji ("N nie jest...").
+- **check_24_transitions():** Wymóg **dokładnie 24/24** (zamiast >20).
+- **check_canonical_definitions():** Wykrywa twierdzenia pozytywne ze starymi definicjami z wykluczeniem negacji ("N nie jest...").
+- **check_q3_diagram():** Weryfikuje obecność osadzonego obrazu, a nie tylko odwołania tekstowego.
 
 ### 1.6. research/DMTRD_charakterystyka_stanow_rev3.md
-- **Stan 110:** Usunięto utożsamienie z "motywacją autonomiczną SDT" – zmieniono na "stan gotowości do działania z inicjatywy, sprawczości, potencjalnego flow".
+- **Stan 110:** Usunięto utożsamienie z "motywacją autonomiczną SDT" – "stan gotowości do działania z inicjatywy, sprawczości, potencjalnego flow".
 - **Stan 110 (sytuacje adaptacyjne):** "Najwyższa jakość zaangażowania (SDT: motywacja autonomiczna)" → "Wysoka jakość zaangażowania (bliska motywacji autonomicznej SDT)".
 
 ### 1.7. Diagramy (GraphML)
 - Prze-generowano pliki `DMTRD_12_krawedzi.graphml` i `DMTRD_24_przejscia.graphml` z aktualnymi danymi z CSV.
+
+### 1.8. README.md
+- Zaktualizowano na wersję rev3.1, zaktualizowano listę plików wyjściowych, status projektu, kryteria ukończenia.
+
+### 1.9. Pull Request #3
+- Zmieniono base branch na `research/dmtrd-rev1-critical` (prezentuje zmiany względem rev2).
+- Zaktualizowano opis PR.
 
 ---
 
@@ -90,7 +92,7 @@ STATUS: PASS
 STATUS: PASS (11/11 testów)
 1. Otwarcie dokumentu: OK
 2. Wymagane rozdziały (20): OK
-3. Diagram Q3: OK
+3. Diagram Q3: OK (obraz osadzony)
 4. Osiem stanów: OK (8/8)
 5. 24 przejścia: OK (24/24)
 6. Hipotezy aktualne (HPE, HPD, HPP, E1-E24): OK
@@ -127,27 +129,66 @@ STATUS: PASS (11/11 testów)
 
 ---
 
-## 5. Ocena gotowości do konsultacji psychologicznej
+## 5. Kontrola dokumentu głównego (DMTRD_koncepcja_rev3_1.docx)
 
-### Mocne strony (gotowe do prezentacji):
-1. **Pełna spójność definicyjna** – jeden kanonyczny źródło (DMTRD_KANON_KONCEPCYJNY.md), wszystkie generatory zsynchronizowane.
-2. **Kompletna dokumentacja** – 8 stanów, 24 przejścia, mechanizmy, zastosowania, ograniczenia.
-3. **Walidacja automatyczna** – model i DOCX przechodzą wszystkie testy (0 błędów).
-4. **Rzetelność naukowa** – hipotezy odrębne od ustaleń, status epistemiczny jasny, brak fikcyjnych cytowań.
-5. **Praktyczna użyteczność** – schematy A-L dla stanów, 1-12 dla przejść, przykłady życiowe i zawodowe.
-
-### Obszary wymagające uwagi recenzenta:
-1. **Diagramy SVG/PNG** – wymagają ręcznej regeneracji w yEd (plik .graphml jest aktualny).
-2. **Operacjonalizacja pomiarowa** – wersja ciągła (Likert) vs binarna – dokument opisuje obie, ale model bazowy do estymacji to CTMC ze stanami ciągłymi.
-3. **Luka System 1 (nawyki)** – jasno oznaczona jako ograniczenie, parametr H proponowany jako rozszerzenie.
-4. **Identyfikowalność statystyczna** – problem 0 df dla wersji binarnej w LTA – rozwiązane przez wersję ciągłą.
-
-### Rekomendacja:
-**Model gotowy do konsultacji psychologicznej merytorycznej.** Wszystkie elementy rdzenia (definicje, topologia, charakterystyki stanów i przejść) są spójne, kompletne i zgodne z kaninem. Dokument główny (DMTRD_koncepcja_rev3_1.docx) i streszczenie (DMTRD_streszczenie_dla_recenzenta_rev3_1.docx) stanowią samodzielne, pełne reprezentacje modelu rev3.1.
+| Kryterium | Wynik | Szczegóły |
+|-----------|-------|-----------|
+| **Obecność 8 stanów** | ✅ PASS | Sekcja 8 – pełne opisy wszystkich stanów |
+| **Obecność 24 przejść** | ✅ PASS | Sekcja 9 – pełne opisy wszystkich przejść |
+| **Każde przejście ma: stan start/koniec, wymiar, znaczenie, przykład, mechanizm, konsekwencje, granice** | ✅ PASS | Szczegółowe opisy dla każdego z 24 przejść |
+| **Przejścia 001→000, 011→010, 101→100, 111→110 jako reocena racjonalna** | ✅ PASS | Granice interpretacji jawnie to zaznaczają |
+| **Brak utożsamienia N:1→0 ze stresem/uwolnieniem** | ✅ PASS | Granice: "NIE jest to automatycznie ucieczka, redukcja stresu ani uwolnienie emocjonalne" |
+| **Diagram Q3 osadzony** | ✅ PASS | Rysunek 1 w sekcji 9 |
+| **Definicje kanoniczne W, C, N** | ✅ PASS | Abstract, Wstęp, Sekcje 3, 4, 8, 9, 10, 11 |
+| **Brak starych definicji** | ✅ PASS | Walidator: 0 znalezionych |
+| **Bibliografia spójna** | ✅ PASS | 20+ pozycji z DOI |
+| **Tabele poprawne** | ✅ PASS | Tabela stanów, tabela przejść, tabela hipotez głównych |
 
 ---
 
-## 6. Pliki wyjściowe rev3.1
+## 6. Kontrola streszczenia (DMTRD_streszczenie_dla_recenzenta_rev3_1.docx)
+
+| Kryterium | Wynik |
+|-----------|-------|
+| Kanoniczne definicje W, C, N | ✅ PASS |
+| 8 stanów z poprawnymi nazwami | ✅ PASS |
+| HPE-model i HPE-empiryczna rozróżnione | ✅ PASS |
+| Asymetria przejść opisana | ✅ PASS |
+| 8 pytań do recenzenta | ✅ PASS |
+| Odniesienie do dokumentu głównego rev3.1 | ✅ PASS |
+
+---
+
+## 7. Ograniczenia naukowe (nie rozwiązane w rev3.1)
+
+1. **Binarność konstruktów** – traci wariancję (typy motywacji, gradacja self-efficacy, kategorie norm). Rozwiązanie: wersja ciągła (oktaanty) jako rozszerzenie.
+2. **Brak intencji i celu** – luka teoretyczna względem TPB, Rubikon, Goal-Setting. Rozwiązanie: 4. wymiar I jako rozszerzenie.
+3. **Pomijanie automatyzmu/nawyku (System 1)** – 40-50% działań. Rozwiązanie: parametr H jako rozszerzenie.
+4. **N miesza kategorie normatywnych** – moralne, rolowe, społeczne, zinternalizowane, eksternalne. Rozwiązanie: rozdzielenie N na podwymiary jako rozszerzenie.
+5. **Identyfikowalność statystyczna** – wersja binarna: 3 wskaźniki → 8 wzorców = saturated model (0 df) w LTA. Rozwiązanie: wersja ciągła (Likert) jako model bazowy do estymacji.
+6. **HPE to hipoteza, nie fakt** – wymaga weryfikacji empirycznej (EMA).
+7. **Stan 111 nie zawsze optymalny** – jakość zależy od N_source.
+8. **Brak walidacji empirycznej** – model na etapie koncepcyjnym (Etap 1).
+
+---
+
+## 8. Gotowość do konsultacji psychologicznej
+
+### Mocne strony:
+1. **Pełna spójność definicyjna** – jeden kanonyczny źródło, wszystkie generatory zsynchronizowane.
+2. **Kompletna samodzielna treść w dokumencie głównym** – nie trzeba otwierać plików zewnętrznych.
+3. **Walidacja automatyczna** – model i DOCX przechodzą wszystkie testy (0 błędów).
+4. **Rzetelność naukowa** – hipotezy odrębne od ustaleń, status epistemiczny jasny.
+5. **Praktyczna użyteczność** – schematy opisowe, przykłady, granice interpretacji.
+
+### Rekomendacja:
+**PASS – Model gotowy do konsultacji psychologicznej merytorycznej.** Wszystkie elementy rdzenia są spójne, kompletne i zgodne z kaninem. Dokumenty rev3.1 stanowią samodzielne, pełne reprezentacje modelu.
+
+**Uwaga:** Gotowość koncepcyjna ≠ walidacja empiryczna. Teoria wymaga Etapów 2-6 (EMA, eksperymenty, rozszerzenia).
+
+---
+
+## 9. Pliki wyjściowe rev3.1
 
 | Plik | Opis |
 |------|------|
@@ -164,12 +205,11 @@ STATUS: PASS (11/11 testów)
 
 ---
 
-## 7. Następne kroki (opcjonalne)
+## 10. Następne kroki
 
 1. **Regeneracja SVG/PNG** – otworzyć .graphml w yEd, ułożyć węzły, wyeksportować jako SVG/PNG.
-2. **Aktualizacja README.md** – dodać informację o wersji rev3.1 i linkach do plików.
-3. **Push do GitHub** – commit i push na gałąź `research/dmtrd-rev3-canonical`, aktualizacja PR #3.
+2. **Push do GitHub** – commit i push na gałąź `research/dmtrd-rev3-canonical`, PR #3 zaktualizowany.
 
 ---
 
-*Raport wygenerowany automatycznie w ramach procesu weryfikacji DMTRD rev3.1.*
+*Raport zamknięcia (Release Gate) dla DMTRD rev3.1.*
