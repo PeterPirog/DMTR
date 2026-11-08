@@ -1,7 +1,7 @@
 # Raport walidacji DOCX - DMTRD rev2
 
-Plik: DMTRD_koncepcja_rev2.docx
-Data: 2026-11-07 19:51
+Plik: DMTRD_koncepcja_rev3.docx
+Data: 2026-11-08 08:41
 Status: PASS
 
 ## Informacje
@@ -16,4 +16,4 @@ Status: PASS
 - [OK] Bibliografia i cytowania znalezione
 - [OK] Tabela stanów: poprawna struktura (8 stanów + header)
 - [OK] Wszystkie kluczowe tabele znalezione
-- [OK] Wersja dokumentu aktualna (rev2 lub data 07.11.2026)
+- [OK] Wersja dokumentu aktualna (rev2 lub data 08.11.2026)

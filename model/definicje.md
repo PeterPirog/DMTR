@@ -4,9 +4,9 @@
 
 ### 1.1. Wymiarowe przestrzenie
 Niech:
-- $W \in \{0,1\}$ – CHCĘ (osobista akceptacja wartości celu / zgoda na realizację celu)
-- $C \in \{0,1\}$ – MOGĘ (subiektywnie oceniana wykonalność działania)
-- $N \in \{0,1\}$ – POWINIENEM (poczucie zobowiązania normatywnego wobec realizacji celu; źródło: zewnętrzne lub internalizowane)
+- $W \in \{0,1\}$ – CHCĘ (chęć wykonania konkretnego działania)
+- $C \in \{0,1\}$ – MOGĘ (subiektywne przekonanie o możliwości wykonania działania)
+- $N \in \{0,1\}$ – POWINIENEM (racjonalne przekonanie o konieczności wykonania działania ze względu na swoje cele)
 
 Przestrzeń stanów: $\mathcal{S} = \{0,1\}^3$
 
@@ -21,14 +21,14 @@ Liczba stanów: $|\mathcal{S}| = 2^3 = 8$
 ### 1.3. Wartościowanie (interpretacja) bitów
 | Bit | Wartość 0 | Wartość 1 |
 |-----|-----------|-----------|
-| W | Brak osobistej akceptacji wartości celu | Obecność osobistej akceptacji wartości celu |
-| C | Postrzegana niewykonalność | Postrzegana wykonalność |
-| N | Brak poczucia zobowiązania normatywnego | Poczucie zobowiązania normatywnego (źródło: zewnętrzne lub internalizowane) |
+| W | Brak chęci wykonania działania | Chęć wykonania działania |
+| C | Przekonanie o braku możliwości | Przekonanie o możliwości |
+| N | Brak przekonania o konieczności | Racjonalne przekonanie o konieczności |
 
 **Uwaga:** Wartość 0 **nie** oznacza:
 - Dla W: silną niechęć, awersję ani brak intencji (to oddzielne konstrukty)
 - Dla C: obiektywną niemożność (to subiektywna ocena; C=0 nie wyklucza wykonania, C=1 nie gwarantuje go)
-- Dla N: zakaz ani brak internalizacji (to brak poczucia zobowiązania; internalizacja normy to osobna zmienna `N_source`, nie bit w kodzie stanu)
+- Dla N: zakaz ani brak internalizacji (to brak przekonania o konieczności; internalizacja normy to osobna zmienna `N_source`, nie bit w kodzie stanu)
 
 ---
 
@@ -333,9 +333,9 @@ Wersja binarna ($W,C,N \in \{0,1\}$) to **uproszczenie do interpretacji i wizual
 ### 8.3. Specyfikacja modelu pomiarowego (wersja ciągła)
 
 **Zmienne obserwowane (wskaźniki stanu):**
-- $W_{it} \in [1,7]$ – skala Likert: „W jakim stopniu osobiście akceptujesz wartość tego celu / zgadzasz się z jego realizacją?”
+- $W_{it} \in [1,7]$ – skala Likert: „W jakim stopniu chcesz wykonać to działanie?”
 - $C_{it} \in [1,7]$ – skala Likert: „W jakim stopniu uważasz, że jesteś w stanie to zrealizować (posiadasz kompetencje, czas, zasoby)?”
-- $N_{it} \in [1,7]$ – skala Likert: „W jakim stopniu czujesz, że powinieneś to zrobić (poczucie zobowiązania)?”
+- $N_{it} \in [1,7]$ – skala Likert: „W jakim stopniu uważasz, że powinieneś to zrobić ze względu na swoje cele?”
 
 **Zmienne eksogenne (predyktory przejść / moderatory):**
 - $AutonomySupport_{it}$ – wsparcie autonomii (mPAS)

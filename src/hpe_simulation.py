@@ -91,18 +91,20 @@ def simulate_ctmc(Q: np.ndarray, T: float, dt_obs: float,
     Returns:
         states_obs: lista stanów w momentach obserwacji
         obs_times: czasy obserwacji
+    
+    Uwaga: Naprawiono błąd indeksowania (CR-01 z recenzji GPT-6).
+    jump_states[0] = stan początkowy, jump_states[k] = stan po k-tym skoku.
+    jump_times zawiera czasy skoków (bez czasu 0).
+    Dla obserwacji w czasie obs_t, stan = jump_states[k] gdzie k = liczba skoków przed obs_t.
     """
     if state0 is None:
         state0 = np.random.choice(8)
     
     obs_times = np.arange(0, T + dt_obs/2, dt_obs)
-    states_obs = []
-    current_state = state0
-    current_time = 0.0
     
     # Symulacja skoków
     jump_times = []
-    jump_states = [state0]
+    jump_states = [state0]  # jump_states[0] = stan początkowy (przed pierwszym skokiem)
     t = 0.0
     current = state0
     
@@ -122,17 +124,17 @@ def simulate_ctmc(Q: np.ndarray, T: float, dt_obs: float,
         probs = probs / probs.sum()
         next_state = np.random.choice(8, p=probs)
         jump_times.append(t)
-        jump_states.append(next_state)
+        jump_states.append(next_state)  # stan PO skoku
         current = next_state
     
     # Próbkowanie co dt_obs
+    # jump_states[0] = stan przed pierwszym skokiem (czas 0)
+    # jump_states[k] = stan po k-tym skoku (dla k >= 1)
+    # Liczba skoków przed czasem obs_t = np.searchsorted(jump_times, obs_t, side='right')
     states_obs = []
     for obs_t in obs_times:
-        idx = np.searchsorted(jump_times, obs_t, side='right') - 1
-        if idx >= 0:
-            states_obs.append(jump_states[idx])
-        else:
-            states_obs.append(state0)
+        k = np.searchsorted(jump_times, obs_t, side='right')  # liczba skoków przed obs_t
+        states_obs.append(jump_states[k])
     
     return states_obs, obs_times
 
@@ -280,17 +282,98 @@ def run_power_simulation(n_rep: int = 500, N: int = 100, T: int = 100,
     }
 
 
+def test_simulate_ctmc_deterministic():
+    """
+    Test deterministyczny dla simulate_ctmc (CR-01).
+    Weryfikuje poprawność indeksowania stanów przy znanym harmonogramie skoków.
+    """
+    print("\n=== Test deterministyczny simulate_ctmc (CR-01) ===")
+    
+    # Prosty Q: 000 -> 001 -> 011 z intensywnością 1.0
+    # Stan 0 (000) -> stan 1 (001) -> stan 3 (011)
+    Q = np.zeros((8, 8))
+    Q[0, 1] = 1.0  # 000 -> 001
+    Q[1, 3] = 1.0  # 001 -> 011
+    Q[0, 0] = -1.0
+    Q[1, 1] = -1.0
+    Q[3, 3] = 0.0  # stan chłonny dla testu
+    
+    # Symulacja z deterministycznymi skokami (używamy seed)
+    np.random.seed(12345)
+    
+    # Test 1: Sprawdź czy stan w czasie 0.0 to stan początkowy (0)
+    states_obs, obs_times = simulate_ctmc(Q, T=1.0, dt_obs=0.5, state0=0)
+    print(f"Czasy obserwacji: {obs_times}")
+    print(f"Stany obserwowane: {[STATES[s] for s in states_obs]}")
+    
+    # Test 2: Znany harmonogram skoków - test indeksowania
+    # Używamy Q z bardzo wysoką intensywnością, by wymusić szybkie skoki
+    Q_fast = np.zeros((8, 8))
+    Q_fast[0, 1] = 1000.0  # 000 -> 001 niemal natychmiast
+    Q_fast[1, 3] = 1000.0  # 001 -> 011 niemal natychmiast
+    Q_fast[0, 0] = -1000.0
+    Q_fast[1, 1] = -1000.0
+    Q_fast[3, 3] = 0.0
+    
+    np.random.seed(42)
+    states_obs2, obs_times2 = simulate_ctmc(Q_fast, T=1.0, dt_obs=0.5, state0=0)
+    print(f"\nTest szybkich skoków (Q_fast):")
+    print(f"Czasy: {obs_times2}")
+    print(f"Stany: {[STATES[s] for s in states_obs2]}")
+    print(f"Oczekiwane: 000 -> 001 -> 011 (bo skoki niemal natychmiastowe)")
+    
+    # Test 3: Weryfikacja zgodności z exp(Q*dt) dla prostego Q
+    print("\n=== Test zgodności z exp(Q*dt) ===")
+    Q_test = np.zeros((8, 8))
+    Q_test[0, 1] = 1.0
+    Q_test[0, 0] = -1.0
+    Q_test[1, 1] = 0.0  # chłonny
+    
+    from scipy.linalg import expm
+    dt = 0.5
+    P_exact = expm(Q_test * dt)
+    print(f"P_exact[0,0] (pozostanie w 000) = {P_exact[0,0]:.4f}")
+    print(f"P_exact[0,1] (przejście 000->001) = {P_exact[0,1]:.4f}")
+    
+    # Monte Carlo
+    n_mc = 10000
+    count_00 = 0
+    count_01 = 0
+    for _ in range(n_mc):
+        states_obs, _ = simulate_ctmc(Q_test, T=dt, dt_obs=dt, state0=0)
+        if states_obs[1] == 0:
+            count_00 += 1
+        elif states_obs[1] == 1:
+            count_01 += 1
+    
+    print(f"MC: P(000->000) = {count_00/n_mc:.4f}, P(000->001) = {count_01/n_mc:.4f}")
+    print(f"Różnica: {abs(count_00/n_mc - P_exact[0,0]):.4f}, {abs(count_01/n_mc - P_exact[0,1]):.4f}")
+    
+    if abs(count_00/n_mc - P_exact[0,0]) < 0.02 and abs(count_01/n_mc - P_exact[0,1]) < 0.02:
+        print("[OK] TEST PRZESZEDL: Symulacja zgodna z teoria (exp(Q*dt))")
+        return True
+    else:
+        print("[BLAD] TEST NIE PRZESZEDL: Symulacja NIEGODNA z teoria")
+        return False
+
+
 if __name__ == "__main__":
     print("=== DMTRD HPE Simulation Module ===\n")
     
-    # 1. Kontrprzykład Astry
+    # 1. Test deterministyczny (CR-01)
+    test_passed = test_simulate_ctmc_deterministic()
+    
+    # 2. Kontrprzykład Astry
+    print("\n=== Kontrprzykład Astry (analityczny) ===")
     run_conterexample_astra()
     
+    # 3. Demonstracyjna symulacja
     print("\n=== Demonstracyjna symulacja (M_HPE vs M_full) ===")
     demo_results = run_simulation_demo(n_sim=500)
     print(f"M_HPE: mean d_H>=2 = {demo_results['hpe_mean']:.3f} ± {demo_results['hpe_std']:.3f}")
     print(f"M_full: mean d_H>=2 = {demo_results['full_mean']:.3f} ± {demo_results['full_std']:.3f}")
     
+    # 4. Test mocy (placeholder)
     print("\n=== Test mocy (placeholder) ===")
     run_power_simulation()
     
@@ -298,3 +381,4 @@ if __name__ == "__main__":
     print("Pełna symulacja mocy i testy LRT wymagają pakietu msm (R) lub ctmcm (Python)")
     print("do estymacji Q z danych panelowych. Ten moduł dostarcza narzędzia do")
     print("generowania danych i weryfikacji kontrprzykładu Astry.")
+    print(f"\nTest CR-01: {'PRZESZŁ' if test_passed else 'NIE PRZESZŁ'}")
