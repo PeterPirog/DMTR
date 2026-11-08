@@ -807,8 +807,8 @@ def main():
         "W=1 ułatwia C=0→1 (chęć → problem-solving, szukanie dróg) – przejścia 100→110, 101→111.",
         "C=1 ułatwia W=0→1 (przekonanie o możliwości → aktywacja, 'mogę więc chcę spróbować') – przejścia 010→110, 011→111.",
         "C=0 utrudnia W=1 (frustracja celowa, ryzyko 100→000, 101→001).",
-        "N=0 przy W=1, C=1 (stan 110) = autonomia bez przekonania o konieczności – ryzyko 110→010 (wypalenie od braku sensu).",
-        "W=0 przy N=1, C=1 (stan 011) = compliance – ryzyko 011→001 (wypalenie) lub 011→111 (internalizacja)."
+        "N=0 przy W=1, C=1 (stan 110): autonomia bez przekonania o konieczności – ryzyko 110→010 (wypalenie od braku sensu).",
+        "W=0 przy N=1, C=1 (stan 011): działanie bez wewnętrznej zgody – ryzyko 011→001 (wypalenie) lub 011→111 (internalizacja)."
     ]
     for i in inter:
         add_paragraph_styled(doc, i, style='List Bullet')
@@ -841,14 +841,14 @@ def main():
         "i zmodulowany przez volicję (Kuhl), kontekst, nawyki i zasoby.", bold=True)
     
     action = [
-        ("Podejmowanie działania (inicjacja)", 
-         "Najbardziej prawdopodobne ze stanów: 110 (chęć + przekonanie o możliwości), 111 (pełna gotowość), 101 (chęć + przekonanie o konieczności, szukanie przekonania o możliwości). "
-         "Stan 100 (tylko chęć) → planowanie (przejscia 100→110). Stan 011 (compliance) → działanie bez zaangażowania. "
-         "Stan 001, 010, 000 → działanie mało prawdopodobne bez zmiany stanu."),
-        ("Kontynuowanie działania (persistencja)", 
-         "Stan 111 (racjonalne przekonanie o konieczności) > 110 (autonomia) > 011 (compliance) > 101 (blokada). "
-         "Volicja (Kuhl) chroni działanie w 110/111. W 011 kontynuacja zależy od sankcji/przekonania o konieczności. "
-         "W 101 kontynuacja niemożliwa bez przekonania o możliwości – próby copingowe (101→111) lub rezygnacja."),
+("Podejmowanie działania (inicjacja)", 
+          "Najbardziej prawdopodobne ze stanów: 110 (chęć + przekonanie o możliwości), 111 (pełna gotowość), 101 (chęć + przekonanie o konieczności, szukanie przekonania o możliwości). "
+          "Stan 100 (tylko chęć) → planowanie (przejscia 100→110). Stan 011 (działanie bez wewnętrznej zgody) → działanie bez zaangażowania. "
+          "Stan 001, 010, 000 → działanie mało prawdopodobne bez zmiany stanu."),
+("Kontynuowanie działania (persistencja)", 
+          "Stan 111 (racjonalne przekonanie o konieczności), 110 (autonomia), 011 (działanie bez wewnętrznej zgody) i 101 (blokada) różnią się jakością i stabilnością kontynuacji. "
+          "Volicja (Kuhl) chroni działanie w 110/111. W 011 kontynuacja zależy od sankcji/przekonania o konieczności. "
+          "W 101 kontynuacja niemożliwa bez przekonania o możliwości – próby copingowe (101→111) lub rezygnacja."),
         ("Zaniechanie / rezygnacja (disengagement)", 
          "Przejścia do stanów z W=0: 111→011, 110→010, 101→001, 100→000. "
          "Adaptacyjne (Wrosch et al.): rezygnacja z niemożliwego celu (101→001/100) → reengagement. "
@@ -1136,13 +1136,13 @@ def main():
     add_heading_styled(doc, "17. Możliwe zastosowania", 1)
     
     apps = [
-        ("Psychologia zdrowia / medycyna", "Stan 101 = moral distress personelu medycznego; przewidywanie wypalenia, odejścia z pracy; "
+        ("Psychologia zdrowia / medycyna", "Stan 101 (silne napięcie motywacyjne) – ryzyko moral distress personelu medycznego; przewidywanie wypalenia, odejścia z pracy; "
          "interwencje: 101→111 (systemowe zmiany), 111→110 (delegacja/sukcesja)."),
-        ("Zarządzanie i HR", "Diagnoza stanów motywacyjnych zespołów: 011 (compliance) vs 110 (autonomia) vs 111 (zaangażowanie). "
+        ("Zarządzanie i HR", "Diagnoza stanów motywacyjnych zespołów: 011 (działanie bez wewnętrznej zgody) vs 110 (gotowość z inicjatywy) vs 111 (pełna gotowość). "
          "Job crafting: 010→110 (aktywacja), 100→110 (przełamanie barier). "
          "Sukcesja: 111→110 (planowane dezobowiązkowanie)."),
         ("Edukacja", "Stan 011 (uczenie się 'bo trzeba') vs 110 (pasja) vs 111 (zidentyfikowana regulacja). "
-         "Internalizacja: 011→111 (wsparcie autonomii). Rezygnacja: 101→001 (moral distress studentów)."),
+         "Internalizacja: 011→111 (wsparcie autonomii). Rezygnacja: 101→001 (silne napięcie motywacyjne studentów)."),
         ("Psychologia społeczna / polityczna", "Aktywizm: 100 (ideał bez możliwości) → 110 (mobilizacja) → 111 (instytucjonalizacja). "
          "Radikalizacja: 001→101 (internalizacja normy ekstremistycznej). "
          "Demobilizacja: 111→011 (wypalenie aktywistów)."),

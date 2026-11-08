@@ -1,7 +1,7 @@
 # Raport walidacji DOCX - DMTRD rev3.1
 
 Plik: DMTRD_koncepcja_rev3_1.docx
-Data: 2026-11-08 19:14
+Data: 2026-11-08 19:38
 Status: PASS
 
 ## Informacje
