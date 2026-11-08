@@ -376,7 +376,7 @@ class DocxValidator:
             return "FAIL"
 
 def main():
-    docx_path = BASE / "DMTRD_koncepcja_rev2.docx"
+    docx_path = BASE / "DMTRD_koncepcja_rev3.docx"
     if not docx_path.exists():
         print(f"BŁĄD: Plik {docx_path} nie istnieje")
         sys.exit(1)

@@ -112,7 +112,7 @@ def main():
     
     subtitle = doc.add_paragraph()
     subtitle.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    run = subtitle.add_run("Koncepcja naukowa, formalizacja matematyczna i plan walidacji empirycznej\nEtap 1 – Analiza naukowa i przygotowanie dokumentacji do recenzji")
+    run = subtitle.add_run("Koncepcja naukowa, formalizacja matematyczna i plan walidacji empirycznej\nEtap 1 – Analiza naukowa i przygotowanie dokumentacji do recenzji\nWersja kanoniczna (rev3)")
     run.font.size = Pt(14)
     run.font.color.rgb = RGBColor(80, 80, 80)
     
@@ -121,7 +121,7 @@ def main():
     
     meta = doc.add_paragraph()
     meta.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    run = meta.add_run(f"Wersja robocza\n{datetime.now().strftime('%d.%m.%Y')}\nDla niezależnej recenzji naukowej")
+    run = meta.add_run(f"Wersja kanoniczna (rev3)\n{datetime.now().strftime('%d.%m.%Y')}\nDla niezależnej recenzji naukowej")
     run.font.size = Pt(11)
     run.italic = True
     
@@ -1165,8 +1165,20 @@ def main():
     add_heading_styled(doc, "Aneks G: Hipotezy badawcze (research/hipotezy_badawcze_rev1.md)", 1)
     add_paragraph_styled(doc, "Pełna specyfikacja 3 hipotez głównych (HPE, HPD, HPP) i 24 hipotez eksploracyjnych (E1–E24): zmienne, pomiar, analiza, czynniki zakłócające.")
     
+    add_heading_styled(doc, "Aneks H: Kanon koncepcyjny (model/DMTRD_KANON_KONCEPCYJNY.md)", 1)
+    add_paragraph_styled(doc, "Definicje kanoniczne W, C, N; przestrzeń stanów; graf Q3; 24 przejścia; granice interpretacji.")
+    
+    add_heading_styled(doc, "Aneks I: Szczegółowe opisy stanów (research/DMTRD_charakterystyka_stanow_rev3.md)", 1)
+    add_paragraph_styled(doc, "Szczegółowe opisy wszystkich 8 stanów: kod, nazwa, dosłowne znaczenie, charakterystyka psychologiczna, przykłady, granice.")
+    
+    add_heading_styled(doc, "Aneks J: Szczegółowe opisy przejść (research/DMTRD_charakterystyka_przejsc_24_rev3.md)", 1)
+    add_paragraph_styled(doc, "Szczegółowe opisy wszystkich 24 przejść: etykieta neutralna, hipotezy mechanistyczne, przyczyny, konsekwencje, przykłady, granice.")
+    
+    add_heading_styled(doc, "Aneks K: Zastosowania praktyczne (research/DMTRD_zastosowania_praktyczne_rev3.md)", 1)
+    add_paragraph_styled(doc, "Przypadki analityczne: 101, 011, 110, 100, 001, 111, 010, 000; tabela decyzyjna interwencji; wzorce trajektorii.")
+    
     # Save
-    output_path = BASE / "DMTRD_koncepcja_rev2.docx"
+    output_path = BASE / "DMTRD_koncepcja_rev3.docx"
     doc.save(str(output_path))
     print(f"Saved: {output_path}")
 

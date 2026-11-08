@@ -56,7 +56,7 @@ def main():
     
     meta = doc.add_paragraph()
     meta.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    run = meta.add_run(f"Data: {datetime.now().strftime('%d.%m.%Y')}\nProjekt: DMTRD – Etap 1\nDokument główny: DMTRD_koncepcja_rev2.docx")
+    run = meta.add_run(f"Data: {datetime.now().strftime('%d.%m.%Y')}\nProjekt: DMTRD – Etap 1\nDokument główny: DMTRD_koncepcja_rev3.docx")
     run.font.size = Pt(11)
     run.italic = True
     
@@ -220,7 +220,7 @@ def main():
         add_paragraph_styled(doc, q, style='List Number')
     
     # Save
-    output_path = BASE / "DMTRD_streszczenie_dla_recenzenta_rev2.docx"
+    output_path = BASE / "DMTRD_streszczenie_dla_recenzenta_rev3.docx"
     doc.save(str(output_path))
     print(f"Saved: {output_path}")
 
