@@ -110,10 +110,10 @@ def main():
         ("000", "Spoczynek / Brak przesłanek", "W=0, C=0, N=0 – brak chęci, możliwości i powinności"),
         ("001", "Tylko powinność", "N=1, W=0, C=0 – przekonanie o konieczności bez chęci i możliwości"),
         ("010", "Tylko możliwość", "C=1, W=0, N=0 – przekonanie o możliwości bez chęci i powinności"),
-        ("011", "Możliwość + powinność (bez chęci)", "C=1, N=1, W=0 – compliance, działanie bez wewnętrznej zgody"),
+        ("011", "Możliwość + powinność (bez chęci)", "C=1, N=1, W=0 – działanie bez wewnętrznej zgody"),
         ("100", "Tylko chęć", "W=1, C=0, N=0 – chęć bez przekonania o możliwości i powinności"),
-        ("101", "Chęć + powinność (bez możliwości)", "W=1, N=1, C=0 – napięcie krytyczne: chęć i przekonanie o konieczności bez możliwości"),
-        ("110", "Chęć + możliwość (bez powinności)", "W=1, C=1, N=0 – gotowość autonomiczna, sprawczość"),
+        ("101", "Chęć + powinność (bez możliwości)", "W=1, N=1, C=0 – silne napięcie motywacyjne: chęć i przekonanie o konieczności bez możliwości"),
+        ("110", "Chęć + możliwość (bez powinności)", "W=1, C=1, N=0 – gotowość do działania z inicjatywy, sprawczość"),
         ("111", "Pełna zbieżność trzech przesłanek", "W=1, C=1, N=1 – pełna gotowość (nie zawsze optymalna)")
     ]
     
@@ -121,10 +121,10 @@ def main():
         add_paragraph_styled(doc, f"{code} – {name}: {desc}", style='List Bullet')
     
     add_paragraph_styled(doc, 
-        "Stan 101 (W=1, C=0, N=1) jest kluczowy – konfiguracja napięcia motywacyjnego (chęć + przekonanie o konieczności bez przekonania o możliwości). "
+        "Stan 101 (W=1, C=0, N=1) jest kluczowy – konfiguracja silnego napięcia motywacyjnego (chęć + przekonanie o konieczności bez przekonania o możliwości). "
         "W kontekście moralnym hipoteza H_MD przewiduje, że 101 predysponuje do moral distress (Jameton, Corley). "
-        "Również: niemożliwe cele z identyfikacją (Goal-Setting). Stan 011 to compliance bez autonomii "
-        "(motywacja kontrolowana w SDT). Stan 110 to gotowość autonomiczna (SDT, SCT). "
+        "Również: niemożliwe cele z identyfikacją (Goal-Setting). Stan 011 to działanie bez wewnętrznej zgody "
+        "(motywacja kontrolowana w SDT). Stan 110 to gotowość do działania z inicjatywy (SDT, SCT). "
         "Stan 111 przy zinternalizowanym przekonaniu o konieczności to najwyższa jakość motywacji; przy N eksternalnym – ryzyko wypalenia.")
     
     # 4. Najważniejsze założenie: HPE
@@ -173,9 +173,9 @@ def main():
     add_heading_styled(doc, "6. Możliwe zastosowania", 1)
     
     apps = [
-        "Psychologia zdrowia/medycyna: stan 101 (napięcie krytyczne) – ryzyko moral distress personelu; przewidywanie wypalenia, interwencje 101→111 (systemowe zmiany), 111→110 (delegacja/sukcesja).",
-        "Zarządzanie/HR: diagnoza stanów zespołów (011 compliance vs 110 autonomia vs 111 zaangażowanie); job crafting (010→110, 100→110); sukcesja (111→110).",
-        "Edukacja: internalizacja 011→111 (wsparcie autonomii); rezygnacja 101→001 (napięcie krytyczne studentów).",
+        "Psychologia zdrowia/medycyna: stan 101 (silne napięcie motywacyjne) – ryzyko moral distress personelu; przewidywanie wypalenia, interwencje 101→111 (systemowe zmiany), 111→110 (delegacja/sukcesja).",
+        "Zarządzanie/HR: diagnoza stanów zespołów (011 działanie bez zgody vs 110 gotowość z inicjatywy vs 111 zaangażowanie); job crafting (010→110, 100→110); sukcesja (111→110).",
+        "Edukacja: internalizacja 011→111 (wsparcie autonomii); rezygnacja 101→001 (silne napięcie motywacyjne studentów).",
         "Psychologia społeczna/polityczna: aktywizm (100→110→111), radikalizacja (001→101), demobilizacja (111→011).",
         "Badania nad nawykami: rozszerzenie o parametr H (siła nawyku) – modelowanie 010↔110.",
         "Modelowanie symulacyjne/AI: agent-based modeling na Q3."
@@ -190,7 +190,7 @@ def main():
         ("Binarność konstruktów", "Wszystkie teorie referencyjne używają skal ciągłych. Binarne W traci typy motywacji (intryntyczna vs introjektowana); binarne C traci gradację self-efficacy; binarne N traci kategorie norm (moralne, rolowe, społeczne). Czy utrata informacji jest akceptowalna?"),
         ("Brak intencji i celu", "TPB, Rubikon, Goal-Setting, Carver & Scheier – intencja/cel centralne. DMTRD stan (W,C,N) nie ma intencji ani celu. Stan 111 = gotowość (preactional) czy działanie (actional)? Brak mechanizmu stan→zachowanie."),
         ("Pomijanie automatyzmu/nawyku", "40–50% działań to nawyki (System 1). DMTRD modeluje tylko System 2. Stan 010/011 to normalne działanie nawykowe, a nie 'brak chęci'. Przejścia 010↔110 nie oddają dynamiki nawyków."),
-        ("N miesza kategorie norm", "N łączy normy opisowe, inskryptywne, moralne, rolowe, zinternalizowane, eksternalne. To różne mechanizmy (compliance vs internalizacja). Stan 011 może być compliance LUB introjektowana regulacja – DMTRD nie rozróżnia."),
+        ("N miesza kategorie norm", "N łączy normy opisowe, inskryptywne, moralne, rolowe, zinternalizowane, eksternalne. To różne mechanizmy (działanie bez zgody vs internalizacja). Stan 011 może być działanie bez zgody LUB introjektowana regulacja – DMTRD nie rozróżnia."),
         ("Identyfikowalność statystyczna", "3 wskaźniki binarne → 8 wzorców = 8 klas latentnych = model nasycony (0 df). LTA/HMM nie testowalne bez wskaźników ciągłych lub dodatkowych zmiennych. CTMC wymaga gęstego EMA."),
         ("Hipoteza jednego bitu (HPE)", "Czy elementarny proces psychologiczny = 1 bit? Równoczesne zmiany możliwe (bifurkacje, ambiwalencja). Ograniczona częstotliwość EMA może maskować zmiany wielobitowe. HPE to hipoteza, nie fakt."),
         ("Stan 111 nie zawsze optymalny", "N może być eksternalne (presja), W perfekcjonistyczne, C przecenione. Model nie rozróżnia jakości 111 w zależności od pochodzenia N.")
