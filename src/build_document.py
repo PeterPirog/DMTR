@@ -557,6 +557,18 @@ def main():
     add_paragraph_styled(doc, "Tabela 2. Osiem stanów motywacyjnych DMTRD – przegląd.", italic=True, size=9)
     
     # Szczegółowe opisy wszystkich stanów
+    # Mapa dosłownego znaczenia dla każdego stanu (naturalny język)
+    state_meanings = {
+        "000": "Osoba nie chce wykonywać działania, nie uważa, że może je wykonać, i nie uważa, że powinna je wykonać.",
+        "001": "Osoba nie chce wykonywać działania i nie uważa, że może je wykonać, ale uważa, że powinna je wykonać ze względu na swoje cele.",
+        "010": "Osoba nie chce wykonywać działania i nie uważa, że powinna je wykonać, ale uważa, że może je wykonać.",
+        "011": "Osoba nie chce wykonywać działania, ale uważa, że może je wykonać i uważa, że powinna je wykonać ze względu na swoje cele.",
+        "100": "Osoba chce wykonać działanie, ale nie uważa, że może je wykonać, i nie uważa, że powinna je wykonać.",
+        "101": "Osoba chce wykonać działanie i uważa, że powinna je wykonać ze względu na swoje cele, ale nie uważa, że może je wykonać.",
+        "110": "Osoba chce wykonać działanie i uważa, że może je wykonać, ale nie uważa, że powinna je wykonać ze względu na swoje cele.",
+        "111": "Osoba chce wykonać działanie, uważa, że może je wykonać, i uważa, że powinna je wykonać ze względu na swoje cele.",
+    }
+    
     for code in sorted(states.keys()):
         s = states[code]
         w_val, c_val, n_val = s['W'], s['C'], s['N']
@@ -566,10 +578,7 @@ def main():
         
         # Dosłowne znaczenie
         add_paragraph_styled(doc, "Dosłowne znaczenie:", bold=True)
-        w_text = "chce" if w_val == "1" else "nie chce"
-        c_text = "uważa, że może" if c_val == "1" else "nie uważa, że może"
-        n_text = "uważa, że powinna" if n_val == "1" else "nie uważa, że powinna"
-        add_paragraph_styled(doc, f"Osoba {w_val} wykonania działania ({w_text}), {c_val} możliwości wykonania ({c_text}), {n_val} konieczności ({n_text}).")
+        add_paragraph_styled(doc, state_meanings[code])
         
         # Charakterystyka psychologiczna
         add_paragraph_styled(doc, "Charakterystyka psychologiczna:", bold=True)
@@ -1221,7 +1230,7 @@ def main():
         "Bandura, A. (1997). Self-efficacy: The exercise of control. Freeman.",
         "Carver, C. S., & Scheier, M. F. (1998). On the self-regulation of behavior. Cambridge University Press.",
         "Cialdini, R. B., Reno, R. R., & Kallgren, C. A. (1990). A focus theory of normative conduct. Journal of Personality and Social Psychology, 58(6), 1015–1026. https://doi.org/10.1037/0022-3514.58.6.1015",
-        "Corley, M. C., Elswick, R. K., Gorman, M., & Clor, T. (2001). Development and evaluation of a moral distress scale. Journal of Advanced Nursing, 33(2), 250–256. https://doi.org/10.1046/j.1365-2648.2001.01659.x",
+        "Corley, M. C., Elswick, R. K., Gorman, M., & Clor, T. (2001). Development and evaluation of a moral distress scale. Journal of Advanced Nursing, 33(2), 250–256. https://doi.org/10.1046/j.1365-2648.2001.01658.x",
         "Deci, E. L., & Ryan, R. M. (2000). The \"what\" and \"why\" of goal pursuits: Human needs and the self-determination of behavior. Psychological Inquiry, 11(4), 227–268. https://doi.org/10.1207/S15327965PLI1104_01",
         "Gollwitzer, P. M. (1999). Implementation intentions: Strong effects of simple plans. American Psychologist, 54(7), 493–503. https://doi.org/10.1037/0003-066X.54.7.493",
         "Heckhausen, H., & Gollwitzer, P. M. (1987). Thought contents and cognitive functioning in motivational versus volitional states. Motivation and Emotion, 11(2), 101–120. https://doi.org/10.1007/BF00992338",

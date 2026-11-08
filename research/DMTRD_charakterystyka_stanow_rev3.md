@@ -180,7 +180,7 @@ Pracownik ma dostęp do nowego narzędzia analitycznego, umie się go nauczyć, 
 **C. Dosłowne znaczenie:** CHCĘ=0, MOGĘ=1, POWINIENEM=1  
 
 **D. Charakterystyka psychologiczna:**  
-Osoba **może** wykonać działanie i **uważa, że powinna**, ale **nie chce**. To stan compliance: działanie pod presją (wewnętrznej lub zewnętrznej) bez wewnętrznej zgody. Towarzyszą: opór, złość, winę, obojętność, ryzyko wypalenia. Jakość działania zazwyczaj niższa – robione „na wyrost”, bez zaangażowania.
+Osoba **może** wykonać działanie i **uważa, że powinna**, ale **nie chce**. To stan, w którym osoba wykonuje działanie bez wewnętrznej zgody. Może towarzyszyć opór, złość, winę, obojętność, ryzyko wypalenia. Jakość działania zazwyczaj niższa – robione „na wyrost”, bez zaangażowania.
 
 **E. Typowe możliwe zachowania:**  
 - Wykonanie działania bez zaangażowania („na wyrost”)  
@@ -283,7 +283,7 @@ Pracownik ma pomysł na innowację, chce ją zrealizować (W=1), ale nie ma bud�
 **C. Dosłowne znaczenie:** CHCĘ=1, MOGĘ=0, POWINIENEM=1  
 
 **D. Charakterystyka psychologiczna:**  
-Najbardziej napięty stan. Osoba **chce** i **uważa, że powinna**, ale **nie uważa, że może**. Silna motywacja (W+N) zablokowana barierą (C=0). To konfiguracja napięcia motywacyjnego: „chcę i powinienem, ale nie mogę”. Towarzyszą: lęk, winę, gniew, bezsilność, ryzyko wypalenia. Stan ten wymaga **szybkiej zmiany C** lub rezygnacji.
+Stan silnego napięcia motywacyjnego. Osoba **chce** i **uważa, że powinna**, ale **nie uważa, że może**. Silna motywacja (W+N) zablokowana barierą (C=0). To konfiguracja napięcia: „chcę i powinienem, ale nie mogę”. Może towarzyszyć lęk, winę, gniew, bezsilność, ryzyko wypalenia. Stan ten często wymaga zmiany C lub rezygnacji.
 
 **E. Typowe możliwe zachowania:**  
 - Działania naprawcze: szukanie zasobów, negocjowanie, lobbying (C→1, przejście 101→111 – najbardziej pożądane)  
@@ -335,7 +335,7 @@ Lekarz w szpitalu chce ratować pacjentów (W=1), czuje to jako misję i obowią
 **C. Dosłowne znaczenie:** CHCĘ=1, MOGĘ=1, POWINIENEM=0  
 
 **D. Charakterystyka psychologiczna:**  
-Osoba **chce** i **uważa, że może**, ale **nie czuje**, że powinna. To stan gotowości do działania z inicjatywy, sprawczości, potencjalnego flow. Osoba działa z inicjatywy, kreatywnie, elastycznie. N=0 **nie oznacza brak norm** – mogą być zinternalizowane (wtedy W=1 zastępuje przekonanie o konieczności) lub brak kontekstu normatywnego.
+Osoba **chce** i **uważa, że może**, ale **nie uważa, że powinna**. To stan gotowości do działania z inicjatywy, sprawczości, potencjalnego flow. Osoba może działać z inicjatywy, kreatywnie, elastycznie. N=0 **nie oznacza brak norm** – mogą być zinternalizowane (wtedy W=1 zastępuje przekonanie o konieczności) lub brak kontekstu normatywnego.
 
 **E. Typowe możliwe zachowania:**  
 - Inicjowanie działania, kreatywność, elastyczność  
@@ -410,7 +410,7 @@ Osoba biega maraton, bo chce (W=1), ma trening, zdrowie, sprzęt (C=1), i uważa
 Pracownik z misją, który ma autorytety, zasoby, kompetencje (W=1, C=1) i czuje, że to jego odpowiedzialność (N=1 – zinternalizowane). Działa proaktywnie, mentoryzuje innych, buduje kulturę.
 
 **I. Możliwe źródła napięcia:**  
-- **111→011 (utrata W przy N=1): dezautonomizacja** – najgroźniejsze, silnie predykuje wypalenie  
+- **111→011 (utrata W przy N=1): dezautonomizacja** – hipoteza: może być groźne, ryzyko wypalenia  
 - **111→101 (utrata C przy W=1,N=1): kryzys zasobów** – napięcie krytyczne, ryzyko PTSD  
 - **111→110 (utrata N przy W=1,C=1): dezobowiązkowanie** – może być adaptacyjne (delegacja, sukcesja)  
 - Perfekcjonizm, wysokie własne oczekiwania, koszty oportunistyczne  
@@ -443,9 +443,9 @@ Pracownik z misją, który ma autorytety, zasoby, kompetencje (W=1, C=1) i czuje
 | Tylko C | 010 | 0 | 1 | 0 | Potencjał bez kierunku | Marnowanie talentów |
 | C+N (bez W) | 011 | 0 | 1 | 1 | Compliance, działanie bez chęci | Wypalenie, cynizm |
 | Tylko W | 100 | 1 | 0 | 0 | Frustracja celowa, planowanie | Rezygnacja z celu |
-| W+N (bez C) | 101 | 1 | 0 | 1 | **Napięcie krytyczne**, czasowa bomba | Wypalenie, moral distress |
-| W+C (bez N) | 110 | 1 | 1 | 0 | Gotowość autonomiczna, flow | Wypalenie od pasji, blokada |
-| W+C+N | 111 | 1 | 1 | 1 | Pełna gotowość (jakość zależy od N_source) | Utrata W (najgroźniejsze) |
+| W+N (bez C) | 101 | 1 | 0 | 1 | Silne napięcie motywacyjne (chęć + powinność bez możliwości) | Wypalenie, moral distress |
+| W+C (bez N) | 110 | 1 | 1 | 0 | Gotowość autonomiczna, potencjalny flow | Wypalenie od pasji, blokada |
+| W+C+N | 111 | 1 | 1 | 1 | Pełna gotowość (jakość zależy od N_source) | Utrata W (hipoteza: najgroźniejsze) |
 
 ---
 

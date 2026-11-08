@@ -640,8 +640,8 @@ Lider traci pasję po narzuceniu procedur korporacyjnych. Nadal ma zasoby (C=1) 
 
 ## ASYMETRIA PRZEJŚĆ ODWROTNYCH – KLUCZOWE PRZYKŁADY
 
-| Para | Przejście A (adaptacyjne/pozytywne) | Przejście B (groźne/negatywne) | Różnica |
-|------|-------------------------------------|--------------------------------|---------|
+| Para | Przejście A (często adaptacyjne) | Przejście B (często ryzykowne) | Różnica |
+|------|----------------------------------|--------------------------------|---------|
 | 011↔111 | 011→111: Internalizacja (jakość) | 111→011: Dezautonomizacja (wypalenie) | Wzrost vs utrata W przy N=1 |
 | 001↔101 | 001→101: Autonomizacja (nadzieja) | 101→001: Dezengażowanie (bezsilność) | Wzrost vs utrata W przy N=1 |
 | 101↔111 | 101→111: Rozwiązanie konfliktu (olga) | 111→101: Kryzys zasobów (PTSD) | Wzrost vs utrata C przy W+N |
@@ -659,7 +659,7 @@ Lider traci pasję po narzuceniu procedur korporacyjnych. Nadal ma zasoby (C=1) 
 1. **Kod = co się zmieniło** (logika bitowa). **Hipotezy mechanistyczne = dlaczego** (psychologia).
 2. **Przejścia odwrotne to odrębne procesy** – nie symetria.
 3. **Zmiana N: 1→0 to często racjonalna reocena**, nie ucieczka.
-4. **111→011 (utrata W) groźniejsze niż 111→110 (utrata N)** – kluczowa asymetria.
+4. **Hipoteza: 111→011 (utrata W) może być groźniejsze niż 111→110 (utrata N)** – kluczowa asymetria do weryfikacji.
 5. **101→111 (rozwiązanie konfliktu) najbardziej pożądane** z trudnych stanów.
 6. **011→001 (dezempowerment) krytyczne** – ryzyko moral distress, intencji odejścia.
 7. **Model nie utożsamia przejścia z przyczyną** – oddzielamy warstwę logiczną od psychologicznej.
