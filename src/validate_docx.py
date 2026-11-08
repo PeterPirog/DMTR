@@ -164,8 +164,8 @@ class DocxValidator:
             self.info.append(f"[OK] Wszystkie 24 przejscia ({found_transitions}/24) znalezione w dokumencie")
             return True
         else:
-            self.warnings.append(f"[WARN] Znaleziono {found_transitions}/24 przejsc. Brakujace: {missing_transitions[:5]}...")
-            return found_transitions > 20  # Akceptuj jeśli większość
+            self.errors.append(f"[ERROR] Znaleziono {found_transitions}/24 przejsc. Brakujace: {missing_transitions}")
+            return False
     
     def check_current_hypotheses(self):
         """6. Czy ma aktualny zestaw hipotez (HPE, HPD, HPP, E1-E24)."""
@@ -240,6 +240,53 @@ class DocxValidator:
             return False
         else:
             self.info.append("[OK] Nie znaleziono bledow modelu pierwotnego jako aktualnych twierdzen")
+            return True
+    
+    def check_canonical_definitions(self):
+        """Sprawdza zgodność z kanonicznymi definicjami W, C, N."""
+        # Sprawdź czy dokument NIE zawiera starych definicji jako aktualnych twierdzeń
+        # (może zawierać w sekcji krytycznej analizy jako omówienie błędów)
+        
+        # Znajdź sekcję krytyczną (jeśli istnieje)
+        critical_section_start = False
+        for p in self.doc.paragraphs:
+            if "Krytyczna ocena" in p.text or "Critical" in p.text:
+                critical_section_start = True
+        
+        text_before_critical = self.full_text
+        if critical_section_start:
+            idx = self.full_text.find("Krytyczna ocena")
+            if idx == -1:
+                idx = self.full_text.find("Critical")
+            if idx > 0:
+                text_before_critical = self.full_text[:idx]
+        
+        # Stare definicje, które NIE powinny występować jako aktualne twierdzenia POZYTYWNE
+        # Wzorce wykrywające twierdzenia: "N JEST X", "N TO X", "N = X", "X JEST N", "X TO N"
+        # NIE wykrywają negacji: "N NIE JEST X", "N NIE TO X"
+        old_definitions = [
+            ("W = osobista akceptacja wartości celu", 
+             r"\bW\s+(?:jest|to|=)\s+osobista\s+akceptacja\s+warto[śs]ci\s+celu|\bosobista\s+akceptacja\s+warto[śs]ci\s+celu\s+(?:jest|to)\s+\bW\b"),
+            ("W = zgoda na realizację celu", 
+             r"\bW\s+(?:jest|to|=)\s+zgoda\s+na\s+realizacj[ęe]\s+celu|\bzgoda\s+na\s+realizacj[ęe]\s+celu\s+(?:jest|to)\s+\bW\b"),
+            ("N = poczucie zobowiązania normatywnego", 
+             r"\bN\s+(?:jest|to|=)\s+poczucie\s+zobowi[ąa]zania\s+normatywnego|\bpoczucie\s+zobowi[ąa]zania\s+normatywnego\s+(?:jest|to)\s+\bN\b"),
+            ("N = presja społeczna (jako definicja N)", 
+             r"\bN\s+(?:jest|to|=)\s+presja\s+spo[łl]eczna|\bpresja\s+spo[łl]eczna\s+(?:jest|to)\s+\bN\b"),
+            ("N = emocjonalna wina (jako definicja N)", 
+             r"\bN\s+(?:jest|to|=)\s+emocjonaln\w*\s+win\w*|\bemocjonaln\w*\s+win\w*\s+(?:jest|to)\s+\bN\b"),
+        ]
+        
+        found_old = []
+        for name, pattern in old_definitions:
+            if re.search(pattern, text_before_critical, re.IGNORECASE):
+                found_old.append(name)
+        
+        if found_old:
+            self.errors.append(f"[ERROR] Znaleziono przestarzałe definicje (poza sekcją krytyczną): {found_old}")
+            return False
+        else:
+            self.info.append("[OK] Brak przestarzałych definicji W, C, N w treści dokumentu")
             return True
     
     def check_bibliography(self):
@@ -319,9 +366,10 @@ class DocxValidator:
             ("5. 24 przejścia", self.check_24_transitions),
             ("6. Hipotezy aktualne", self.check_current_hypotheses),
             ("7. Brak starych bledow", self.check_no_old_errors),
-            ("8. Bibliografia", self.check_bibliography),
-            ("9. Tabele poprawne", self.check_tables_correct),
-            ("10. Wersja spójna", self.check_version_consistency),
+            ("8. Definicje kanoniczne", self.check_canonical_definitions),
+            ("9. Bibliografia", self.check_bibliography),
+            ("10. Tabele poprawne", self.check_tables_correct),
+            ("11. Wersja spójna", self.check_version_consistency),
         ]
         
         passed = 0
@@ -376,7 +424,7 @@ class DocxValidator:
             return "FAIL"
 
 def main():
-    docx_path = BASE / "DMTRD_koncepcja_rev3.docx"
+    docx_path = BASE / "DMTRD_koncepcja_rev3_1.docx"
     if not docx_path.exists():
         print(f"BŁĄD: Plik {docx_path} nie istnieje")
         sys.exit(1)
@@ -385,9 +433,9 @@ def main():
     status = validator.run_all_checks()
     
     # Zapisz raport
-    report_path = BASE / "reports" / "DMTRD_rev2_docx_validation.md"
+    report_path = BASE / "reports" / "DMTRD_rev3_1_docx_validation.md"
     with open(report_path, 'w', encoding='utf-8') as f:
-        f.write(f"# Raport walidacji DOCX - DMTRD rev2\n\n")
+        f.write(f"# Raport walidacji DOCX - DMTRD rev3.1\n\n")
         f.write(f"Plik: {docx_path.name}\n")
         f.write(f"Data: {datetime.now().strftime('%Y-%m-%d %H:%M')}\n")
         f.write(f"Status: {status}\n\n")

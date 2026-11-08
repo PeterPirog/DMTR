@@ -18,7 +18,7 @@
 
 ## Zasady ochrony przed dryftem koncepcyjnym (rev3)
 1. **Nie redefiniować W, C, N** bez wyraźnej decyzji autora.
-   - W = CHCĘ = osobista akceptacja wartości celu / zgoda na realizację celu
+   - W = CHCĘ = chęć wykonania konkretnego działania
    - C = MOGĘ = subiektywnie oceniana wykonalność działania
    - N = POWINIENEM = racjonalne przekonanie o konieczności działania ze względu na swoje cele
 2. **Nie dodawać nowych podstawowych wymiarów** do rdzenia bez uzasadnienia.

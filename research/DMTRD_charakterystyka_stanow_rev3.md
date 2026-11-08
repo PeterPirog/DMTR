@@ -335,7 +335,7 @@ Lekarz w szpitalu chce ratować pacjentów (W=1), czuje to jako misję i obowią
 **C. Dosłowne znaczenie:** CHCĘ=1, MOGĘ=1, POWINIENEM=0  
 
 **D. Charakterystyka psychologiczna:**  
-Osoba **chce** i **uważa, że może**, ale **nie czuje**, że powinna. To stan motywacji autonomicznej, sprawczości, potencjalnego flow. Osoba działa z inicjatywy, kreatywnie, elastycznie. N=0 **nie oznacza brak norm** – mogą być zinternalizowane (wtedy W=1 zastępuje N) lub brak kontekstu normatywnego.
+Osoba **chce** i **uważa, że może**, ale **nie czuje**, że powinna. To stan gotowości do działania z inicjatywy, sprawczości, potencjalnego flow. Osoba działa z inicjatywy, kreatywnie, elastycznie. N=0 **nie oznacza brak norm** – mogą być zinternalizowane (wtedy W=1 zastępuje przekonanie o konieczności) lub brak kontekstu normatywnego.
 
 **E. Typowe możliwe zachowania:**  
 - Inicjowanie działania, kreatywność, elastyczność  
@@ -364,7 +364,7 @@ Programista pisze projekt open-source w czasie wolnym. Chce (W=1), ma kompetencj
 
 **J. Sytuacje adaptacyjne:**  
 - Stabilny stan przy autonomii i zasobach  
-- Najwyższa jakość zaangażowania (SDT: motywacja autonomiczna)  
+- Wysoka jakość zaangażowania (bliska motywacji autonomicznej SDT)  
 - Przestrzeń do kreatywności i innowacji  
 - Możliwość dodania N (110→111) – rozszerzenie odpowiedzialności  
 

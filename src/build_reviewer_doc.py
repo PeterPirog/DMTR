@@ -71,9 +71,9 @@ def main():
         "wymiarów binarnych:")
     
     dims = [
-        ("W – CHCĘ", "Osobista akceptacja wartości celu / zgoda na realizację celu."),
-        ("C – MOGĘ", "Subiektywnie oceniana wykonalność działania (self-efficacy / perceived behavioral control)."),
-        ("N – POWINIENEM", "Poczucie zobowiązania normatywnego (normy moralne, rolowe, społeczne). Źródło i jakość regulacji (N_source, N_quality) to osobne zmienne.")
+        ("W – CHCĘ", "Chęć wykonania konkretnego działania."),
+        ("C – MOGĘ", "Przekonanie o możliwości wykonania działania."),
+        ("N – POWINIENEM", "Racjonalne przekonanie o konieczności wykonania działania ze względu na własne cele. Źródło i jakość regulacji (N_source, N_quality) to osobne zmienne.")
     ]
     
     for name, desc in dims:
@@ -91,9 +91,9 @@ def main():
         "Wymiary odpowiadają trzem fundamentalnym pytaniom, jakie jednostka zadaje sobie przed działaniem:", bold=True)
     
     q = [
-        "W: \"Czy chcę to zrobić? Czy zgadzam się z tym celem?\" (Osobista motywacja)",
-        "C: \"Czy jestem w stanie to zrobić? Czy widzę sposób na realizację?\" (Postrzegana wykonalność)",
-        "N: \"Czy powinienem to zrobić? Czy czuję się zobowiązany?\" (Poczucie obowiązku normatywnego)"
+        "W: \"Czy chcę to zrobić?\" (Chęć)",
+        "C: \"Czy jestem w stanie to zrobić? Czy widzę sposób na realizację?\" (Przekonanie o możliwości)",
+        "N: \"Czy powinienem to zrobić ze względu na swoje cele?\" (Racjonalne przekonanie o konieczności)"
     ]
     for qq in q:
         add_paragraph_styled(doc, qq, style='List Bullet')
@@ -107,25 +107,25 @@ def main():
     add_heading_styled(doc, "3. Struktura ośmiu stanów", 1)
     
     states = [
-        ("000", "Stan neutralny", "Brak W, C, N – spoczynek lub apatia"),
-        ("001", "Obowiązek niewykonalny", "N=1, W=0, C=0 – presja bez zasobów i motywacji"),
-        ("010", "Możliwość niewykorzystana", "C=1, W=0, N=0 – potencjał bez napędu"),
-        ("011", "Obowiązek wykonalny bez autonomii", "C=1, N=1, W=0 – compliance, motywacja kontrolowana"),
-        ("100", "Pragnienie bez możliwości", "W=1, C=0, N=0 – motywacja zablokowana barierami"),
-        ("101", "Motywacja i obowiązek bez możliwości", "W=1, N=1, C=0 – napięcie krytyczne, cel niemożliwy"),
-        ("110", "Gotowość autonomiczna", "W=1, C=1, N=0 – motywacja autonomiczna, sprawczość"),
-        ("111", "Zbieżność trzech wymiarów", "W=1, C=1, N=1 – pełna gotowość (nie zawsze optymalna)")
+        ("000", "Spoczynek / Brak przesłanek", "W=0, C=0, N=0 – brak chęci, możliwości i powinności"),
+        ("001", "Tylko powinność", "N=1, W=0, C=0 – przekonanie o konieczności bez chęci i możliwości"),
+        ("010", "Tylko możliwość", "C=1, W=0, N=0 – przekonanie o możliwości bez chęci i powinności"),
+        ("011", "Możliwość + powinność (bez chęci)", "C=1, N=1, W=0 – compliance, działanie bez wewnętrznej zgody"),
+        ("100", "Tylko chęć", "W=1, C=0, N=0 – chęć bez przekonania o możliwości i powinności"),
+        ("101", "Chęć + powinność (bez możliwości)", "W=1, N=1, C=0 – napięcie krytyczne: chęć i przekonanie o konieczności bez możliwości"),
+        ("110", "Chęć + możliwość (bez powinności)", "W=1, C=1, N=0 – gotowość autonomiczna, sprawczość"),
+        ("111", "Pełna zbieżność trzech przesłanek", "W=1, C=1, N=1 – pełna gotowość (nie zawsze optymalna)")
     ]
     
     for code, name, desc in states:
         add_paragraph_styled(doc, f"{code} – {name}: {desc}", style='List Bullet')
     
     add_paragraph_styled(doc, 
-        "Stan 101 (W=1, C=0, N=1) jest kluczowy – konfiguracja napięcia motywacyjnego (motywacja + obowiązek bez możliwości). "
+        "Stan 101 (W=1, C=0, N=1) jest kluczowy – konfiguracja napięcia motywacyjnego (chęć + przekonanie o konieczności bez przekonania o możliwości). "
         "W kontekście moralnym hipoteza H_MD przewiduje, że 101 predysponuje do moral distress (Jameton, Corley). "
         "Również: niemożliwe cele z identyfikacją (Goal-Setting). Stan 011 to compliance bez autonomii "
         "(motywacja kontrolowana w SDT). Stan 110 to gotowość autonomiczna (SDT, SCT). "
-        "Stan 111 przy internalizowanym N to najwyższa jakość motywacji; przy N eksternalnym – ryzyko wypalenia.")
+        "Stan 111 przy zinternalizowanym przekonaniu o konieczności to najwyższa jakość motywacji; przy N eksternalnym – ryzyko wypalenia.")
     
     # 4. Najważniejsze założenie: HPE
     add_heading_styled(doc, "4. Najważniejsze założenie: Hipoteza Przejść Elementarnych (HPE)", 1)
@@ -161,7 +161,7 @@ def main():
         ("SCT (Bandura)", "C ≈ self-efficacy (ale binarne vs ciągłe). W ≈ outcome expectancies + cele. Różnice: self-efficacy centralna, specyficzna dziedzinowo, 4 źródła; brak N."),
         ("Goal-Setting (Locke, Latham)", "W ≈ zangażowanie w cel, C ≈ osiągalność. Różnice: cel centralny, feedback, rezygnacja/reengagement; brak stanów."),
         ("Samoregulacja (Carver, Scheier)", "Model cybernetyczny (ciągły) vs graf stanów (dyskretny). Różnice: pętla zwrotna, hierarchia celów, afekt jako sygnał; brak N."),
-        ("Teorie nawyku (Wood, Neal)", "DMTRD modeluje System 2; nawyki = System 1 (stan 010/011 to normalne działanie, nie 'brak motywacji'). Luka modelu."),
+        ("Teorie nawyku (Wood, Neal)", "DMTRD modeluje System 2; nawyki = System 1 (stan 010/011 to normalne działanie, nie 'brak chęci'). Luka modelu."),
         ("MOA (Ölander, Thøgersen)", "Bardzo bliskie: M≈W, O≈C (zewn.), A≈C (wewn.). Różnice: MOA ciągłe, predykcyjne, rozdziela O i A; DMTRD binarne, dynamiczne, scala C."),
         ("Modele dynamiczne (Vallacher, Borsboom)", "DMTRD = dyskretna aproksymacja Q3. Różnice: modele dynamiczne ciągłe, atrakcje, bifurkacje, sieci; brak dyskretnych stanów.")
     ]
@@ -189,7 +189,7 @@ def main():
     doubts = [
         ("Binarność konstruktów", "Wszystkie teorie referencyjne używają skal ciągłych. Binarne W traci typy motywacji (intryntyczna vs introjektowana); binarne C traci gradację self-efficacy; binarne N traci kategorie norm (moralne, rolowe, społeczne). Czy utrata informacji jest akceptowalna?"),
         ("Brak intencji i celu", "TPB, Rubikon, Goal-Setting, Carver & Scheier – intencja/cel centralne. DMTRD stan (W,C,N) nie ma intencji ani celu. Stan 111 = gotowość (preactional) czy działanie (actional)? Brak mechanizmu stan→zachowanie."),
-        ("Pomijanie automatyzmu/nawyku", "40–50% działań to nawyki (System 1). DMTRD modeluje tylko System 2. Stan 010/011 to normalne działanie nawykowe, a nie 'brak motywacji'. Przejścia 010↔110 nie oddają dynamiki nawyków."),
+        ("Pomijanie automatyzmu/nawyku", "40–50% działań to nawyki (System 1). DMTRD modeluje tylko System 2. Stan 010/011 to normalne działanie nawykowe, a nie 'brak chęci'. Przejścia 010↔110 nie oddają dynamiki nawyków."),
         ("N miesza kategorie norm", "N łączy normy opisowe, inskryptywne, moralne, rolowe, zinternalizowane, eksternalne. To różne mechanizmy (compliance vs internalizacja). Stan 011 może być compliance LUB introjektowana regulacja – DMTRD nie rozróżnia."),
         ("Identyfikowalność statystyczna", "3 wskaźniki binarne → 8 wzorców = 8 klas latentnych = model nasycony (0 df). LTA/HMM nie testowalne bez wskaźników ciągłych lub dodatkowych zmiennych. CTMC wymaga gęstego EMA."),
         ("Hipoteza jednego bitu (HPE)", "Czy elementarny proces psychologiczny = 1 bit? Równoczesne zmiany możliwe (bifurkacje, ambiwalencja). Ograniczona częstotliwość EMA może maskować zmiany wielobitowe. HPE to hipoteza, nie fakt."),
@@ -220,7 +220,7 @@ def main():
         add_paragraph_styled(doc, q, style='List Number')
     
     # Save
-    output_path = BASE / "DMTRD_streszczenie_dla_recenzenta_rev3.docx"
+    output_path = BASE / "DMTRD_streszczenie_dla_recenzenta_rev3_1.docx"
     doc.save(str(output_path))
     print(f"Saved: {output_path}")
 

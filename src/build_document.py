@@ -135,8 +135,8 @@ def main():
     abstract = (
         "Niniejsze opracowanie przedstawia Dynamiczny Model Trójwymiarowej Regulacji Działania (DMTRD) – "
         "propozycję teoretyczną opisującą stan motywacyjny człowieka względem konkretnego działania "
-        "za pomocą trzech wymiarów binarnych: W (CHCĘ – osobista akceptacja wartości celu), "
-        "C (MOGĘ – subiektywnie oceniana wykonalność) i N (POWINIENEM – poczucie zobowiązania normatywnego). "
+        "za pomocą trzech wymiarów binarnych: W (CHCĘ – chęć wykonania działania), "
+        "C (MOGĘ – przekonanie o możliwości wykonania działania) i N (POWINIENEM – racjonalne przekonanie o konieczności wykonania działania ze względu na własne cele). "
         "Osiem możliwych stanów (000–111) tworzą wierzchołki trójwymiarowego hipersześcianu Q3, "
         "a hipoteza przejść elementarnych (HPE) zakłada, że pojedyncza zmiana motywacyjna modyfikuje "
         "dokładnie jeden wymiar (odległość Hamminga = 1). Model generuje 24 kierunkowe przejścia, "
@@ -192,9 +192,10 @@ def main():
     
     add_paragraph_styled(doc, 
         "Model zakłada, że w dowolnym momencie stan motywacyjny względem konkretnego działania można opisać "
-        "trzema wymiarami binarnymi: W (CHCĘ – osobista akceptacja wartości celu), C (MOGĘ – postrzegana wykonalność) "
-        "i N (POWINIENEM – poczucie zobowiązania normatywnego). Tworzy to 8 stanów (000–111), które ułożone są "
-        "w strukturę trójwymiarowego hipersześcianu Q3. Kluczowym postulate jest hipoteza przejść elementarnych (HPE-model): "
+        "trzema wymiarami binarnymi: W (CHCĘ – chęć wykonania działania), C (MOGĘ – przekonanie o możliwości wykonania działania) "
+        "i N (POWINIENEM – racjonalne przekonanie o konieczności wykonania działania ze względu na własne cele). "
+        "Tworzy to 8 stanów (000–111), które ułożone są w strukturę trójwymiarowego hipersześcianu Q3. "
+        "Kluczowym postulate jest hipoteza przejść elementarnych (HPE-model): "
         "elementarne skoki w generatorze CTMC zmieniają dokładnie jeden wymiar (odległość Hamminga = 1).")
     
     add_paragraph_styled(doc, 
@@ -236,21 +237,20 @@ def main():
         "które człowiek zadaje sobie przed działaniem (por. Ajzen, 1991; Deci & Ryan, 2000; Michie et al., 2011):")
     
     dims = [
-        ("W – CHCĘ (Osobista akceptacja wartości celu)", 
-         "Odpowiada na pytanie: \"Czy chcę to zrobić? Czy zgadzam się z tym celem?\". "
+        ("W – CHCĘ (Chęć wykonania działania)", 
+         "Odpowiada na pytanie: \"Czy chcę to zrobić?\". "
          "W odróżnieniu od postawy (TPB) lub typów motywacji (SDT), W jest binarne – wyraża obecność "
-         "lub brak osobistej zgody na realizację celu. Nie rozróżnia motywacji intryntycznej od zidentyfikowanej, "
-         "co jest uproszczeniem wymagającym weryfikacji. W nie jest chwilową chęcią, pragnieniem ani intencją."),
-        ("C – MOGĘ (Subiektywnie oceniana wykonalność)", 
-         "Odpowiada na pytanie: \"Czy jestem w stanie to zrobić? Czy posiadam zasoby i kompetencje?\". "
+         "lub brak chęci wykonania działania. Nie rozróżnia typów motywacji, "
+         "co jest uproszczeniem wymagającym weryfikacji. W nie jest intencją, ani racjonalną akceptacją wartości celu."),
+        ("C – MOGĘ (Przekonanie o możliwości wykonania działania)", 
+         "Odpowiada na pytanie: \"Czy jestem w stanie to zrobić? Czy widzę sposób na realizację?\". "
          "Bliskie pojęciu self-efficacy (Bandura, 1997) i perceived behavioral control (Ajzen, 1991), "
          "ale w przeciwieństwie do nich jest binarne i nie rozdziela zdolności wewnętrznych od szans zewnętrznych "
-         "(capability vs opportunity w COM-B). C to ocena subiektywna, nie obiektywna możliwość."),
-        ("N – POWINIENEM (Poczucie zobowiązania normatywnego)", 
-         "Odpowiada na pytanie: \"Czy powinienem to zrobić? Czy czuję się zobowiązany?\". "
-         "Jest szersze niż normy subiektywne (TPB) – obejmuje normy moralne (Schwartz, 1977), "
-         "obowiązki rolowe (Kahn et al., 1964), zinternalizowane normy (Kelman, 1958) "
-         "oraz presję społeczną (Cialdini et al., 1990). To kluczowe rozróżnienie względem TPB i SDT. "
+         "(capability vs opportunity w COM-B). C to przekonanie subiektywne, nie obiektywna możliwość."),
+        ("N – POWINIENEM (Racjonalne przekonanie o konieczności)", 
+         "Odpowiada na pytanie: \"Czy powinienem to zrobić ze względu na swoje cele?\". "
+         "Jest to racjonalne przekonanie o konieczności wykonania działania ze względu na własne cele i priorytety. "
+         "N nie jest emocjonalnym poczuciem winy, presją społeczną, ani samym istnieniem normy moralnej. "
          "Źródło i jakość regulacji (N_source, N_quality) to osobne zmienne, nie bit N.")
     ]
     
@@ -261,11 +261,11 @@ def main():
     add_paragraph_styled(doc, 
         "Ważne rozróżnienia (co wymiar NIE oznacza):", bold=True)
     exclusions = [
-        "W=0 ≠ silna niechęć (to oddzielny konstrukt aversji); W=0 = brak osobistej motywacji.",
-        "C=0 ≠ obiektywna niemożność; C=0 = subiektywna ocena niewykonalności (może być błędna).",
-        "N=0 ≠ zakaz; N=0 = brak poczucia obowiązku (może być neutralność, nie zabronienie).",
+        "W=0 ≠ silna niechęć ani awersja; W=0 = brak chęci wykonania działania.",
+        "C=0 ≠ obiektywna niemożność; C=0 = przekonanie o braku możliwości (może być błędne).",
+        "N=0 ≠ zakaz; N=0 = brak przekonania o konieczności (może być neutralność, nie zabronienie).",
         "Stan (W,C,N) ≠ intencja (TPB) ani działanie; to stan motywacyjny, nie zachowanie.",
-        "Stan 111 ≠ zawsze optymalny; N może być eksternalne, W perfekcjonistyczne, C przecenione."
+        "Stan 111 ≠ zawsze optymalny; N może być błędne, W może być chwilowe, C może być przecenione."
     ]
     for e in exclusions:
         add_paragraph_styled(doc, e, style='List Bullet')
@@ -282,28 +282,24 @@ def main():
         "różnic względem bliższych pojęć z literatury.")
     
     constructs = [
-        ("4.1. W – Osobista akceptacja wartości celu (CHCĘ)", 
-         "Definicja: Stan wewnętrznej zgody na realizację konkretnego celu lub działania, "
-         "objawiający się jako tendencja aproksymacyjna. "
-         "W=1 oznacza, że jednostka pozytywnie wertefikuje cel i czuje wewnętrzny napęd do jego realizacji. "
-         "W=0 oznacza brak takiej zgody (neutralność, obojętność lub aversja – ale aversja nie jest modelowana). "
-         "W nie jest chwilową chęcią, pragnieniem, zamiarem (intencją) ani motywacją intryntyczną.",
-         "Różnice: TPB – attitude (ciągła, wielowymiarowa); SDT – identified/integrated regulation (bliższe W); "
-         "COM-B – reflective motivation (układa się z W) + automatic motivation (nie modelowane w DMTRD)."),
-        ("4.2. C – Subiektywnie oceniana wykonalność (MOGĘ)", 
-         "Definicja: Przekonanie jednostki o posiadaniu niezbędnych zasobów, kompetencji, czasu "
-         "i szans środowiskowych do realizacji działania. C=1 = \"widzę sposób na to, by to zrobić\". "
-         "C=0 = \"nie widzę jak to zrobić\" (bariera postrzegana jako nie do przełamania). "
-         "C to ocena subiektywna, nie obiektywna możliwość; C=1 nie gwarantuje wykonania, C=0 nie wyklucza go.",
+        ("4.1. W – Chęć wykonania działania (CHCĘ)", 
+         "Definicja: Chęć wykonania konkretnego działania. W=1 oznacza, że osoba chce wykonać to działanie. "
+         "W=0 oznacza, że osoba nie chce wykonać tego działania. "
+         "W nie jest intencją (planem działania), ani racjonalną akceptacją wartości celu, ani motywacją intryntyczną.",
+         "Różnice: TPB – attitude (ciągła, wielowymiarowa); SDT – typy regulacji (autonomiczna/kontrolowana); "
+         "COM-B – reflective motivation + automatic motivation (nie modelowane w DMTRD)."),
+        ("4.2. C – Przekonanie o możliwości wykonania działania (MOGĘ)", 
+         "Definicja: Przekonanie osoby o możliwości wykonania działania. C=1 = \"uważam, że mogę to zrobić\". "
+         "C=0 = \"uważam, że nie mogę tego zrobić\". "
+         "C to przekonanie subiektywne, nie obiektywna możliwość; C=1 nie gwarantuje wykonania, C=0 nie wyklucza go.",
          "Różnice: Bandura – self-efficacy (ciągła, specyficzna dziedzinowo, 4 źródła); "
          "Ajzen – PBC (mieszanka self-efficacy i kontroli środowiskowej); "
-         "COM-B – capability (psychologiczna/fizyczna) + opportunity (społeczna/fizyczna) – rozdzielone; "
-         "DMTRD scala to w jednym binarnym wymiarze."),
-        ("4.3. N – Poczucie zobowiązania normatywnego (POWINIENEM)", 
-         "Definicja: Stan doświadczania presji do działania wynikającej z zinternalizowanych lub zewnętrznych norm: "
-         "moralnych (Schwartz), rolowych (Kahn), społecznych (Cialdini), prawnych lub organizacyjnych. "
-         "N=1 = \"czuję, że to moja odpowiedzialność/obowiązek\". N=0 = brak takiego poczucia. "
-         "Źródło i jakość regulacji (N_source, N_quality) to osobne zmienne pomocnicze, nie bit N.",
+         "COM-B – capability + opportunity (rozdzielone); DMTRD scala to w jednym binarnym wymiarze."),
+        ("4.3. N – Racjonalne przekonanie o konieczności (POWINIENEM)", 
+         "Definicja: Racjonalne przekonanie, że wykonanie działania jest konieczne ze względu na własne cele. "
+         "N=1 = \"uważam, że powinienem to zrobić ze względu na swoje cele\". N=0 = brak takiego przekonania. "
+         "N nie jest emocjonalną winą, presją społeczną, ani samym istnieniem normy moralnej. "
+         "Źródło i jakość regulacji (N_source, N_quality) to osobne zmienne, nie bit N.",
          "Różnice: TPB – subjective norms (tylko presja społeczna, ciągła); "
          "SDT – introjected/identified regulation (typy motywacji, nie oddzielny wymiar); "
          "Kelman – compliance/identification/internalization (procesy, nie stan); "
@@ -560,47 +556,79 @@ def main():
     add_paragraph_styled(doc, "Tabela 2. Osiem stanów motywacyjnych DMTRD (opracowanie własne).", italic=True, size=9)
     
     # Szczegóły kluczowych stanów
-    add_heading_styled(doc, "8.1. Stan 001 – Obowiązek niewykonalny (N=1, W=0, C=0)", 2)
+    add_heading_styled(doc, "8.1. Stan 000 – Spoczynek / Brak przesłanek (W=0, C=0, N=0)", 2)
     add_paragraph_styled(doc, 
-        "Napięcie między 'powinienem' a 'nie mogę' bez osobistej motywacji. Modeluje sytuacje "
-        "przeciążenia roli bez zasobów (Kahn et al., 1964). "
-        "Główne przejścia: 001→011 (pozyskanie C – empowerment), 001→101 (internalizacja N → W), 001→000 (rezygnacja z N). "
-        "Hipoteza: presja do zmiany C lub W lub rezygnacji (N→0). Ryzyko depresji, wypalenia.")
+        "Osoba nie chce wykonywać danego działania, nie uważa, że może je wykonać, i nie uważa, że powinna je wykonać. "
+        "To stan braku motywacyjnego napędu względem tego konkretnego działania. Może to być stan odpoczynku po wykonaniu zadania, "
+        "przerwa między zadaniami, albo po prostu brak aktualnego zainteresowania tym działaniem. "
+        "Główne przejścia: 000→100 (pojawienie się chęci), 000→010 (pojawienie się przekonania o możliwości), "
+        "000→001 (pojawienie się przekonania o konieczności). "
+        "Hipoteza: stabilny jako punkt spoczynku; niestabilny przy silnych bodźcach.")
     
-    add_heading_styled(doc, "8.2. Stan 011 – Obowiązek wykonalny bez autonomii (W=0, C=1, N=1)", 2)
+    add_heading_styled(doc, "8.2. Stan 001 – Tylko powinność (N=1, W=0, C=0)", 2)
     add_paragraph_styled(doc, 
-        "Compliance bez wewnętrznej zgody. Odpowiada motywacji kontrolowanej (SDT: introjektowana/eksternalna). "
-        "Różni się od 111 brakiem autonomii (W=0). Główne przejścia: 011→111 (internalizacja – kluczowe dla jakości działania), "
-        "011→001 (utrata C – dezempowerment), 011→010 (utrata N – deregulacja). "
+        "Osoba uważa, że powinna wykonać działanie (w świetle swoich celów), ale nie chce tego robić i nie uważa, że może to zrobić. "
+        "To stan napięcia: \"powinienem, ale nie chcę i nie mogę\". Często towarzyszy mu poczucie bezsilności, frustracji, winy lub lęku. "
+        "Główne przejścia: 001→011 (pozyskanie przekonania o możliwości – empowerment), "
+        "001→101 (pojawienie się chęci – internalizacja konieczności), 001→000 (rezygnacja z przekonania o konieczności). "
+        "Hipoteza: niestabilny – presja do zmiany przekonania o możliwości, chęci lub rezygnacji z przekonania o konieczności. "
+        "Ryzyko depresji, wypalenia.")
+    
+    add_heading_styled(doc, "8.2. Stan 010 – Możliwość bez napędu (C=1, W=0, N=0)", 2)
+    add_paragraph_styled(doc, 
+        "Osoba uważa, że może wykonać działanie, ale nie chce go robić i nie uważa, że powinna. "
+        "To stan potencjału bez kierunku – \"mogę, ale nie chcę i nie muszę\". Często towarzyszy spokój, ciekawość, czasem nudza. "
+        "Stan ten jest neutralny lub lekko pozytywny (poczucie swobody). "
+        "Główne przejścia: 010→110 (pojawienie się chęci), 010→011 (pojawienie się przekonania o konieczności), "
+        "010→000 (utrata przekonania o możliwości). "
+        "Hipoteza: stabilny (brak naprężenia); przejście do działania wymaga chęci lub przekonania o konieczności.")
+    
+    add_heading_styled(doc, "8.2. Stan 011 – Compliance (C=1, N=1, W=0)", 2)
+    add_paragraph_styled(doc, 
+        "Osoba uważa, że może wykonać działanie i uważa, że powinna, ale nie chce. "
+        "To stan compliance: działanie z presji (wewnętrznej lub zewnętrznej) bez wewnętrznej zgody. "
+        "Towarzyszą: opór, złość, winę, obojętność, ryzyko wypalenia. Jakość działania zazwyczaj niższa. "
+        "Główne przejścia: 011→111 (internalizacja – pojawienie się chęci), "
+        "011→001 (utrata przekonania o możliwości – dezempowerment), 011→010 (utrata przekonania o konieczności – deregulacja). "
         "Hipoteza: metastabilny – ryzyko wypalenia lub internalizacji.")
     
-    add_heading_styled(doc, "8.3. Stan 101 – Motywacja i obowiązek bez możliwości (W=1, C=0, N=1)", 2)
+    add_heading_styled(doc, "8.3. Stan 100 – Chęć zablokowana (W=1, C=0, N=0)", 2)
     add_paragraph_styled(doc, 
-        "Najbardziej napięty stan. Konfiguracja napięcia motywacyjnego: silna motywacja i poczucie obowiązku przy braku możliwości. "
-        "Również: cel zidentyfikowany jako własny i normatywny, ale niemożliwy do osiągnięcia (Goal-Setting). "
+        "Osoba chce wykonać działanie, ale nie uważa, że może je wykonać i nie uważa, że powinna. "
+        "To stan frustracji celowej: silny napęd (chęć) spotyka barierę (brak przekonania o możliwości). "
+        "Towarzyszą: frustracja, żal, nadzieja, determinacja. Osoba planuje, szuka dróg, lobbyuje o zasoby. "
+        "Główne przejścia: 100→110 (pojawienie się przekonania o możliwości – przełamanie barier), "
+        "100→101 (pojawienie się przekonania o konieczności – moralizacja celu), "
+        "100→000 (rezygnacja z chęci – adaptacyjna lub patologiczna). "
+        "Hipoteza: niestabilny – presja na zdobycie przekonania o możliwości lub rezygnację z chęci.")
+    
+    add_heading_styled(doc, "8.3. Stan 101 – Napięcie krytyczne (W=1, C=0, N=1)", 2)
+    add_paragraph_styled(doc, 
+        "Najbardziej napięty stan. Osoba chce i uważa, że powinna, ale nie uważa, że może. "
+        "Silna motywacja (chęć + przekonanie o konieczności) zablokowana barierą (brak przekonania o możliwości). "
+        "Towarzyszą: lęk, winę, gniew, bezsilność, ryzyko wypalenia. Stan ten wymaga szybkiej zmiany przekonania o możliwości lub rezygnacji. "
         "Główne przejścia: 101→111 (rozwiązanie konfliktu – najbardziej pożądane), "
-        "101→001 (rezygnacja z W – dezengażowanie), 101→100 (rezygnacja z N – sekularyzacja celu). "
-        "Hipoteza: 'czasowa bomba' – wymaga szybkiej zmiany C lub rezygnacji. "
+        "101→001 (rezygnacja z chęci – dezengażowanie), 101→100 (rezygnacja z przekonania o konieczności – sekularyzacja celu). "
+        "Hipoteza: 'czasowa bomba' – wymaga szybkiej zmiany przekonania o możliwości lub rezygnacji. "
         "Uwaga: Stan 101 NIE jest równoważny moral distress – to osobna hipoteza H_MD (w kontekście moralnym 101 predysponuje do moral distress).")
     
     add_heading_styled(doc, "8.4. Stan 110 – Gotowość autonomiczna (W=1, C=1, N=0)", 2)
     add_paragraph_styled(doc, 
-        "Motywacja autonomiczna z poczuciem sprawczości. Bliskie motywacji intryntycznej/zidentyfikowanej (SDT), "
-        "wysokiej self-efficacy + outcome expectancy (SCT), Reflective Motivation + Capability (COM-B). "
-        "N=0 nie oznacza brak norm – mogą być zinternalizowane (W=1) lub brak kontekstu normatywnego. "
-        "Główne przejścia: 110→111 (dodanie N – odpowiedzialność społeczna/OCB), "
-        "110→100 (utrata C – blokada), 110→010 (utrata W – wypalenie od pasji). "
+        "Osoba chce i uważa, że może, ale nie uważa, że powinna. To stan motywacji autonomicznej, sprawczości, potencjalnego flow. "
+        "N=0 nie oznacza brak norm – mogą być zinternalizowane (wtedy chęć zastępuje przekonanie o konieczności) lub brak kontekstu normatywnego. "
+        "Główne przejścia: 110→111 (pojawienie się przekonania o konieczności – odpowiedzialność społeczna/OCB), "
+        "110→100 (utrata przekonania o możliwości – blokada), 110→010 (utrata chęci – wypalenie od pasji, nudza). "
         "Hipoteza: stabilny przy autonomii; ryzyko 110→010 przy narzuconych zadaniach.")
     
-    add_heading_styled(doc, "8.5. Stan 111 – Zbieżność trzech wymiarów (W=1, C=1, N=1)", 2)
+    add_heading_styled(doc, "8.5. Stan 111 – Pełna zbieżność (W=1, C=1, N=1)", 2)
     add_paragraph_styled(doc, 
-        "Pełna gotowość motywacyjna. Nie zawsze optymalny! N może być eksternalne (presja), "
-        "W perfekcjonistyczne, C przecenione. Przy internalizowanym N: najwyższa jakość motywacji "
-        "(zintegrowana regulacja SDT, wysokie TPB/COM-B, faza actional Rubikonu, role integration). "
-        "Główne przejścia: 111→011 (utrata W – dezautonomizacja, groźne), "
-        "111→101 (utrata C – kryzys zasobów, napięcie krytyczne), "
-        "111→110 (utrata N – delegacja/dezobowiązkowanie, adaptacyjne przy planowanej sukcesji). "
-        "Hipoteza: stabilny przy internalizowanym N; 111→011 silniej predykuje wypalenie niż 111→110.")
+        "Osoba chce, uważa, że może, i uważa, że powinna. Pełna gotowość motywacyjna. "
+        "Przy racjonalnym przekonaniu o konieczności: najwyższa jakość motywacji. "
+        "Ale 111 NIE ZAWSZE OPTYMALNE – przekonanie o konieczności może być błędne, chęć chwilowa, przekonanie o możliwości przecenione. "
+        "Główne przejścia: 111→011 (utrata chęci przy przekonaniu o konieczności – dezautonomizacja, groźne, wypalenie), "
+        "111→101 (utrata przekonania o możliwości przy chęci i przekonaniu o konieczności – kryzys zasobów, napięcie krytyczne), "
+        "111→110 (utrata przekonania o konieczności – dezobowiązkowanie, delegacja, sukcesja, adaptacyjne). "
+        "Hipoteza: stabilny przy racjonalnym przekonaniu o konieczności; 111→011 groźniejsze niż 111→110.")
     
     doc.add_page_break()
     
@@ -640,16 +668,16 @@ def main():
     add_heading_styled(doc, "9.2. Asymetria przejść odwrotnych – kluczowe przykłady", 2)
     
     asym = [
-        ("011 → 111 (Internalizacja)", "Dodanie W do obowiązku wykonalnego. Proces: identyfikacja z wartością zadania, autonomizacja. Koszt: niski (wzrost autonomii).", 
-         "111 → 011 (Dezautonomizacja)", "Utrata W przy zachowaniu N i C. Proces: wypalenie, utrata sensu, mikromanagement. Koszt: wysoki (wypalenie, cynizm)."),
-        ("001 → 101 (Przejęcie odpowiedzialności)", "Pojawienie się W przy N=1, C=0. Internalizacja normy, szukanie sensu. Koszt: umiarkowany (nadzieja).", 
-         "101 → 001 (Dezengażowanie)", "Utrata W przy N=1, C=0. Wypalenie, utrata nadziei. Koszt: wysoki (bezsilność, depresja)."),
-        ("101 → 111 (Rozwiązanie konfliktu)", "Pojawienie się C przy W=1, N=1. Przełamanie barier. Koszt: niski (olga, sens).", 
-         "111 → 101 (Kryzys zasobów)", "Utrata C przy W=1, N=1. Szok, napięcie krytyczne ostre. Koszt: bardzo wysoki (ryzyko PTSD)."),
-        ("110 → 111 (Odpowiedzialność społeczna)", "Dodanie N do autonomii. Internalizacja normy prosocjalnej, OCB. Koszt: niski (dumą, sens).", 
-         "111 → 110 (Dezobowiązkowanie)", "Utrata N przy W=1, C=1. Delegacja, sukcesja. Koszt: niski/umiarkowany (ulga, ewentualnie pustka)."),
-        ("100 → 110 (Przełamanie barier)", "Pojawienie się C przy W=1. Planowanie, problem-solving, Rubikon. Koszt: umiarkowany (nadzieja).", 
-         "110 → 100 (Blokada działania)", "Utrata C przy W=1. Frustracja, bezsilność. Koszt: wysoki (ryzyko rezygnacji).")
+        ("011 → 111 (Internalizacja)", "Pojawienie się chęci przy możliwości i przekonaniu o konieczności. Proces: identyfikacja z wartością zadania, autonomizacja. Koszt: niski (wzrost autonomii).", 
+         "111 → 011 (Dezautonomizacja)", "Utrata chęci przy zachowaniu przekonania o możliwości i konieczności. Proces: wypalenie, utrata sensu, mikromanagement. Koszt: wysoki (wypalenie, cynizm)."),
+        ("001 → 101 (Internalizacja konieczności)", "Pojawienie się chęci przy przekonaniu o konieczności i braku przekonania o możliwości. Proces: identyfikacja z wartością konieczności, autonomizacja. Koszt: umiarkowany (nadzieja).", 
+         "101 → 001 (Dezengażowanie)", "Utrata chęci przy przekonaniu o konieczności i braku przekonania o możliwości. Proces: wypalenie, utrata nadziei. Koszt: wysoki (bezsilność, depresja)."),
+        ("101 → 111 (Rozwiązanie konfliktu)", "Pojawienie się przekonania o możliwości przy chęci i przekonaniu o konieczności. Proces: przełamanie barier. Koszt: niski (olga, sens).", 
+         "111 → 101 (Kryzys zasobów)", "Utrata przekonania o możliwości przy chęci i przekonaniu o konieczności. Proces: szok, napięcie krytyczne ostre. Koszt: bardzo wysoki (ryzyko PTSD)."),
+        ("110 → 111 (Pojawienie się przekonania o konieczności)", "Pojawienie się przekonania o konieczności przy chęci i przekonaniu o możliwości. Proces: internalizacja normy prosocjalnej, OCB. Koszt: niski (dumą, sens).", 
+         "111 → 110 (Dezobowiązkowanie)", "Utrata przekonania o konieczności przy chęci i przekonaniu o możliwości. Proces: delegacja, sukcesja. Koszt: niski/umiarkowany (ulga, ewentualnie pustka)."),
+        ("100 → 110 (Przełamanie barier)", "Pojawienie się przekonania o możliwości przy chęci. Proces: planowanie, problem-solving, Rubikon. Koszt: umiarkowany (nadzieja).", 
+         "110 → 100 (Blokada działania)", "Utrata przekonania o możliwości przy chęci. Proces: frustracja, bezsilność. Koszt: wysoki (ryzyko rezygnacji).")
     ]
     
     for pair in asym:
@@ -670,12 +698,12 @@ def main():
         "Każdy wymiar ma własne mechanizmy zmiany 0↔1:", bold=True)
     
     mech = [
-        ("W (CHCĘ): 0→1", "Pojawienie się motywacji: zmiana wartości celu, insight, modelowanie, perswazja, framing. "
-         "1→0: Utrata motywacji: rozczarowanie, wypalenie, depresja, zmiana priorytetów, presja do rezygnacji."),
-        ("C (MOGĘ): 0→1", "Pozyskanie możliwości: mastery experience (Bandura), szkolenie, delegacja, networking, innowacja, uproszczenie procedur. "
-         "1→0: Utrata możliwości: utrata zasobów, awaria, zmiana regulacji, lęk, degradacja kompetencji."),
-        ("N (POWINIENEM): 0→1", "Pojawienie się obowiązku: nowa rola, internalizacja normy (Kelman), aktywacja normy moralnej (Schwartz), presja społeczna. "
-         "1→0: Utrata obowiązku: odrzucenie roli, deprecjacja normy, zmiana wartości, deregulacja, sekularyzacja.")
+        ("W (CHCĘ): 0→1", "Pojawienie się chęci: zmiana wartości celu, insight, modelowanie, perswazja, framing. "
+         "1→0: Utrata chęci: rozczarowanie, wypalenie, depresja, zmiana priorytetów, presja do rezygnacji."),
+        ("C (MOGĘ): 0→1", "Pojawienie się przekonania o możliwości: mastery experience (Bandura), szkolenie, delegacja, networking, innowacja, uproszczenie procedur. "
+         "1→0: Utrata przekonania o możliwości: utrata zasobów, awaria, zmiana regulacji, lęk, degradacja kompetencji."),
+        ("N (POWINIENEM): 0→1", "Pojawienie się przekonania o konieczności: nowa rola, internalizacja normy (Kelman), aktywacja normy moralnej (Schwartz), racjonalna reocena celów. "
+         "1→0: Utrata przekonania o konieczności: odrzucenie roli, deprecjacja normy, zmiana wartości, deregulacja, sekularyzacja, racjonalna reocena celów.")
     ]
     
     for name, desc in mech:
@@ -688,11 +716,11 @@ def main():
         "Zmiana jednego wymiaru modyfikuje kontekst dla pozostałych:", bold=True)
     
     inter = [
-        "N=1 ułatwia W=0→1 (internalizacja normy → autonomia) – przejścia 001→101, 011→111.",
-        "W=1 ułatwia C=0→1 (motywacja → problem-solving, szukanie dróg) – przejścia 100→110, 101→111.",
-        "C=1 ułatwia W=0→1 (możliwość → aktywacja, 'mogę więc chcę spróbować') – przejścia 010→110, 011→111.",
+        "N=1 ułatwia W=0→1 (internalizacja przekonania o konieczności → chęć) – przejścia 001→101, 011→111.",
+        "W=1 ułatwia C=0→1 (chęć → problem-solving, szukanie dróg) – przejścia 100→110, 101→111.",
+        "C=1 ułatwia W=0→1 (przekonanie o możliwości → aktywacja, 'mogę więc chcę spróbować') – przejścia 010→110, 011→111.",
         "C=0 utrudnia W=1 (frustracja celowa, ryzyko 100→000, 101→001).",
-        "N=0 przy W=1, C=1 (stan 110) = autonomia bez presji – ryzyko 110→010 (wypalenie od braku sensu).",
+        "N=0 przy W=1, C=1 (stan 110) = autonomia bez przekonania o konieczności – ryzyko 110→010 (wypalenie od braku sensu).",
         "W=0 przy N=1, C=1 (stan 011) = compliance – ryzyko 011→001 (wypalenie) lub 011→111 (internalizacja)."
     ]
     for i in inter:
@@ -705,9 +733,9 @@ def main():
     
     affect = [
         "Pozytywny afekt (radość, nadzieja, olga, dumą): towarzyszy przejściom 'w górę' (0→1) przy W i C, "
-        "oraz internalizacji N (011→111, 110→111). Wzmocni tendencję do utrzymania nowego stanu.",
+        "oraz internalizacji przekonania o konieczności (011→111, 110→111). Wzmocni tendencję do utrzymania nowego stanu.",
         "Negatywny afekt (lęk, winę, frustracja, bezsilność, gniew, cynizm): towarzyszy przejściom 'w dół' (1→0), "
-        "utracie możliwości (111→101, 110→100), napięciu krytycznemu (101), wypaleniu (110→010, 111→011). "
+        "utracie przekonania o możliwości (111→101, 110→100), napięciu krytycznemu (101), wypaleniu (110→010, 111→011). "
         "Może inicjować coping (problem-focused → 101→111) lub rezygnację (101→001).",
         "Afekt misto (ulga z winą: 011→010, 101→100; nadzieja z lękiem: 100→110, 001→101) – sygnalizuje ambiwalencję procesu."
     ]
@@ -727,17 +755,17 @@ def main():
     
     action = [
         ("Podejmowanie działania (inicjacja)", 
-         "Najbardziej prawdopodobne ze stanów: 110 (autonomia + możliwość), 111 (pełna gotowość), 101 (motywacja + norma, szukanie C). "
-         "Stan 100 (tylko W) → planowanie (przejscia 100→110). Stan 011 (compliance) → działanie bez zaangażowania. "
+         "Najbardziej prawdopodobne ze stanów: 110 (chęć + przekonanie o możliwości), 111 (pełna gotowość), 101 (chęć + przekonanie o konieczności, szukanie przekonania o możliwości). "
+         "Stan 100 (tylko chęć) → planowanie (przejscia 100→110). Stan 011 (compliance) → działanie bez zaangażowania. "
          "Stan 001, 010, 000 → działanie mało prawdopodobne bez zmiany stanu."),
         ("Kontynuowanie działania (persistencja)", 
-         "Stan 111 (internalizowane N) > 110 (autonomia) > 011 (compliance) > 101 (blokada). "
-         "Volicja (Kuhl) chroni działanie w 110/111. W 011 kontynuacja zależy od sankcji/norm. "
-         "W 101 kontynuacja niemożliwa bez C – próby copingowe (101→111) lub rezygnacja."),
+         "Stan 111 (racjonalne przekonanie o konieczności) > 110 (autonomia) > 011 (compliance) > 101 (blokada). "
+         "Volicja (Kuhl) chroni działanie w 110/111. W 011 kontynuacja zależy od sankcji/przekonania o konieczności. "
+         "W 101 kontynuacja niemożliwa bez przekonania o możliwości – próby copingowe (101→111) lub rezygnacja."),
         ("Zaniechanie / rezygnacja (disengagement)", 
          "Przejścia do stanów z W=0: 111→011, 110→010, 101→001, 100→000. "
          "Adaptacyjne (Wrosch et al.): rezygnacja z niemożliwego celu (101→001/100) → reengagement. "
-         "Niezadaptacyjne: wypalenie (110→010, 111→011), dezengażowanie przy zachowaniu N (101→001) → moral residue.")
+         "Niezadaptacyjne: wypalenie (110→010, 111→011), dezengażowanie przy zachowaniu przekonania o konieczności (101→001) → moral residue.")
     ]
     
     for name, desc in action:
@@ -750,7 +778,7 @@ def main():
         "DMTRD modeluje procesy refleksywne (System 2). Dla działań nawykowych (System 1; Wood & Neal, 2007):", bold=True)
     
     habit = [
-        "Stan 010/011 (C=1, W=0) to normalny stan działania nawykowego – NIE 'brak motywacji'.",
+        "Stan 010/011 (C=1, W=0) to normalny stan działania nawykowego – NIE 'brak chęci'.",
         "Przejście 010→110 = świadome przejęcie kontroli nad nawykem (kontrola wykonywcza).",
         "Przejście 110→010 = automatyzacja / utrata świadomej kontroli (może być adaptacyjne).",
         "Silny nawyk hamuje 010→110 (trudność przejęcia kontroli) i ułatwia 110→010.",
@@ -771,9 +799,9 @@ def main():
         "Zależność od historii (path dependence) to hipoteza do testowania w modelu rozszerzonym, nie cecha modelu bazowego:", bold=True)
     
     path = [
-        "Różne ścieżki do 111: 000→100→110→111 (budowanie autonomii) vs 000→001→011→111 (internalizacja normy). "
-        "Hipoteza HPD: stabilność 111 zależy od ścieżki – internalizowana N (ścieżka B) daje wyższą stabilność.",
-        "Stan 101 osiągnięty z 001 (internalizacja) vs z 100 (moralizacja celu) – różna prognaza (HPD).",
+        "Różne ścieżki do 111: 000→100→110→111 (budowanie autonomii) vs 000→001→011→111 (internalizacja przekonania o konieczności). "
+        "Hipoteza HPD: stabilność 111 zależy od ścieżki – zinternalizowane przekonanie o konieczności (ścieżka B) daje wyższą stabilność.",
+        "Stan 101 osiągnięty z 001 (internalizacja konieczności) vs z 100 (moralizacja celu) – różna prognaza (HPD).",
         "Liczba poprzednich cykli (np. wielokrotne 110→010→110) może budować odporność lub wrażliwość (sensytyzacja).",
         "Modelowanie rozszerzone: łańcuch Markowa rzędu wyższego, semi-Markowski ze zmiennymi latentnymi historii, "
         "lub CTMC z kowariancjami zależnymi od czasu/ścieżki. Testowane w hipotezie HPD."
@@ -846,7 +874,7 @@ def main():
     
     scales = [
         "W: Identified Regulation (SDT, BRSQ/SRQ) – najbliższy konstrukt; Integrated Regulation (SDT); Attitude (TPB). "
-        "UWAGA: IMI Interest/Enjoyment to motywacja intryntyczna, NIE W (osobista akceptacja wartości celu).",
+        "UWAGA: IMI Interest/Enjoyment to motywacja intryntyczna, NIE W (chęć wykonania działania).",
         "C: Perceived Behavioral Control (TPB) – najbliższy; General Self-Efficacy (Schwarzer & Jerusalem); "
         "Capability/Opportunity items (TDF/COM-B).",
         "N: Personal Norm (Schwartz); Subjective Norms (TPB); Role Overload/Conflict (Kahn); "
@@ -1178,7 +1206,7 @@ def main():
     add_paragraph_styled(doc, "Przypadki analityczne: 101, 011, 110, 100, 001, 111, 010, 000; tabela decyzyjna interwencji; wzorce trajektorii.")
     
     # Save
-    output_path = BASE / "DMTRD_koncepcja_rev3.docx"
+    output_path = BASE / "DMTRD_koncepcja_rev3_1.docx"
     doc.save(str(output_path))
     print(f"Saved: {output_path}")
 
